@@ -1,6 +1,6 @@
 # Coding_Dojo
 
-Cohort: Burbank \n
+Cohort: Burbank <br>
 Starting Date: September 16, 2019
 
 
