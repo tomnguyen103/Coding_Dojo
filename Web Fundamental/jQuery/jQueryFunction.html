@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>My jQuery Basic Assignment</title>
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $('.button-1').click(function() {
+                $('#change-color').addClass('red');
+            });
+            $('.button-2').click(function() {
+                $('#hide-this').slideToggle('slow');
+            });
+            $('.button-3').click(function() {
+                $('#append-this').append(' This is new paragraph');
+            });
+        });
+    </script>
+    <style type="text/css">
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        
+        #container {
+            width: 970px;
+            height: 500px;
+            background-color: lightgrey;
+        }
+        /* #top {}
+        
+        #middle {}
+        
+        #bottom {} */
+        
+        #add-class {
+            width: 150px;
+            height: 50px;
+            text-align: center;
+            margin: 50px 20px 20px 20px;
+            vertical-align: top;
+            position: right;
+            display: inline-block
+        }
+        
+        div#top-right {
+            height: 50px;
+            vertical-align: top;
+            /* position: left; */
+            display: inline-block;
+            margin: 10px 10px 10px 100px;
+        }
+        
+        div#top-right h1 {
+            margin: 20px 10px 10px 10px;
+        }
+        
+        hr {
+            color: black;
+            size: 5px;
+            border: 1px solid black;
+        }
+        
+        .red {
+            color: red;
+        }
+        
+        img {
+            width: 150px;
+            height: 100px;
+            position: absolute;
+            top: 130px;
+            right: 500px;
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div>
+            <button class="button-1" id="add-class">AddClass</button>
+            <div id="top-right">
+                <h1>Add Class</h1>
+                <h4 id="change-color">Click the button to add class 'red' to this paragraph.</h4>
+            </div>
+        </div>
+        <hr>
+        <div>
+            <button class="button-2" id="add-class">Slidetoggle</button>
+            <div id="top-right">
+                <h1>SlideToggle</h1>
+                <h4 id="hide-image">Click the button to slidetoggle a hiden image.</h4>
+                <img id="hide-this" src="michael_jordan.jpg" alt="michael jordan">
+            </div>
+        </div>
+        <hr>
+        <div>
+            <button class="button-3" id="add-class">Append</button>
+            <div id="top-right">
+                <h1>Append</h1>
+                <h4 id="append-this">Click the button to append a new paragraph.</h4>
+            </div>
+        </div>
+        <hr>
+
+    </div>
+
+</body>
+
+</html>

@@ -1,0 +1,8 @@
+mysql> select * from users;
+
+mysql> insert into users (first_name, last_name, handle, birthday, created_at, updated_at) values ("Tom", "Nguyen", "tomnguyen", "1994-03-10", now(),now());
+Query OK, 1 row affected (0.00 sec)
+
+mysql> update users set first_name = "Thong" where id=1;
+
+mysql> delete from users where id=6;

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>jQuery</title>
+</head>
+
+<body>
+    <h1>Fun with jQuery</h1>
+    <form id="my-form">
+        <label>Username</label>
+        <input id="username" type="text" name="username">
+        <br>
+        <label>Email</label>
+        <input id="email" type="email" name="email">
+        <br>
+        <label>Password</label>
+        <input id="password" type="password" name="password">
+        <br>
+        <label>Confirm Password</label>
+        <input id="confirm-password" type="password" name="confirm-password">
+        <br>
+        <input type="button" value="Register">
+
+    </form>
+
+    <div id="submitted-forms">
+        <h3>Submitted Forms</h3>
+        <p>User Name: username goes here | Email: email goes here</p>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <script>
+        $(document).ready(function() {
+            $("#my-form").submit(function(event) {
+                event.preventDefault();
+                var username = $("#username").val();
+                var email = $("#email").val();
+                var password = $("#password").val();
+                var confirmPassword = $("#confirm-password").val();
+                $("#submitted-forms").append("<p>Username: " + username + " | Email: email" + email + "</p>");
+            });
+        });
+    </script>
+</body>
+
+</html>

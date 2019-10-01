@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://code.jquery.com/jquery-3.4.1.js" integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU=" crossorigin="anonymous"></script>
+    <title>jQuery Demo</title>
+    <script>
+        $(document).ready(function() {
+
+            // $('button').click(function() {
+            //     var myText = $('#myParagraph').text();
+            //     alert(myText);
+            // });
+
+            $('button').click(function() {
+                $('#myParagraph').text('see how I .text() works as a setter!');
+            });
+            // alert('you are now in jQuery!');
+            // $('a').click(function() {
+            //     alert("you are now leaving the page!");
+            // });
+
+            // $('p').hide();
+
+            // $('#hide').click(function() {
+            //     $('p').hide();
+            // });
+
+            // $('#show').click(function() {
+            //     $('p').show();
+            // });
+
+            // $('h3').hover(function() {
+            //     $('h2').text("go to see the Space Moutain!");
+            // });
+
+            // $('.append').click(function() {
+            //     $('.result').append('<h4>.append adds HTML! </h4>');
+            // });
+
+            // $('button').click(function() {
+            //     $('button').css('background-color', 'yellow');
+            // });
+        });
+    </script>
+</head>
+
+<body>
+    <p id="myParagraph">this is a paragraph</p>
+    <button>Click me</button>
+
+    <!-- <p>this is also a paragraph</p>
+    <button id="hide">Click here to hide the paragraph</button>
+    <button id="show">Click here to show the paragraph!</button> -->
+
+    <!-- <a id="my-link" href="http://google.com">go to Google!</a>
+    <h3>Moutain View</h3>
+    <h2>California</h2> -->
+
+    <!-- <button class="append">Click Me!</button>
+    <div class="result"></div> -->
+
+</body>
+
+</html>

@@ -1,0 +1,604 @@
+Last login: Mon Sep 30 11:16:11 on ttys002
+[pToms-MacBook-Pro-2:~ TomNguyen$ pip3 list
+Package           Version  
+----------------- ---------
+astroid           2.2.5    
+awsebcli          3.15.3   
+blessed           1.15.0   
+botocore          1.12.229 
+cached-property   1.5.1    
+cement            2.8.2    
+certifi           2019.9.11
+chardet           3.0.4    
+colorama          0.3.9    
+cycler            0.10.0   
+docker            3.7.3    
+docker-compose    1.23.2   
+docker-pycreds    0.4.0    
+dockerpty         0.4.1    
+docopt            0.6.2    
+docutils          0.15.2   
+future            0.16.0   
+idna              2.7      
+isort             4.3.21   
+jmespath          0.9.4    
+jsonschema        2.6.0    
+kiwisolver        1.0.1    
+lazy-object-proxy 1.4.2    
+matplotlib        3.0.0    
+mccabe            0.6.1    
+numpy             1.15.3   
+pathspec          0.5.9    
+pip               19.0.3   
+pylint            2.3.1    
+pyparsing         2.2.2    
+python-dateutil   2.7.3    
+PyYAML            3.13     
+requests          2.20.1   
+semantic-version  2.5.0    
+setuptools        40.8.0   
+six               1.11.0   
+termcolor         1.1.0    
+texttable         0.9.1    
+typed-ast         1.4.0    
+urllib3           1.24.3   
+wcwidth           0.1.7    
+websocket-client  0.56.0   
+wrapt             1.11.2   
+You are using pip version 19.0.3, however version 19.2.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Toms-MacBook-Pro-2:~ TomNguyen$ pip install --upgrade pip3
+-bash: pip: command not found
+Toms-MacBook-Pro-2:~ TomNguyen$ pip3 install --upgrade pip3
+Collecting pip3
+  Could not find a version that satisfies the requirement pip3 (from versions: )
+No matching distribution found for pip3
+You are using pip version 19.0.3, however version 19.2.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Toms-MacBook-Pro-2:~ TomNguyen$ sudo pip3 install --upgrade pip3
+Password:
+The directory '/Users/thongnguyen/Library/Caches/pip/http' or its parent directory is not owned by the current user and the cache has been disabled. Please check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+The directory '/Users/thongnguyen/Library/Caches/pip' or its parent directory is not owned by the current user and caching wheels has been disabled. check the permissions and owner of that directory. If executing pip with sudo, you may want sudo's -H flag.
+Collecting pip3
+  Could not find a version that satisfies the requirement pip3 (from versions: )
+No matching distribution found for pip3
+You are using pip version 19.0.3, however version 19.2.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Toms-MacBook-Pro-2:~ TomNguyen$ pip3 list
+Package           Version  
+----------------- ---------
+astroid           2.2.5    
+awsebcli          3.15.3   
+blessed           1.15.0   
+botocore          1.12.229 
+cached-property   1.5.1    
+cement            2.8.2    
+certifi           2019.9.11
+chardet           3.0.4    
+colorama          0.3.9    
+cycler            0.10.0   
+docker            3.7.3    
+docker-compose    1.23.2   
+docker-pycreds    0.4.0    
+dockerpty         0.4.1    
+docopt            0.6.2    
+docutils          0.15.2   
+future            0.16.0   
+idna              2.7      
+isort             4.3.21   
+jmespath          0.9.4    
+jsonschema        2.6.0    
+kiwisolver        1.0.1    
+lazy-object-proxy 1.4.2    
+matplotlib        3.0.0    
+mccabe            0.6.1    
+numpy             1.15.3   
+pathspec          0.5.9    
+pip               19.0.3   
+pylint            2.3.1    
+pyparsing         2.2.2    
+python-dateutil   2.7.3    
+PyYAML            3.13     
+requests          2.20.1   
+semantic-version  2.5.0    
+setuptools        40.8.0   
+six               1.11.0   
+termcolor         1.1.0    
+texttable         0.9.1    
+typed-ast         1.4.0    
+urllib3           1.24.3   
+wcwidth           0.1.7    
+websocket-client  0.56.0   
+wrapt             1.11.2   
+You are using pip version 19.0.3, however version 19.2.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+Toms-MacBook-Pro-2:~ TomNguyen$ pip install --upgrade pip
+-bash: pip: command not found
+Toms-MacBook-Pro-2:~ TomNguyen$ pip install --upgrade pip3
+-bash: pip: command not found
+Toms-MacBook-Pro-2:~ TomNguyen$ pip3 install --upgrade pip
+Collecting pip
+  Using cached https://files.pythonhosted.org/packages/30/db/9e38760b32e3e7f40cce46dd5fb107b8c73840df38f0046d8e6514e675a1/pip-19.2.3-py2.py3-none-any.whl
+Installing collected packages: pip
+  Found existing installation: pip 19.0.3
+    Uninstalling pip-19.0.3:
+      Successfully uninstalled pip-19.0.3
+Successfully installed pip-19.2.3
+Toms-MacBook-Pro-2:~ TomNguyen$ ls
+305493245.tar			SidewalkSlope
+4470project11			Student_Attendance_Service_SAS
+Applications			Users
+CS 3220				apache-tomcat-8.5.23
+CSULA_POI_Locator		app.py
+CSULA_POI_Locator.zip		bower_components
+Cs-4780-Project1		dailycoding
+Desktop				dlib
+Documents			dna-spreadsheet
+Downloads			docker
+Dropbox				doodle
+Encryption-and-Decryption	eclipse
+Google Drive			get-pip.py
+HomeAutomate			gym
+Library				logic_programming
+Movies				mongodb
+Music				my-app
+New Project			node_modules
+NewEditorScript.cs		nodeprojects
+PiGrow				octave-workspace
+Pictures			opencv
+Postman				package
+Practice			package-lock.json
+Public				py3Env
+PyGrow				sidewalk
+README.md			ssh publickey.txt
+RemoteSystemsTempFiles		twitter.sql
+Toms-MacBook-Pro-2:~ TomNguyen$ cd /Users/thongnguyen/Google\ Drive/coding\ dojo/python_stack/my_environments 
+Toms-MacBook-Pro-2:my_environments TomNguyen$ ls
+Toms-MacBook-Pro-2:my_environments TomNguyen$ python3 -m venv py3Env
+Toms-MacBook-Pro-2:my_environments TomNguyen$ ls
+py3Env
+Toms-MacBook-Pro-2:my_environments TomNguyen$ source p3Env
+-bash: p3Env: No such file or directory
+Toms-MacBook-Pro-2:my_environments TomNguyen$ source py3Env
+-bash: source: py3Env: is a directory
+Toms-MacBook-Pro-2:my_environments TomNguyen$ source py3Env/bin/activate    
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ pip list
+Package    Version
+---------- -------
+pip        19.0.3 
+setuptools 40.8.0 
+You are using pip version 19.0.3, however version 19.2.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ python
+Python 3.7.4 (v3.7.4:e09359112e, Jul  8 2019, 14:54:52) 
+[Clang 6.0 (clang-600.0.57)] on darwin
+Type "help", "copyright", "credits" or "license" for more information.
+>>> exit
+Use exit() or Ctrl-D (i.e. EOF) to exit
+>>> exit()
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ clear
+
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ pip list
+Package    Version
+---------- -------
+pip        19.0.3 
+setuptools 40.8.0 
+You are using pip version 19.0.3, however version 19.2.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ pip install Flask
+Collecting Flask
+  Downloading https://files.pythonhosted.org/packages/9b/93/628509b8d5dc749656a9641f4caf13540e2cdec85276964ff8f43bbb1d3b/Flask-1.1.1-py2.py3-none-any.whl (94kB)
+    100% |████████████████████████████████| 102kB 3.8MB/s 
+Collecting Werkzeug>=0.15 (from Flask)
+  Downloading https://files.pythonhosted.org/packages/ce/42/3aeda98f96e85fd26180534d36570e4d18108d62ae36f87694b476b83d6f/Werkzeug-0.16.0-py2.py3-none-any.whl (327kB)
+    100% |████████████████████████████████| 327kB 7.4MB/s 
+Collecting itsdangerous>=0.24 (from Flask)
+  Downloading https://files.pythonhosted.org/packages/76/ae/44b03b253d6fade317f32c24d100b3b35c2239807046a4c953c7b89fa49e/itsdangerous-1.1.0-py2.py3-none-any.whl
+Collecting click>=5.1 (from Flask)
+  Downloading https://files.pythonhosted.org/packages/fa/37/45185cb5abbc30d7257104c434fe0b07e5a195a6847506c074527aa599ec/Click-7.0-py2.py3-none-any.whl (81kB)
+    100% |████████████████████████████████| 81kB 12.7MB/s 
+Collecting Jinja2>=2.10.1 (from Flask)
+  Downloading https://files.pythonhosted.org/packages/1d/e7/fd8b501e7a6dfe492a433deb7b9d833d39ca74916fa8bc63dd1a4947a671/Jinja2-2.10.1-py2.py3-none-any.whl (124kB)
+    100% |████████████████████████████████| 133kB 5.3MB/s 
+Collecting MarkupSafe>=0.23 (from Jinja2>=2.10.1->Flask)
+  Downloading https://files.pythonhosted.org/packages/ce/c6/f000f1af136ef74e4a95e33785921c73595c5390403f102e9b231b065b7a/MarkupSafe-1.1.1-cp37-cp37m-macosx_10_6_intel.whl
+Installing collected packages: Werkzeug, itsdangerous, click, MarkupSafe, Jinja2, Flask
+Successfully installed Flask-1.1.1 Jinja2-2.10.1 MarkupSafe-1.1.1 Werkzeug-0.16.0 click-7.0 itsdangerous-1.1.0
+You are using pip version 19.0.3, however version 19.2.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ pip list
+Package      Version
+------------ -------
+Click        7.0    
+Flask        1.1.1  
+itsdangerous 1.1.0  
+Jinja2       2.10.1 
+MarkupSafe   1.1.1  
+pip          19.0.3 
+setuptools   40.8.0 
+Werkzeug     0.16.0 
+You are using pip version 19.0.3, however version 19.2.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ cd ..
+(py3Env) Toms-MacBook-Pro-2:python_stack TomNguyen$ cd flask
+(py3Env) Toms-MacBook-Pro-2:flask TomNguyen$ ls
+flask_fundamentals	flask_mysql
+(py3Env) Toms-MacBook-Pro-2:flask TomNguyen$ cd ..
+(py3Env) Toms-MacBook-Pro-2:python_stack TomNguyen$ deactivate
+Toms-MacBook-Pro-2:python_stack TomNguyen$ pip list
+Package           Version  
+----------------- ---------
+astroid           2.2.5    
+awsebcli          3.15.3   
+blessed           1.15.0   
+botocore          1.12.229 
+cached-property   1.5.1    
+cement            2.8.2    
+certifi           2019.9.11
+chardet           3.0.4    
+colorama          0.3.9    
+cycler            0.10.0   
+docker            3.7.3    
+docker-compose    1.23.2   
+docker-pycreds    0.4.0    
+dockerpty         0.4.1    
+docopt            0.6.2    
+docutils          0.15.2   
+future            0.16.0   
+idna              2.7      
+isort             4.3.21   
+jmespath          0.9.4    
+jsonschema        2.6.0    
+kiwisolver        1.0.1    
+lazy-object-proxy 1.4.2    
+matplotlib        3.0.0    
+mccabe            0.6.1    
+numpy             1.15.3   
+pathspec          0.5.9    
+pip               19.2.3   
+pylint            2.3.1    
+pyparsing         2.2.2    
+python-dateutil   2.7.3    
+PyYAML            3.13     
+requests          2.20.1   
+semantic-version  2.5.0    
+setuptools        40.8.0   
+six               1.11.0   
+termcolor         1.1.0    
+texttable         0.9.1    
+typed-ast         1.4.0    
+urllib3           1.24.3   
+wcwidth           0.1.7    
+websocket-client  0.56.0   
+wrapt             1.11.2   
+Toms-MacBook-Pro-2:python_stack TomNguyen$ pip3 list
+Package           Version  
+----------------- ---------
+astroid           2.2.5    
+awsebcli          3.15.3   
+blessed           1.15.0   
+botocore          1.12.229 
+cached-property   1.5.1    
+cement            2.8.2    
+certifi           2019.9.11
+chardet           3.0.4    
+colorama          0.3.9    
+cycler            0.10.0   
+docker            3.7.3    
+docker-compose    1.23.2   
+docker-pycreds    0.4.0    
+dockerpty         0.4.1    
+docopt            0.6.2    
+docutils          0.15.2   
+future            0.16.0   
+idna              2.7      
+isort             4.3.21   
+jmespath          0.9.4    
+jsonschema        2.6.0    
+kiwisolver        1.0.1    
+lazy-object-proxy 1.4.2    
+matplotlib        3.0.0    
+mccabe            0.6.1    
+numpy             1.15.3   
+pathspec          0.5.9    
+pip               19.2.3   
+pylint            2.3.1    
+pyparsing         2.2.2    
+python-dateutil   2.7.3    
+PyYAML            3.13     
+requests          2.20.1   
+semantic-version  2.5.0    
+setuptools        40.8.0   
+six               1.11.0   
+termcolor         1.1.0    
+texttable         0.9.1    
+typed-ast         1.4.0    
+urllib3           1.24.3   
+wcwidth           0.1.7    
+websocket-client  0.56.0   
+wrapt             1.11.2   
+Toms-MacBook-Pro-2:python_stack TomNguyen$ ls
+django		flask		my_environments	python		sample.py
+Toms-MacBook-Pro-2:python_stack TomNguyen$ cd my_environments/
+Toms-MacBook-Pro-2:my_environments TomNguyen$ source py3Env/bin/activate
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ deactivate
+Toms-MacBook-Pro-2:my_environments TomNguyen$ ls
+py3Env
+Toms-MacBook-Pro-2:my_environments TomNguyen$ ls
+py3Env
+Toms-MacBook-Pro-2:my_environments TomNguyen$ pip list
+Package           Version  
+----------------- ---------
+astroid           2.2.5    
+awsebcli          3.15.3   
+blessed           1.15.0   
+botocore          1.12.229 
+cached-property   1.5.1    
+cement            2.8.2    
+certifi           2019.9.11
+chardet           3.0.4    
+colorama          0.3.9    
+cycler            0.10.0   
+docker            3.7.3    
+docker-compose    1.23.2   
+docker-pycreds    0.4.0    
+dockerpty         0.4.1    
+docopt            0.6.2    
+docutils          0.15.2   
+future            0.16.0   
+idna              2.7      
+isort             4.3.21   
+jmespath          0.9.4    
+jsonschema        2.6.0    
+kiwisolver        1.0.1    
+lazy-object-proxy 1.4.2    
+matplotlib        3.0.0    
+mccabe            0.6.1    
+numpy             1.15.3   
+pathspec          0.5.9    
+pip               19.2.3   
+pylint            2.3.1    
+pyparsing         2.2.2    
+python-dateutil   2.7.3    
+PyYAML            3.13     
+requests          2.20.1   
+semantic-version  2.5.0    
+setuptools        40.8.0   
+six               1.11.0   
+termcolor         1.1.0    
+texttable         0.9.1    
+typed-ast         1.4.0    
+urllib3           1.24.3   
+wcwidth           0.1.7    
+websocket-client  0.56.0   
+wrapt             1.11.2   
+Toms-MacBook-Pro-2:my_environments TomNguyen$ source py3Env/bin/activate
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ deactivate
+Toms-MacBook-Pro-2:my_environments TomNguyen$ clear
+
+Toms-MacBook-Pro-2:my_environments TomNguyen$ source py3Env/bin/activate
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ pip list
+Package      Version
+------------ -------
+Click        7.0    
+Flask        1.1.1  
+itsdangerous 1.1.0  
+Jinja2       2.10.1 
+MarkupSafe   1.1.1  
+pip          19.0.3 
+setuptools   40.8.0 
+Werkzeug     0.16.0 
+You are using pip version 19.0.3, however version 19.2.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ deactivate
+Toms-MacBook-Pro-2:my_environments TomNguyen$ pip3 list
+Package           Version  
+----------------- ---------
+astroid           2.2.5    
+awsebcli          3.15.3   
+blessed           1.15.0   
+botocore          1.12.229 
+cached-property   1.5.1    
+cement            2.8.2    
+certifi           2019.9.11
+chardet           3.0.4    
+colorama          0.3.9    
+cycler            0.10.0   
+docker            3.7.3    
+docker-compose    1.23.2   
+docker-pycreds    0.4.0    
+dockerpty         0.4.1    
+docopt            0.6.2    
+docutils          0.15.2   
+future            0.16.0   
+idna              2.7      
+isort             4.3.21   
+jmespath          0.9.4    
+jsonschema        2.6.0    
+kiwisolver        1.0.1    
+lazy-object-proxy 1.4.2    
+matplotlib        3.0.0    
+mccabe            0.6.1    
+numpy             1.15.3   
+pathspec          0.5.9    
+pip               19.2.3   
+pylint            2.3.1    
+pyparsing         2.2.2    
+python-dateutil   2.7.3    
+PyYAML            3.13     
+requests          2.20.1   
+semantic-version  2.5.0    
+setuptools        40.8.0   
+six               1.11.0   
+termcolor         1.1.0    
+texttable         0.9.1    
+typed-ast         1.4.0    
+urllib3           1.24.3   
+wcwidth           0.1.7    
+websocket-client  0.56.0   
+wrapt             1.11.2   
+Toms-MacBook-Pro-2:my_environments TomNguyen$ source myEnvironments/py3Env/bin/activate
+-bash: myEnvironments/py3Env/bin/activate: No such file or directory
+Toms-MacBook-Pro-2:my_environments TomNguyen$ source py3Env/bin/activate
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ pip install Django==1.11.9
+Collecting Django==1.11.9
+  Downloading https://files.pythonhosted.org/packages/c8/a6/291039f0ce4b9818e0399359866337e6dfe9c0e23d8d94f00e657edbfcd8/Django-1.11.9-py2.py3-none-any.whl (6.9MB)
+    100% |████████████████████████████████| 7.0MB 1.5MB/s 
+Collecting pytz (from Django==1.11.9)
+  Downloading https://files.pythonhosted.org/packages/87/76/46d697698a143e05f77bec5a526bf4e56a0be61d63425b68f4ba553b51f2/pytz-2019.2-py2.py3-none-any.whl (508kB)
+    100% |████████████████████████████████| 512kB 9.8MB/s 
+Installing collected packages: pytz, Django
+Successfully installed Django-1.11.9 pytz-2019.2
+You are using pip version 19.0.3, however version 19.2.3 is available.
+You should consider upgrading via the 'pip install --upgrade pip' command.
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ pip freeze
+Click==7.0
+Django==1.11.9
+Flask==1.1.1
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.1
+pytz==2019.2
+Werkzeug==0.16.0
+(py3Env) Toms-MacBook-Pro-2:my_environments TomNguyen$ cd ~/Desktop
+(py3Env) Toms-MacBook-Pro-2:Desktop TomNguyen$ pip freeze > requirement.txt -- print out the name and version of all the packages we installed
+(py3Env) Toms-MacBook-Pro-2:Desktop TomNguyen$ ls -- I see all the files in my Desktop directory, inside the file are the list of all packages installed inside the virtual environment
+Desktop
+audio
+chromedriver
+codingdojo
+cs 4555
+cs4660
+cs4780
+data
+jasmine
+java
+mean
+python
+requirement.txt
+week10.jpeg
+(py3Env) Toms-MacBook-Pro-2:Desktop TomNguyen$ pip uninstall Django
+Uninstalling Django-1.11.9:
+  Would remove:
+    /Users/thongnguyen/Google Drive/coding dojo/python_stack/my_environments/py3Env/bin/django-admin
+    /Users/thongnguyen/Google Drive/coding dojo/python_stack/my_environments/py3Env/bin/django-admin.py
+    /Users/thongnguyen/Google Drive/coding dojo/python_stack/my_environments/py3Env/lib/python3.7/site-packages/Django-1.11.9.dist-info/*
+    /Users/thongnguyen/Google Drive/coding dojo/python_stack/my_environments/py3Env/lib/python3.7/site-packages/django/*
+Proceed (y/n)? y
+  Successfully uninstalled Django-1.11.9
+(py3Env) Toms-MacBook-Pro-2:Desktop TomNguyen$ pip show Django
+(py3Env) Toms-MacBook-Pro-2:Desktop TomNguyen$ pip search Flask
+Flask-SimpleMDE (0.3.0)     - Flask-SimpleMDE - a Flask extension for
+                              SimpleMDE
+Flask-Pure (0.5)            - Flask-Pure - a Flask extension for Pure.css
+Flask-OrientDB (0.1)        - A Flask extension for using OrientDB with Flask
+Flask-ElasticUtils (0.1.7)  - ElasticUtils for Flask
+Flask-Waitress (0.0.1)      - Flask Waitress
+Flask-Stripe (0.1.0)        - Flask-Stripe
+Flask-PubSub (0.1.0)        - Flask-PubSub
+flask-helloworld (1.0.0)    - Flask Helloworld
+flask-zs (0.0.19)           - A helpers for Flask.
+sockjs-flask (0.3)          - SockJs for Flask
+Flask-Quik (0.1.1)          - Quik for Flask
+Flask-BDEA (0.1.0)          - Flask-BDEA
+Flask-GripControl (0.0.1)   - Flask GripControl
+Flask-SRI (0.1.0)           - Flask-SRI
+flask-ws (0.0.1.0)          - Websocket for flask.
+Flask-Intercom (0.1.0)      - Flask-Intercom
+Flask-Turbolinks (0.2.0)    - Turbolinks for Flask.
+Flask-Watson (0.1.0)        - Flask-Watson
+Flask-Helper (0.19)         - Flask Helper
+Flask-SPF (0.0.0)           - Flask-SPF
+flask-toolbox (0.0.2)       - A flask toolbox.
+Flask-FileRev (0.1.0)       - Flask-FileRev
+Flask-Shopify (0.2)         - Shopify Flask
+Flask-Ext (0.1)             - Extensions of Flask
+Flask-TaskTiger (0.0.1)     - Flask TaskTiger
+flask-ypaginate (0.1.3)     - Pagination for Flask
+Flask-OAuthlib (0.9.5)      - OAuthlib for Flask
+Flask-Mustache (0.4.1)      - Mustache for Flask
+Flask-Chargebee (0.0.1)     - Flask-Chargebee
+Flask-Keen (0.1.0)          - Flask-Keen
+Flask-Weixin (0.5.0)        - Weixin for Flask.
+flask-abort (0.0.1)         - flask abort
+Fifty-Flask (1.4.0)         - Flask enhancements.
+Flask-NextCaller (0.1.0)    - Flask-NextCaller
+Flask-Gears (0.2)           - Gears for Flask
+Flask-AutoIndex (0.6.4)     - The mod_autoindex for Flask
+Flask-Clearbit (0.1.0)      - Flask-Clearbit
+Flask-FontAwesome (0.1.2)   - FontAwesome for Flask
+Flask-GeoIP (0.1.3)         - Flask-GeoIP -------------  Simple Flask
+                              extension for pygeoip.
+airbrake-flask (1.0.7)      - airbrake-flask - Airbrake client for Python
+                              Flask
+Flask-Diced (0.3)           - Flask-Diced - CRUD views generator for Flask
+flask-myapi (0.1)           - Flask-MyAPI - RESTful support library for Flask
+Flask-LoginManager (1.1.6)  - Flask-Loginmanager supports multiple roles and
+                              permissions for Flask, inspired by Flask-Login
+Flask-RESTive (0.0.3)       - Flask RESTive is a REST API Flask extension
+                              based on Flask-RESTful & Marshmallow.
+Flask-FlatPagesCut (0.5.1)  - Flask-FlatPagesCut is fork Flask-FlatPages
+                              (Provides flat static pages to a Flask
+                              application)
+flask-lesscss (0.9.1)       - A small Flask extension that adds LessCSS
+                              support to Flask.
+flask-filters (0.3)         - The Flask Filter to use with flask-restful and
+                              Relational DB
+flask-shell (0.1.3)         - Flask extension to improve shell command for the
+                              Flask CLI.
+flask-stylus2css (0.1)      - A small Flask extension that adds Stylus support
+                              to Flask.
+Flask-Collect (1.3.2)       - Flask-Collect -- Collect static files in Flask
+                              application
+flask-coffee2js (0.1.2)     - A small Flask extension that adds CoffeScript
+                              support to Flask.
+Flask-Edits (0.8)           - Editable Content in Flask
+Flask-Slack (0.1.5)         - Slack extension for Flask.
+Flask-Triangle3 (0.5.3)     - Integration of AngularJS and Flask.
+Flask-Autodoc (0.1.2)       - Documentation generator for flask
+Flask-Enterprise (1.0)      - Enterprise capabilities for Flask
+Flask-SAML (0.4.3)          - Flask SAML integration
+Flask-Shelve (0.1.1)        - Shelve support for Flask
+Flask-OpenID (1.2.5)        - OpenID support for Flask
+Flask-CKEditor (0.4.3)      - CKEditor integration for Flask.
+Flask-Triangle (0.5.4)      - Integration of AngularJS and Flask.
+Flask-Zero (0.9.6)          - Qiniu Storage for Flask
+Flask-CuttlePool (0.2.0)    - A Flask extension for CuttlePool
+Flask-Funnel (0.1.10)       - Asset management for Flask.
+Flask-Breve (0.2)           - Breve templating with Flask
+Flask-mongobit (0.1.2)      - MongoBit support in Flask
+flask-logsocketio (0.1.4)   - Flask LogSocketIo module
+Flask-SaeStorage (0.9.0)    - SAE Storage for Flask
+Flask-Navigation (0.2.0)    - The navigation of Flask application.
+Flask-Passlib (0.1)         - Flask extension for passlib
+flask-serial (1.1.0)        - Flask extension for the Serial
+flask-discoverer (0.1.4)    - Flask API autodiscovery
+flask-iMail (0.1)           - Mailgun integration for Flask.
+flask-snow (0.2.8)          - Pysnow extension for Flask
+Flask-ZMQ (0.1.2)           - Flask extension for ZMQ
+Flask-wechatpy (0.1.3)      - wechatpy for flask extension
+Flask-Vises (2.1.4)         - A Flask scaffold library
+Flask-PyFCM (0.1.1)         - Flask extension for PyFCM
+Flask-sshtunnel (0.1b2)     - sshtunnel extension for flask
+Flask-CAS (1.0.1)           - Flask extension for CAS
+Flask-Flarf (0.0.5)         - Flask request filtering
+flask-tat (0.0.10)          - Flask TAT client
+Flask-Failsafe (0.2)        - A failsafe for the Flask reloader
+nailpack-flask (0.1.0)      - Flask support for nails
+Flask-Latch (0.1.0)         - Latch extension for Flask
+Flask-Storm (0.2.0)         - Storm integration for Flask.
+Flask-MySQLdb (0.2.0)       - MySQLdb extension for Flask
+flask-blitzdb (0.1)         - Flask extension for blitzdb
+Flask-RBAC (0.3.0)          - RBAC support for Flask
+castle-flask (0.0.1)        - A Flask client for Castle.io
+flask-handlers (0.0.1)      - Handlers for Flask applications
+Flask-Postmark (0.2.0)      - Postmark Flask extension
+flask-keycloak (1.1.0)      - flask integration with keycloak
+Flask-Htmldoom (0.1.2)      - htmldoom integration for Flask
+Flask-PRBAC (0.1.3)         - RBAC support for Flask
+flask-bluelogin (0.2.7)     - Flask BlueLogin module
+Flask-CassandraDB (0.0.1)   - connect cassandra to flask
+Flask-Sendmail (0.1)        - Flask extension for sendmail
+Flask-Fleem (0.0.5)         - Theming for Flask applications
+Flask-Reggie (0.0.2)        - Flask Regex Routes.
+(py3Env) Toms-MacBook-Pro-2:Desktop TomNguyen$ 

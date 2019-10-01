@@ -1,0 +1,201 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#site-wrapper {
+    width: 970px;
+    min-height: 500px;
+    background-color: purple;
+    height: auto;
+}
+
+#header {
+    background-color: grey;
+    width: 970px;
+    height: 70px;
+    top: 0;
+}
+
+
+/* #main {
+    width: 970px;
+    height: 800px;
+} */
+
+#footer {
+    background-color: grey;
+    width: 970px;
+    height: 70px;
+    bottom: 0;
+}
+
+.head-foot {
+    background-color: silver;
+    width: 970px;
+    left: 0;
+    z-index: 90;
+    text-align: center;
+}
+
+#about-section {
+    height: 250px;
+    width: 970px;
+    border: 1px solid white;
+}
+
+#cards {
+    height: 700px;
+    width: 970px;
+    border: 1px solid white;
+    margin-top: 10px;
+}
+
+#about-picture {
+    width: 300px;
+    height: 200px;
+    border: 1px solid red;
+    display: inline-block;
+    margin: 10px;
+    vertical-align: top;
+}
+
+#about-picture img {
+    width: 320px;
+    height: 220px;
+}
+
+#about-info {
+    width: 610px;
+    height: 200px;
+    border: 1px solid red;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 20px;
+}
+
+
+/* #about-info-header {
+    width: 610px;
+    height: 20px;
+    background-color: grey;
+    display: inline-block;
+} */
+
+#about-info-header h3 {
+    margin-top: 0px;
+    margin: -20px;
+}
+
+#about-info-blurb {
+    background-color: lightgray;
+    width: 610px;
+    height: 190px;
+}
+
+#cards .card {
+    height: 680px;
+    background-color: grey;
+    padding: 10px;
+    width: 280px;
+    vertical-align: top;
+    margin: 0px 10px 0px 10px;
+    display: inline-block;
+}
+
+#name {
+    margin-left: 10px;
+    margin-top: 20px;
+    float: left;
+}
+
+#moto {
+    text-align: right;
+    float: right;
+    margin-top: 30px;
+    margin-right: 50px;
+}
+
+h3 {
+    color: white;
+}
+
+#sub {
+    vertical-align: top;
+}
+
+#pic-container {
+    size: 10%;
+}
+
+.icon-box {
+    padding: 0px 20px 20px 20px;
+    text-align: center;
+}
+
+.icon-box img {
+    height: 20px;
+    width: 20px;
+    padding: 10px;
+}
+
+.button {
+    display: inline-block;
+    background-color: green;
+    color: white;
+    padding: 2px 5px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+}
+
+.card p {
+    padding: 10px 20px 20px 20px;
+}
+
+p {
+    display: block;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+}
+
+.col-img {
+    margin-top: -20px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+.card .column-header {
+    margin-top: -20px;
+    padding: 20px;
+}
+
+.social-icon {
+    height: 10px;
+    width: 10px;
+    vertical-align: middle;
+}
+
+.column-header {
+    background-color: silver;
+    color: white;
+}
+
+#footer p {
+    padding-top: 10px;
+    margin-bottom: 0px;
+}
+
+#family {
+    line-height: 170%;
+}
+
+#five {
+    line-height: 140%;
+}
+
+#lamode {
+    line-height: 215%;
+}

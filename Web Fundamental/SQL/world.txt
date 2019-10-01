@@ -1,0 +1,12 @@
+1.
+select countries.name, languages.language,languages.percentage 
+from countries 
+join languages on countries.code = languages.country_code 
+where language = 'Slovene' order by percentage desc;
+
+2.
+select countries.name as country, count(cities.id) as number_cities 
+from cities left 
+join countries on cities.country_code = countries.code
+group by countries.name
+order by count(cities.id) desc;

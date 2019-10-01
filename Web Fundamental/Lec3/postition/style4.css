@@ -1,0 +1,27 @@
+h1 {
+    color: blue;
+}
+
+.position-static {
+    position: static;
+    border: 1px solid black;
+}
+
+.position-relative {
+    position: relative;
+    border: 1px solid green;
+    top: 100px;
+    left: 100px;
+    height: 2000px;
+}
+
+.position-absolute {
+    position: absolute;
+    border: 1px solid black;
+}
+
+.position-fixed {
+    position: fixed;
+    border: 1px solid black;
+    right: 400px;
+}
