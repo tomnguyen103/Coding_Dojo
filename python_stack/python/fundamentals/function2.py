@@ -100,7 +100,7 @@ dojo = {
 }
 
 def printInfo(dic):
-    print(dic.keys())
+    #print(dic.keys())
     for i in dic.values():
         print(str(len(i))+ " Locations")
         for j in range(len(i)):
