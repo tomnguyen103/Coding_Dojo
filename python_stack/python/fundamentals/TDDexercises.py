@@ -8,24 +8,12 @@ def isPalindrome(s):
     if(s==rev):
         return True
     return False
-def coin(num):
+def coin(amount):
     arr = []
-    if num > 25:
-        q = num/25
-        arr.append(q)
-        num = num - (q*25)
-    elif num > 10:
-        d = num/10
-        arr.append(d)
-        num = num - (num*10)
-    elif num > 5:
-        n = num/5
-        arr.append(n)
-        num = num - (num*5)
-    elif num > 1:
-        p = num
-        arr.append(p)
-    return arr
+    for coin in [25,10,5,1]:
+        q = amount/coin
+        
+        
 
 
 class testCase(unittest.TestCase):
