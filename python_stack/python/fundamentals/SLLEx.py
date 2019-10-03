@@ -27,5 +27,9 @@ class SList:
         runner.next = new_node
         return self
 
+    def remove_from_front(self):
+
+        return 
+
 my_list = SList()
 my_list.add_to_front("are").add_to_front("Linked lists").add_to_back("fun!").print_values()
