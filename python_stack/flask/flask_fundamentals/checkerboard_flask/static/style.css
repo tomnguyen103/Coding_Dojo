@@ -1,0 +1,39 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.wrapper {
+    width: 970px;
+    min-height: 500px;
+    /* border: 1px solid black; */
+    background-color: blue;
+}
+
+.h1{
+    color: pink;
+}
+.board {
+    width: 500px;
+    height: 500px;
+    vertical-align: top;
+    margin: 20px 20px 20px 40px;
+    border: 2px solid black;
+}
+
+.color1 {
+    background-color: red;
+    width: 50px;
+    height: 50px;
+    border: 1px solid black;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.color2{
+    background-color: black;
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: top;
+}

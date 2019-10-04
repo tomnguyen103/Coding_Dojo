@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <title>Checkerboard</title>
+</head>
+<body>
+    <div class = "wrapper">
+        <h1>Checkerboard Display</h1>
+        <div class = "board">
+
+            {% for x in range(0, height): %}
+                {% for y in range(0, width ): %}
+                    <div class = "color1">Hello</div>
+                    <div class = "color2">Yellow</div>
+                {% endfor %}
+            {% endfor %}
+
+        </div>
+    </div>
+</body>
+</html>

@@ -1,8 +1,8 @@
 from flask import Flask
 
 app = Flask(__name__)
-@app.route('/')
-def only_splash():
+@app.route('/') #decorator
+def only_splash(): 
     return "Hello World!"
 
 @app.route('/dojo')

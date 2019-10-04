@@ -5,9 +5,9 @@ app = Flask(__name__)
 @app.route("/process",methods=["GET","POST"])
 def process():
     print(request.args.get("first_name"))
-    # print(request.form)
-    # return redirect("/")
-    return "Hello"
+    print(request.form)
+    return redirect("/")
+    # return "Hello"
 
 @app.route("/")
 def index():
@@ -21,8 +21,8 @@ def index():
         "last_name" : "Peterson",
         "hair_color" : "dark mustard"
     }]
-    return render_template("index.html", person=users)
+    return render_template("index.html", cohor_mates=users)
 
 
-if __name__ == "__main__":
+if __name__ == "__main__": #running directly
     app.run(port=7000,debug=True)
