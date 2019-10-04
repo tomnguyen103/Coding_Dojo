@@ -10,7 +10,7 @@
         #boxes {
             width: auto;
             height: 600px;
-            border: 1px solid black;
+            /* border: 1px solid black; */
             display: block;
         }
         
@@ -20,18 +20,21 @@
             border: 2px solid black;
             display: inline-block;
             background-color: blue;
-            margin-left: 20px;
-            position:
+            margin: 20px 0px 20px 20px;
         }
     </style>
 </head>
 
 <body>
-    <h1 style="text-align: center; margin-top:50px;">Welcome!</h1>
+    <!-- <h1 style="text-align: center; margin-top:50px;">Welcome!</h1> -->
+    <center style="padding: 20px; font-size: 50px;">Welcome!</center>
     <div id="boxes">
-        <div class="box"></div>
-        <div class="box"></div>
-        <div class="box"></div>
+        <!-- <div class="box" style="background-color: red"></div> -->
+        <!-- {% if not some_times %} {% set some_times=3 %} {% else %} {% for box in range(some_times): %}
+        <div class="box" style="background-color: {{some_color}}"></div>
+        {% endfor %} {% endif %} -->
+        {% for box in range(some_times) %}
+        <div class="box" style="background-color: {{some_color}}"></div> {% endfor %}
     </div>
 </body>
 
