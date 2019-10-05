@@ -2,22 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+    <!-- <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> -->
     <title>Checkerboard</title>
+    <style>
+        table tr td{
+            width: 50px;
+            height: 50px;
+        }
+        
+        .color1 {
+            background-color: {{coloo1}};
+        }
+        
+        .color2{
+            background-color: {{coloo2}};
+        }
+    </style>
 </head>
 <body>
-    <div class = "wrapper">
-        <h1>Checkerboard Display</h1>
-        <div class = "board">
-
-            {% for x in range(0, height): %}
-                {% for y in range(0, width ): %}
-                    <div class = "color1">Hello</div>
-                    <div class = "color2">Yellow</div>
-                {% endfor %}
+    <h1>Checkerboard Display!</h1>
+    <table style="border:1px solid black;">
+        {% for i in range(nums): %}
+        <tr>
+            {% for j in range(nums2): %}
+            <td class="color{{  (i+j)%2+1 }}"></td>
             {% endfor %}
-
-        </div>
-    </div>
+        </tr>
+        {% endfor %}
+        
+    </table>
 </body>
 </html>
