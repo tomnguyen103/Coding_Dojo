@@ -7,6 +7,29 @@
     <title>Dojo Survey</title>
 </head>
 <body>
-    <h1>It's working!</h1>
+    <form action="/users" method="post">
+    Your Name: <input type="text" name="name"><br>
+    Dojo Location: 
+    <select name="location">
+        <option value="blank"></option>
+        <option value="sanjose">San Jose</option>
+        <option value="burbank">Burbank</option>
+        <option value="sanfrancisco">San Francisco</option>  
+    </select>
+    <br>
+    Language: 
+    <select name="language">
+        <option value="blank"></option>
+        <option value="python">Python</option>
+        <option value="javascript">JavaScript</option>
+        <option value="c++">C++</option>
+    </select>
+    <br>
+    Comment (optional):
+    <br>
+    <textarea name="comment" id="" cols="30" rows="3"></textarea>
+    <br>
+    <input type="submit" value="Submit">
+    </form>
 </body>
 </html>
