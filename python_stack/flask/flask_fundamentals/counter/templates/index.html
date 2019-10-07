@@ -9,7 +9,14 @@
 </head>
 
 <body>
-    <h1>Hi!</h1>
+    <h1>Counter!</h1>
+    <p>You have been visitted {{session['count']}} times</p>
+    <form action="/add_counter" method="post">
+        <button>Add Visit by 2</button>
+    </form>
+    <form action="/destroy_session" method="post">
+        <button>Reset</button>
+    </form>
 </body>
 
 </html>
