@@ -5,31 +5,49 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Dojo Survey</title>
+    <style>
+        #wrapper{
+            width: 300px;
+            height: 300px;
+            position: center;
+            border: 1px solid black;
+        }
+        #comment_box{
+            border: 1px solid black;
+        }
+        #submit_button{
+            margin-left: 200px;
+            border: 1px solid black;
+        }
+    </style>
 </head>
 <body>
-    <form action="/users" method="post">
-    Your Name: <input type="text" name="name"><br>
-    Dojo Location: 
-    <select name="location">
-        <option value="blank"></option>
-        <option value="sanjose">San Jose</option>
-        <option value="burbank">Burbank</option>
-        <option value="sanfrancisco">San Francisco</option>  
-    </select>
-    <br>
-    Language: 
-    <select name="language">
-        <option value="blank"></option>
-        <option value="python">Python</option>
-        <option value="javascript">JavaScript</option>
-        <option value="c++">C++</option>
-    </select>
-    <br>
-    Comment (optional):
-    <br>
-    <textarea name="comment" id="" cols="30" rows="3"></textarea>
-    <br>
-    <input type="submit" value="Submit">
-    </form>
+    <div id="wrapper">
+        <form action="/results" method="post">
+            Your Name: <input type="text" name="name"><br>
+            Dojo Location:
+            <select name="location">
+                <option value="blank"></option>
+                <option value="San Jose">San Jose</option>
+                <option value="Burbank">Burbank</option>
+                <option value="San Francisco">San Francisco</option>
+            </select>
+            <br>
+            Language:
+            <select name="language">
+                <option value="blank"></option>
+                <option value="Python!!">Python</option>
+                <option value="Javascript!!">JavaScript</option>
+                <option value="C++!!">C++</option>
+            </select>
+            <br>
+            Comment (optional):
+            <br>
+            <textarea name="comment" id="comment_box" cols="33" rows="3"></textarea>
+            <br>
+            <input id="submit_button" type="submit" value="Submit">
+        </form>
+    </div>
+    
 </body>
 </html>
