@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <a href="/reset">Reset Sessions!</a>
     <h1>Hello from the template!</h1>
     <table>
         <thead>
@@ -52,7 +53,13 @@
             <input type="submit" name="Submit">
         </div>
     </form>
-
+    
+    {% if last_added_user != None %}
+        <h2>Last Added User</h2>
+        <p>First Name: {{ last_added_user["first_name"] }}</p>
+        <p>Last Name: {{ last_added_user["last_name"] }}</p>
+        <p>Hair Color: {{ last_added_user["hair_color"] }}</p>
+    {% endif %}
 </body>
 
 </html>
