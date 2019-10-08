@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Great Number Game</title>
+    <style>
+        #box {
+            width: 200px;
+            height: 200px;
+            border: 1px solid black;
+        }
+        
+        button {
+            position: absolute;
+            bottom: 30px;
+            left: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Greate Number Game</h1>
+    <h2>I am thinking of a number between 1 and 100</h2>
+    <h2>Take a guess!</h2>
+
+    <form action="/guess" method="post">
+        <textarea name="guess" id="" cols="30" rows="10"></textarea>
+        <button>Submit</button>
+    </form>
+
+</body>
+
+</html>
