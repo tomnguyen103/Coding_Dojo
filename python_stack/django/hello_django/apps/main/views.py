@@ -5,5 +5,10 @@ def index(request):
     return render(request,"main/index.html")
 
 def process(request):
-    print(request.POST)
+    print('Method: here', request.method)
+    if request.method == 'POST':
+        print(request.POST)
+    else:
+        print("this was not a post request!")
+   # print(request.POST)
     return redirect("/")
