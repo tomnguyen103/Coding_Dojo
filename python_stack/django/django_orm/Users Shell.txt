@@ -1,0 +1,37 @@
+>>> User.objects.create(first_name="Tom",last_name="Nguyen",email_address="huuthong103@gmail.com",age=25)
+<User: User object>
+>>> User.objects.create(first_name="Nicole",last_name="Vo",email_address="n@gmail.com",age=20)
+<User: User object>
+>>> User.objects.create(first_name="Bill",last_name="Alexander",email_address="t@yahoo.com",age=30)
+<User: User object>
+>>> User.objects.all().values()
+<QuerySet [{'id': 1, 'first_name': 'Tom', 'last_name': 'Nguyen', 'email_address': 'huuthong103@gmail.com', 'age': 25, 'created_at': datetime.datetime(2019, 10, 11, 22, 28, 22, 722144, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 11, 22, 28, 22, 722199, tzinfo=<UTC>)}, {'id': 2, 'first_name': 'Nicole', 'last_name': 'Vo', 'email_address': 'n@gmail.com', 'age': 20, 'created_at': datetime.datetime(2019, 10, 11, 22, 29, 0, 885976, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 11, 22, 29, 0, 886020, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Bill', 'last_name': 'Alexander', 'email_address': 't@yahoo.com', 'age': 30, 'created_at': datetime.datetime(2019, 10, 11, 22, 29, 36, 348920, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 11, 22, 29, 36, 348998, tzinfo=<UTC>)}]>
+
+>>> last_user = User.objects.last()
+>>> last_user_name = last_user.first_name + last_user.last_name
+>>> last_user_name
+'BillAlexander'
+>>> last_user_name = last_user.first_name +" " + last_user.last_name
+>>> last_user_name
+'Bill Alexander'
+>>> first_user = User.objects.first()
+>>> first_user_name = first_user.first_name + " " + first_user.last_name
+>>> first_user_name
+'Tom Nguyen'
+>>> user_id_3 = User.objects.get(id=3)
+>>> user_id_3.last_name
+'Alexander'
+>>> user_id_3.last_name = "Pancakes"
+>>> user_id_3.last_name
+'Pancakes'
+>>> user_id_3 = User.objects.get(id=2)
+>>> user_id_3.delete()
+(1, {'users_app.User': 1})
+>>> User.objects.all().order_by("first_name")
+<QuerySet [<User: User object>, <User: User object>]>
+>>> User.objects.all().order_by("first_name").values()
+<QuerySet [{'id': 3, 'first_name': 'Bill', 'last_name': 'Alexander', 'email_address': 't@yahoo.com', 'age': 30, 'created_at': datetime.datetime(2019, 10, 11, 22, 29, 36, 348920, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 11, 22, 29, 36, 348998, tzinfo=<UTC>)}, {'id': 1, 'first_name': 'Tom', 'last_name': 'Nguyen', 'email_address': 'huuthong103@gmail.com', 'age': 25, 'created_at': datetime.datetime(2019, 10, 11, 22, 28, 22, 722144, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 11, 22, 28, 22, 722199, tzinfo=<UTC>)}]>
+>>> User.objects.all().order_by("-first_name")
+<QuerySet [<User: User object>, <User: User object>]>
+>>> User.objects.all().order_by("-first_name").values()
+<QuerySet [{'id': 1, 'first_name': 'Tom', 'last_name': 'Nguyen', 'email_address': 'huuthong103@gmail.com', 'age': 25, 'created_at': datetime.datetime(2019, 10, 11, 22, 28, 22, 722144, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 11, 22, 28, 22, 722199, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Bill', 'last_name': 'Alexander', 'email_address': 't@yahoo.com', 'age': 30, 'created_at': datetime.datetime(2019, 10, 11, 22, 29, 36, 348920, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 11, 22, 29, 36, 348998, tzinfo=<UTC>)}]>
