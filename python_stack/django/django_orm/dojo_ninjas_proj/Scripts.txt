@@ -12,3 +12,21 @@
 (1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
 >>> Dojo.objects.get(id=4).delete()
 (1, {'dojo_ninjas_app.Ninja': 0, 'dojo_ninjas_app.Dojo': 1})
+>>> Ninja.objects.create(first_name="Nathan",last_name="Warner", dojo=Dojo.objects.get(id=6))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Scott",last_name="Flynn", dojo=Dojo.objects.get(id=6))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Lara",last_name="King", dojo=Dojo.objects.get(id=6))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Conner",last_name="Torres", dojo=Dojo.objects.get(id=7))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Lorenzo",last_name="Bright", dojo=Dojo.objects.get(id=7))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Bryan",last_name="Alexander", dojo=Dojo.objects.get(id=5))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Mike",last_name="Choi", dojo=Dojo.objects.get(id=7))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Tom",last_name="Nguyen", dojo=Dojo.objects.get(id=5))
+<Ninja: Ninja object>
+>>> Ninja.objects.create(first_name="Bryan",last_name="Alexander", dojo=Dojo.objects.get(id=5))
+<Ninja: Ninja object>
