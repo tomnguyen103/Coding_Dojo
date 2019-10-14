@@ -30,3 +30,17 @@
 <Ninja: Ninja object>
 >>> Ninja.objects.create(first_name="Bryan",last_name="Alexander", dojo=Dojo.objects.get(id=5))
 <Ninja: Ninja object>
+>>> a= Ninja.objects.filter(dojo = Dojo.objects.first())
+>>> for f in a.all():
+...     print(f.first_name+ ' ' + f.last_name)
+... 
+Tom Nguyen
+Bryan Alexander
+Paul Sherman
+>>> b= Ninja.objects.filter(dojo = Dojo.objects.last())
+>>> for f in b.all():
+...     print(f.first_name + ' ' + f.last_name)
+... 
+Mike Choi
+Conner Torres
+Lorenzo Bright
