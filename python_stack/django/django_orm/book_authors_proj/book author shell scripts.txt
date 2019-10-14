@@ -1,0 +1,91 @@
+>>> from apps.book_authors_app.models import *
+>>> Book.objects.create(title="C Sharp",desc="new programming language")
+<Book: Book object>
+>>> Book.objects.create(title="Java",desc="old programming language")
+<Book: Book object>
+>>> Book.objects.create(title="Python",desc="powerfull programming language")
+<Book: Book object>
+>>> Book.objects.create(title="PHP",desc="complicated programming language")
+<Book: Book object>
+>>> Book.objects.create(title="Ruby",desc="complicated and new programming language")
+<Book: Book object>
+>>> Author.objects.create(first_name="Jane",last_name="Austen")
+<Author: Author object>
+>>> Author.objects.create(first_name="Emily",last_name="Dickinson")
+<Author: Author object>
+>>> Author.objects.create(first_name="Fyodor",last_name="Dostoevksy")
+<Author: Author object>
+>>> Author.objects.create(first_name="William",last_name="Shakespeare")
+<Author: Author object>
+>>> Author.objects.create(first_name="Lau",last_name="Tzu")
+<Author: Author object>
+>>> a = Book.objects.get(id=1)
+>>> a
+<Book: Book object>
+>>> a.title
+'C Sharp'
+>>> a.title = "C#"
+>>> a.title
+'C#'
+>>> a.save()
+>>> a.title
+'C#'
+>>> b = Author.objects.get(id=4)
+>>> b.first_name
+'William'
+>>> b.first_name = "Bill"
+>>> b.save()
+>>> b
+<Author: Author object>
+>>> b.first_name
+'Bill'
+>>> this_author = Author.objects.get(id=1)
+>>> this_book1 = Book.objects.get(id=1)
+>>> this_book2 = Book.objects.get(id=2)
+>>> this_author.books.add(this_book1)
+>>> this_author.books.add(this_book2)
+>>> this_author.books.all().values()
+>>> this_author2 = Author.objects.get(id=2)
+>>> this_author2.first_name
+'Emily'
+>>> this_book3 = Book.objects.get(id=3)
+>>> this_book3.title
+'Python'
+>>> this_book3 = Book.objects.get(id=3)
+>>> this_book3.title
+'Python'
+>>> this_author2.books.add(this_book1)
+>>> this_author2.books.add(this_book2)
+>>> this_author2.books.add(this_book3)
+>>> this_author2.books.all().values()
+<QuerySet [{'id': 1, 'title': 'C#', 'desc': 'new programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 37, 8, 593837, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 55, 16, 835305, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'old programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 37, 41, 826872, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 37, 41, 826917, tzinfo=<UTC>)}, {'id': 3, 'title': 'Python', 'desc': 'powerfull programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 37, 57, 94252, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 37, 57, 94299, tzinfo=<UTC>)}]>
+>>> this_book4=Book.objects.get(id=4)
+>>> this_author3 = Author.objects.get(id=3)
+>>> this_author3.books.add(this_book1)
+>>> this_author3.books.add(this_book2)
+>>> this_author3.books.add(this_book3)
+>>> this_author3.books.add(this_book4)
+>>> this_author3.books.all().values()
+<QuerySet [{'id': 1, 'title': 'C#', 'desc': 'new programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 37, 8, 593837, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 55, 16, 835305, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'old programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 37, 41, 826872, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 37, 41, 826917, tzinfo=<UTC>)}, {'id': 3, 'title': 'Python', 'desc': 'powerfull programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 37, 57, 94252, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 37, 57, 94299, tzinfo=<UTC>)}, {'id': 4, 'title': 'PHP', 'desc': 'complicated programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 38, 12, 365910, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 38, 12, 365957, tzinfo=<UTC>)}]>
+>>> this_book5 = Book.objects.get(id=5)
+>>> this_author4 = Author.objects.get(id=4)
+>>> this_author4.books.add(this_book1)
+>>> this_author4.books.add(this_book2)
+>>> this_author4.books.add(this_book3)
+>>> this_author4.books.add(this_book4)
+>>> this_author4.books.add(this_book5)
+>>> this_book3.authors.all().values()
+<QuerySet [{'id': 2, 'first_name': 'Emily', 'last_name': 'Dickinson', 'notes': '', 'created_at': datetime.datetime(2019, 10, 14, 19, 40, 40, 443304, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 40, 40, 443347, tzinfo=<UTC>)}, {'id': 3, 'first_name': 'Fyodor', 'last_name': 'Dostoevksy', 'notes': '', 'created_at': datetime.datetime(2019, 10, 14, 19, 41, 52, 6040, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 41, 52, 6085, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'Bill', 'last_name': 'Shakespeare', 'notes': '', 'created_at': datetime.datetime(2019, 10, 14, 19, 42, 16, 551299, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 58, 2, 146926, tzinfo=<UTC>)}]>
+>>> this_book3.authors.first()
+<Author: Author object>
+>>> this_book3.authors.first().first_name
+'Emily'
+>>> this_book3.authors.remove(this_book3.authors.first())
+>>> this_book3.authors.all().values()
+<QuerySet [{'id': 3, 'first_name': 'Fyodor', 'last_name': 'Dostoevksy', 'notes': '', 'created_at': datetime.datetime(2019, 10, 14, 19, 41, 52, 6040, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 41, 52, 6085, tzinfo=<UTC>)}, {'id': 4, 'first_name': 'Bill', 'last_name': 'Shakespeare', 'notes': '', 'created_at': datetime.datetime(2019, 10, 14, 19, 42, 16, 551299, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 58, 2, 146926, tzinfo=<UTC>)}]>
+>>> this_author5 = Author.objects.get(id=5)
+>>> this_book2.authors.add(this_author5)
+>>> this_author3.books.all().values()
+<QuerySet [{'id': 1, 'title': 'C#', 'desc': 'new programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 37, 8, 593837, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 55, 16, 835305, tzinfo=<UTC>)}, {'id': 2, 'title': 'Java', 'desc': 'old programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 37, 41, 826872, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 37, 41, 826917, tzinfo=<UTC>)}, {'id': 3, 'title': 'Python', 'desc': 'powerfull programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 37, 57, 94252, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 37, 57, 94299, tzinfo=<UTC>)}, {'id': 4, 'title': 'PHP', 'desc': 'complicated programming language', 'created_at': datetime.datetime(2019, 10, 14, 19, 38, 12, 365910, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 38, 12, 365957, tzinfo=<UTC>)}]>
+>>> this_book5.authors.all().values()
+<QuerySet [{'id': 4, 'first_name': 'Bill', 'last_name': 'Shakespeare', 'notes': '', 'created_at': datetime.datetime(2019, 10, 14, 19, 42, 16, 551299, tzinfo=<UTC>), 'updated_at': datetime.datetime(2019, 10, 14, 19, 58, 2, 146926, tzinfo=<UTC>)}]>

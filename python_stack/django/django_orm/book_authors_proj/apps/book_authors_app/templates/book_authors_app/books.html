@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Books & Authors</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+    <style>
+        #left-column{
+            float: left; 
+            border: 1px solid black; 
+            width: 500px; 
+            height: 500px
+        }
+        #right-column{
+            float: right;
+            border: 1px solid black;
+            width: 400px;
+            height: 500px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <div id="left-column">
+            <h2>Add a Book</h2>
+            <form action="/process" method="post">
+                {% csrf_token %}
+                <label>Title</label>
+                <input type="text" name="title">
+                <br>
+                <label>Description</label>
+                <input type="text" name="desc">
+                <br>
+                <button>Add</button>
+            </form>
+        </div>
+        <div id="right-column">
+            <table class="table table-striped">
+                <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <!-- <tr>
+                    <th scope="row">1</th>
+                    <td>C#</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td>Java</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <th scope="row">3</th>
+                    <td>Python</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <th scope="row">4</th>
+                    <td>PHP</td>
+                    <td>View</td>
+                </tr>
+                <tr>
+                    <th scope="row">5</th>
+                    <td>Ruby</td>
+                    <td>View</td>
+                </tr> -->
+                
+                {% for bookList in bookLists %}
+                <tr>
+                    <th scope="row">{{ bookList.id }}</th>
+                    <td>{{ bookList.title }}</td>
+                    <td><a href="">View</a></td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
