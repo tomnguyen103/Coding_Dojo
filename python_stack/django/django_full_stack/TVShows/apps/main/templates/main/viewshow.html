@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Read (One)</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <div id="container" style="height: 50px;">
+        <div id="header">
+            <h1>TV Show {{ show_html.id }}</h1>
+            <a href="/shows" style="float: right; margin-right:50px;">Go Back</a>
+        </div>
+        <div id="content">
+            <h3>Title: {{ show_html.title }}</h3>
+            <h3>Network: {{ show_html.network }}</h3>
+            <h3>Release Date: {{ show_html.release_date }}</h3>
+            <h3>Description: {{ show_html.desc }}</h3>
+        </div>
+        <br>
+        <br>
+        <br>
+        <footer>
+            <p>Last update: {{ show_html.updated_at }}</p>
+            <a href="/shows/{{show_html.id}}/edit">Edit</a> | <a href="/shows/{{show_html.id}}/delete">Delete</a>
+        </footer>
+    </div>
+</body>
+</html>

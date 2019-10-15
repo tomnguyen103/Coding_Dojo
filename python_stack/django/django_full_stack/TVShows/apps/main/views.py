@@ -10,14 +10,43 @@ def shows(request):
         "all_shows_html" : Show.objects.all()
     })
 def new_shows(request):
-
     return render(request,"main/create.html")
 
 def add_new_shows(request):
     form = request.POST
     print("you are right at form")
     new_show = Show.objects.create(title=form['title'],network=form['network'],release_date=form['release_date'],desc=form['desc'])
-    return redirect("/shows")
+    new_show_id = new_show.id
+    return redirect(f"/shows/{new_show_id}")
 
-def display_show(request):
-    pass
+def display_show(request,show_id):
+    show_title = Show.objects.get(id=show_id)
+    context = {
+        "show_html" : show_title,
+    }
+    return render(request,"main/viewshow.html",context)
+
+def edit_show(request,show_id):
+    show_title = Show.objects.get(id=show_id)
+
+    return render(request,"main/editshow.html", {
+        "show_html":show_title
+    })
+
+def process_edit_show(request,show_id):
+    show_title = Show.objects.get(id=show_id)
+    form = request.POST
+
+    show_title.title = form['title']
+    show_title.network = form['network']
+    show_title.release_date = form['release_date']
+    show_title.desc = form['desc']
+    show_title.save()
+    return redirect(f"/shows/{show_id}")
+
+def delete_show(request,show_id):
+    show_title = Show.objects.get(id=show_id)
+
+    show_title.delete()
+
+    return redirect("/shows")
