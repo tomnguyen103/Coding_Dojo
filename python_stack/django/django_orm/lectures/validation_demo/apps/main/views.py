@@ -25,8 +25,6 @@ def process(request):
         return redirect("/")
     Movie.objects.create(title=form["title"], description = form["description"], year=int(form["year"]))
 
-
-
     return redirect('/')
 
 def register(request):

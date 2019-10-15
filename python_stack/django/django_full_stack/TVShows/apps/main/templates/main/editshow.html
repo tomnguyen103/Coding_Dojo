@@ -11,8 +11,10 @@
 <body>
     <h1>Edit Show {{ show_html.id }}</h1>
     <a href="/shows" style="float: right; margin-right:50px;">Go Back</a>
-    <br>
-    <br>
+    {% for message in messages %}
+        <p style="color: red;">{{ message }}</p>
+    {% endfor %}
+    
     <form action="/shows/{{ show_html.id }}/edit/process" method="POST">
         {% csrf_token %}
         <div class="form-group row">
