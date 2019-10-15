@@ -8,24 +8,24 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
 </head>
 <body>
-    <h1>{{ book_html.title }}</h1>
-    <p>ID: {{ book_html.id }}</p>
+    <h1>{{ author_html.first_name }} {{ author_html.last_name }}</h1>
+    <p>ID: {{ author_html.id }}</p>
     <p>
-        Description:
-        <p>{{ book_html.desc }}</p>
+        Notes:
+        <p>{{ author_html.notes }}</p>
     </p>
-    <p>Authors:</p>
+    <p>Books:</p>
     <ul>
-        {% for author in book_author_html %}
-            <li>{{ author.first_name }} {{ author.last_name }}</li>
+        {% for book in author_book_html %}
+            <li>{{ book.title }}</li>
         {% endfor %}
     </ul>
-    <form action="/add_author/{{ book_html.id}}" method="post">
+    <form action="/add_book/{{ author_html.id}}" method="post">
         {% csrf_token %}
-        <select name="author" id="add_author">
-            {% for author in all_authors_html %}
-                <option value="{{author.id}}">
-                    {{ author.first_name }} {{ author.last_name }}
+        <select name="book" id="add_book">
+            {% for book in all_books_html %}
+                <option value="{{book.id}}">
+                    {{ book.title }}
                 </option>
             {% endfor %}
         </select>
