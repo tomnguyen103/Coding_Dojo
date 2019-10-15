@@ -4,50 +4,52 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Validation</title>
+    <title>Document</title>
 </head>
 <body>
-
+    <h1>Login/Res</h1>
     {% for message in messages %}
-        <p style="color:red">{{ message }}</p>
+        <p style="color:red"></p>
     {% endfor %}
 
-    <form action="/process" method="POST">
+    <form action="/users" method="POST">
         {% csrf_token %}
         <div>
-            <label>Title</label>
-            <input type="text" name="title">
+            <label>First Name</label>
+            <input type="text" name="first_name">
         </div>
         <div>
-            <label>Description</label>
-            <textarea name="description" id="" cols="30" rows="10"></textarea>
+            <label>Last Name</label>
+            <input type="text" name="last_name">
         </div>
         <div>
-            <label>Year</label>
-            <input type="text" name="year">
+            <label>Email</label>
+            <input type="email" name="email">
+        </div>
+        </div>
+        <div>
+            <label>Password</label>
+            <input type="password" name="password">
+        </div>
+        </div>
+        <div>
+            <label>Password Confirmation</label>
+            <input type="password" name="pw_confirm">
         </div>
         <button>Submit</button>
-    
     </form>
-    <table>
-        <thead>
-            <tr>
-                <th>Title</th>
-                <th>Description</th>
-                <th>Year</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for movie in movies  %}
-                
-            <tr>
-                <td>{{ movie.title }}</td>
-                <td>{{ movie.description }}</td>
-                <td>{{ movie.year }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    
+
+    <form action="/users" method="POST">
+        {% csrf_token %}
+        <div>
+                <label>Email</label>
+                <input type="email" name="email">
+        </div>
+        <div>
+                <label>Password</label>
+                <input type="password" name="password">
+        </div>
+        <button>Submit</button>
+    </form>
 </body>
 </html>
