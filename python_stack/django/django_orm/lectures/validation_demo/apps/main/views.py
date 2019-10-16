@@ -79,8 +79,8 @@ def login(request):
     return redirect("/dashboard")
 
 def logout(request):
-    request.session.clear
-    return redirect("/login")
+    request.session.clear()``
+    return redirect("/")
 
 def new_movie(request):
     return render(request, 'main/new-movie.html')
