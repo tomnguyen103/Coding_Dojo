@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Validation</title>
 </head>
+
 <body>
     <a href="/logout">Logout!</a>
     <h1>Hello {{ user.first_name }}!</h1>
     {% for message in messages %}
-        <p style="color:red">{{ message }}</p>
+    <p style="color:red">{{ message }}</p>
     {% endfor %}
 
     <form action="/process" method="POST">
@@ -28,7 +30,7 @@
             <input type="text" name="year">
         </div>
         <button>Submit</button>
-    
+
     </form>
     <table>
         <thead>
@@ -39,16 +41,23 @@
             </tr>
         </thead>
         <tbody>
-            {% for movie in movies  %}
-                
+            {% for movie in user.movies.all  %}
+
             <tr>
                 <td>{{ movie.title }}</td>
                 <td>{{ movie.description }}</td>
                 <td>{{ movie.year }}</td>
+                <td>
+                    <a href="/movies/{{movie.id}}">View</a>
+                    <a href="/movies/{{movie.id}}/edit">Edit</a>
+                    <a href="/movies/{{movie.id}}/delete">Delete</a>
+
+                </td>
             </tr>
             {% endfor %}
         </tbody>
     </table>
-    
+
 </body>
+
 </html>

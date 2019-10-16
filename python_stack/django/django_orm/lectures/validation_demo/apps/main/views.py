@@ -23,7 +23,12 @@ def process(request):
         for key, val in errors.items():
             messages.error(request,val)
         return redirect("/")
-    Movie.objects.create(title=form["title"], description = form["description"], year=int(form["year"]))
+    Movie.objects.create(
+        title=form["title"],
+        description = form["description"],
+        year=int(form["year"]),
+        owner= Movie.objects.get(id=request.session['owner'])
+        )
 
     return redirect('/')
 
@@ -41,7 +46,7 @@ def register(request):
         first_name=form["first_name"], 
         last_name=form["last_name"], 
         email=form["email"],
-        password = bcrypt.hashpw(form["password"], bcrypt.gensal())
+        password = bcrypt.hashpw(form["password"].encode(), bcrypt.gensalt())
         )
     
     request.session["user_id"] = user.id
@@ -76,3 +81,33 @@ def login(request):
 def logout(request):
     request.session.clear
     return redirect("/login")
+
+def new_movie(request):
+    return render(request, 'main/new-movie.html')
+
+def single_movie(request,movie_id):
+    return render(request,'main/single-movie.html',{
+        "movie": Movie.objects.get(id=movie_id),
+        "user": User.objects.get(id=request.session["user_id"]),
+    })
+
+def edit(request,movie_id):
+    return render(request, 'main/edit-movie.html',{
+        'movie': Movie.objects.get(id=movie_id),
+    })
+
+def delete(request,movie_id):
+    Movie.objects.get(id=movie_id).delete()
+    return redirect("/dashboard")
+
+def update_movie(request,movie_id):
+    form = request.POST
+
+    movie = Movie.objects.get(id=movie_id)
+    movie.title = form['title']
+    movie.descrtion = form['description']
+    movie.year = int(form['year'])
+
+    movie.save()
+
+    return redirect(f"/movies/{movie_id}")
