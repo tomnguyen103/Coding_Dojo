@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Wall</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" />
+</head>
+
+<body>
+    <div id="header" style="width: 100%; display:inline-block;">
+        <h1>Coding Dojo Wall</h1>
+        <form action="/logout">
+            <button style="float: right;" type="submit" class="btn btn-danger">Logout</button>
+        </form>
+        <h3 style="position: relative">Welcome {{ user.first_name }} {{ user.last_name }}</h3>
+        <hr />
+    </div>
+
+
+    <div id="container">
+        <div id="post-message">
+            <p style="margin-left: 220px;">Post a message:</p>
+            <form action="/add_message" method="post">
+                {% csrf_token %}
+                <center>
+                    <textarea name="add-message" cols="120" rows="4"></textarea>
+                    <br />
+                    <button class="btn btn-primary" type="submit">Post a message</button>
+                </center>
+            </form>
+        </div>
+
+        <hr>
+        {% if message_data %}
+        
+        <div id="body">
+            <div class="body-text" style="margin: 20px 10px 10px 300px;">
+                {% for message in message_data %}
+                <h2>{{ message.user.first_name }} {{ message.user.last_name }}</h2>
+                <p>{{ message.message }}</p>
+                {% endfor %}
+                
+
+                {% if comment_data %}
+                
+                    {% for comment in comment_data %}
+                    <p>{{ comment.comment }}</p>
+                    <form action="/add_comment" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="message_id">
+                        <textarea name="add-comment" cols="50" rows="2"></textarea>
+                        <button class="btn btn-primary" type="submit">Post a comment</button>
+                    </form>
+                    {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</body>
+
+</html>
