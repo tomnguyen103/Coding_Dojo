@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Job</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1 style="position: relative">Hello {{ user.first_name }}! Here is the job detail!</h1>
+    {% for message in messages %}
+        <p style="color:red">{{ message }}</p>
+    {% endfor %}
+
+    <div id="container" style="height: 50px;">
+        <div id="header">
+            <h1>Job {{ job_html.title }}</h1>
+            <a style="float: right;" href="/logout">Logout!</a>
+            <a href="/dashboard" style="float: right; margin-right:50px;">Dashboard</a>
+        </div>
+        <div id="content">
+            <h3>Description: {{ job_html.description }}</h3>
+            <h3>Location: {{ job_html.location }}</h3>
+            <h3>Job Upload by: {{ user.first_name }}</h3>
+            <!-- <h3>Category: {{ job_html.category }}</h3> -->
+        </div>
+        <br>
+        <br>
+        <br>
+        <footer>
+            <p>Last update: {{ job_html.updated_at }}</p>
+            <a href="/jobs/add/{{user}}">Add to my jobs</a>
+        </footer>
+    </div>
+</body>
+</html>

@@ -79,7 +79,7 @@ def login(request):
     return redirect("/dashboard")
 
 def logout(request):
-    request.session.clear()``
+    request.session.clear()
     return redirect("/")
 
 def new_movie(request):

@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Handy Helper Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+
+<body>
+    <div style="width: 100%; vertical-align: top; display: inline-block;">
+        <h1>Hello {{ user.first_name }}!</h1>
+        {% for message in messages %}
+        <p style="color:red">{{ message }}</p>
+        {% endfor %}
+        <a style="float: right;" href="/logout">Logout!</a>
+        <form action="/jobs/new" method="post">
+            {% csrf_token %}
+            <button class="btn btn-primary" type="submit">New Job!</button>
+        </form>
+    </div>
+    
+    <hr />
+
+    <div id="header" style="width: 100%; display:inline-block;">
+        <h1>Everyone's jobs:</h1>
+    </div>
+
+    <div id="content" class="table-responsive-sm">
+        <table class="table table-bordered">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Job</th>
+                    <th scope="col">Location</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in job_html %}
+                <tr>
+                    <td>{{ job.title }}</td>
+                    <td>{{ job.location }}</td>
+                    <td>
+                        <a href="/jobs/{{job.id}}">View |</a>
+                        <a href="/jobs/delete/{{job.id}}">Remove |</a>
+                        <a href="/jobs/edit/{{job.id}}">Edit |</a>
+                        <a href="/jobs/add/{{job.id}}">Add</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div id="content" class="table-responsive-sm">
+            <table class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">Job</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for user_job in user_job_html.jobs.all %}
+                    <tr>
+                        <td>{{ user_job.title }}</td>
+                        <td>
+                            <a href="/jobs/{{job.id}}">View |</a>
+                            <a href="/jobs/delete/{{job.id}}">Done |</a>
+                            <a href="/jobs/edit/{{job.id}}">Give Up |</a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+</body>
+
+</html>
