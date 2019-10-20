@@ -27,7 +27,7 @@
             <form action="/add_message" method="post">
                 {% csrf_token %}
                 <center>
-                    <textarea name="add-message" cols="120" rows="4"></textarea>
+                    <textarea name="add-message" id="message" cols="120" rows="4"></textarea>
                     <br />
                     <button class="btn btn-primary" type="submit">Post a message</button>
                 </center>
@@ -37,36 +37,41 @@
         <hr>
 
 
+        <h2>Wall Messages</h2>
+        {% if post_data %}
+            {% for post in post_data %}
 
-        {% if message_data %}
-            {% for message in message_data %}
-                
             <div id="body">
                 <div class="body-text" style="margin: 20px 10px 10px 300px;">
-                    <h2>{{ message.user.first_name }} {{ message.create_at }}</h2>
-                    <p>{{ message.message }}</p>
-
-                    <!-- Delete Function -->
-                    {% if message.user.id == request.session.id %}
-                        <a href="/message/delete/{{message.id}}">Delete</a>
+                    <h2>{{ post.user.first_name }} {{ post.created_at }}</h2>
+                    <p>{{ post.message }}</p>
+                    <!-- Delete post Function -->
+                    {% if post.user.id == user.id %}
+                        <a href="/message/delete/{{post.id}}">Delete Message</a>
                     {% endif %}
 
                     <h4>Comments: </h4>
-                    
+
                     {% if comment_data %}
                         {% for comment in comment_data %}
-                        <ul>
-                            {% if commnent.message.id == message.id %}
-                                <li>{{ comment.comment }} {{ comment.user.first_name }}  {{ comment.created_at }}</li>
-                            {% endif %}
-                        </ul>
+                            <ul>
+                                {% if comment.message.id == post.id %}
+                                <li>{{ comment.comment }} {{ comment.user.first_name }} {{ comment.created_at }}</li>
+                                
+                                <!-- Delete comment Function -->
+                                {% if user.id == comment.user.id %}
+
+                                    <a href="/comment/delete/{{comment.id}}">Delete Comment</a>
+                                {% endif %}
+                                {% endif %}
+                            </ul>
                         {% endfor %}
                     {% endif %}
                     <form action="/add_comment" method="POST">
                         {% csrf_token %}
                         <p>Post your comment</p>
                         <input type="hidden" value="{{post.id}}" name="message_id">
-                        <textarea name="add-comment" cols="50" rows="2"></textarea>
+                        <textarea name="comment" id="comment" cols="50" rows="2"></textarea>
                         <button class="btn btn-primary" type="submit">Post a comment</button>
                     </form>
                 </div>

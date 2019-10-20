@@ -5,10 +5,10 @@ import bcrypt
 
 # Create your views here.
 def index(request):
-    if "user_id" in request.session.keys():
+    if "user_id" in request.session:
         return redirect('/success')
-
-    return render(request,'main/index.html')
+    else:
+        return render(request,'main/index.html')
 
 def register(request):
     form = request.POST
@@ -19,17 +19,17 @@ def register(request):
         for key, val in errors.items():
             messages.error(request,val)
         return redirect('/')
-    
-    user = User.objects.create(
-        first_name= form["first_name"],
-        last_name= form["last_name"],
-        email= form["email"],
-        password = bcrypt.hashpw(form["password"].encode(), bcrypt.gensalt()),
-    )
+    else: 
+        user = User.objects.create(
+            first_name= form["first_name"],
+            last_name= form["last_name"],
+            email= form["email"],
+            password = bcrypt.hashpw(form["password"].encode(), bcrypt.gensalt())
+        )
 
-    # user = User.objects.filter(email=form['email'])
+        user = User.objects.filter(email=form['email'])
 
-    request.session["user_id"] = user.id
+        request.session["user_id"] = user.id
 
     return redirect('/success')
 
@@ -49,10 +49,9 @@ def login(request):
     return redirect("/success")
 
 def success(request):
-    user = User.objects.get(id=request.session['user_id'])
 
     return render(request,'main/success.html',{
-        "user": user,
+        "user": User.objects.get(id=request.session['user_id']),
         "message_data": Message.objects.all(),
         "comment_data": Comment.objects.all(),
     })
