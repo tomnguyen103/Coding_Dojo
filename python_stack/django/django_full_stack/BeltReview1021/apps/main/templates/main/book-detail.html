@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Book and Review</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1 style="position: relative">{{ job_html.title }}!</h1>
+    <h1 style="position: relative">Here is the job detail!</h1>
+    {% for message in messages %}
+        <p style="color:red">{{ message }}</p>
+    {% endfor %}
+
+    <div id="container" style="height: 50px;">
+        <div id="header">
+            <h1>Job {{ job_html.title }}</h1>
+            <a class="btn btn-danger" style="float: right;" href="/logout">Logout!</a>
+            <a class="btn btn-success" href="/dashboard" style="float: right; margin-right:50px;">Dashboard</a>
+        </div>
+        <div id="content">
+            <h3>Description: {{ job_html.description }}</h3>
+            <h3>Location: {{ job_html.location }}</h3>
+            <h3>Job Upload by: {{ job_html.user_created.first_name }} {{ job_html.user_created.last_name }}</h3>
+            <!-- <h3>Category: {{ job_html.category }}</h3> -->
+        </div>
+        <br>
+        <br>
+        <br>
+        <footer>
+            <p>Last update: {{ job_html.updated_at }}</p>
+            <!-- <a href="add_job_to_user/{{user.id}}">Add to my jobs</a> -->
+            <form style="vertical-align: top; display:inline-block" action="/add_job_to_user/{{job_html.id}}" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="add_job_to_user" value="{{job_html.id}}">
+                <button class="btn btn-primary">Add</button>
+            </form>
+        </footer>
+    </div>
+</body>
+</html>

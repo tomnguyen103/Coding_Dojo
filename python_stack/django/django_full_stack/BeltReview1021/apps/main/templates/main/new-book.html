@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add Book and Review</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1 style="position: relative">Hello {{ user.alias }}</h1>
+    <h1 style="position: relative">Add a New Book Title and a Review:</h1>
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
+    <div id="contrainer">
+        <div style="vertical-align: top; display: inline-block; width: 600px;">
+            <form action="/create_book_process" method="POST">
+                {% csrf_token %}
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Book Title:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="title" placeholder="Book Title">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="author" class="col-sm-2 col-form-label">Author:</label>
+                    <div class="col-sm-10">
+                        <p>Choose From the list:
+                            <select name="author">
+                                <option selected value="Stephen King">Stephen King</option>
+                                <option value="J K Rowling">J K Rowling</option>
+                                <option value="Jane Austen">Jane Austen</option>
+                                <option value="George Orwell ">George Orwell </option>
+                                <option value="William Golding">William Golding</option>
+                                <option value="Kurt Vonnegut ">Kurt Vonnegut </option>
+                                <option value="Homer">Homer</option>
+                            </select>
+                            <input type="hidden" name="author">
+                        </p>
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label for="author" class="col-sm-2 col-form-label">Or add new author:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="author">
+                    </div>
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Review:</label>
+                    <div class="col-sm-10">
+                        <input type="text" class="form-control" name="review" placeholder="Review">
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Rating: </label>
+                    <div class="col-sm-10">
+                        <p>
+                        <select name='rating'>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                        </select> stars.</p>
+                        <!-- <input type="text" class="form-control" name="rating" placeholder="Rating"> -->
+                    </div>
+                </div>  
+                
+                <a class="btn btn-danger" href="/books">Cancel</a>
+                <button type="submit" class="btn btn-primary">Add Book and Review</button>
+            </form>
+        </div>
+        </div>
+</body>
+</html>

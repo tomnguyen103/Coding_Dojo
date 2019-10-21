@@ -14,4 +14,5 @@ urlpatterns = [
     url(r'^delete_job/(?P<job_id>\d+)$',views.delete_job),
     url(r'^jobs/(?P<job_id>\d+)$', views.job),
     url(r'^add_job_to_user/(?P<job_id>\d+)$',views.add_job_to_user),
+    url(r'^give_up_job/(?P<job_id>\d+)$',views.give_up_job),
 ]

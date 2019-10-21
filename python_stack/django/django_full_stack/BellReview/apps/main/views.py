@@ -136,6 +136,7 @@ def create_job_process(request):
 def add_job_to_user(request,job_id):
     # if request.medthod == "POST":
     form = request.POST
+    all_jobs = Job.objects.all()
     this_user = User.objects.get(id=request.session["logged_in"])
 
     this_job = Job.objects.get(id=form['add_job_to_user'])
@@ -145,6 +146,15 @@ def add_job_to_user(request,job_id):
 
     this_job.save()
     return redirect ('/dashboard')
+
+def give_up_job(request,job_id):
+    form = request.POST
+    this_user = User.objects.get(id=request.session["logged_in"])
+    this_job = Job.objects.get(id=form["give-up"])
+    # job_list_ = Job.objects.get(id=request.ob)
+
+    # this_job
+    return redirect('/dashboard')
 
 
 # def process(request):
