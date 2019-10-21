@@ -1,18 +1,17 @@
 from django.db import models
-from django.core.validators import validate_email
 
 # Create your models here.
 class UserManager(models.Manager):
     def basic_validator(self, post_data):
         errors = {}
-        if len(post_data["first_name"]) < 3:
-            errors["first_name"] = "Please enter more than 2 characters for First Name!"
-        if not post_data["first_name"].isalpha():
-            errors["first_name"] = "First Name should be alphabec only!"
-        if len(post_data["last_name"]) < 3:
-            errors["last_name"] = "Please enter more than 2 characters for Last Name!"
-        if not post_data["last_name"].isalpha():
-            errors["last_name"] = "Last Name should be alphabec only!"
+        if len(post_data["name"]) < 3:
+            errors["name"] = "Please enter more than 2 characters for Name!"
+        if not post_data["name"].isalpha():
+            errors["name"] = "First Name should be alphabec only!"
+        if len(post_data["alias"]) < 3:
+            errors["alias"] = "Please enter more than 2 characters for alias Name!"
+        if not post_data["alias"].isalpha():
+            errors["alias"] = "alias Name should be alphabec only!"
         try:
             validate_email(post_data["email"])
         except:
@@ -30,8 +29,8 @@ class UserManager(models.Manager):
 
 
 class User(models.Model):
-    first_name = models.CharField(max_length=255)
-    last_name = models.CharField(max_length=255)
+    name = models.CharField(max_length=255)
+    alias = models.CharField(max_length=255)
     email = models.EmailField(max_length=255)
     password = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
@@ -39,20 +38,9 @@ class User(models.Model):
 
     objects = UserManager()
 
-    def __repr__(self):
-        return f"<User object: {self.first_name} {self.last_name}>"
 
-
-class Message(models.Model):
-    message = models.TextField()
-    user = models.ForeignKey(User, related_name="messages")
-    created_at = models.DateTimeField(auto_now_add=True)
-    updated_at = models.DateTimeField(auto_now=True)
-    objects = UserManager()
-
-
-class Comment(models.Model):
-    comment = models.TextField()
+class Book(models.Model):
+    title = models.TextField()
     message = models.ForeignKey(Message, related_name="m_comments")
     user = models.ForeignKey(User, related_name="u_comments")
     created_at = models.DateTimeField(auto_now_add=True)

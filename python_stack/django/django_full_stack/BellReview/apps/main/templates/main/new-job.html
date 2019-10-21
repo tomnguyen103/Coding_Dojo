@@ -10,12 +10,14 @@
 </head>
 <body>
     <h1 style="position: relative">Hello {{ user.first_name }}! Create a job!</h1>
-    {% for message in messages %}
-    <p style="color:red">{{ message }}</p>
-    {% endfor %}
+    {% if messages %}
+        {% for message in messages %}
+            <p style="color:red">{{ message }}</p>
+        {% endfor %}
+    {% endif %}
     <div id="contrainer">
         <div style="vertical-align: top; display: inline-block; width: 600px;">
-            <form action="/process" method="POST">
+            <form action="/create_job_process" method="POST">
                 {% csrf_token %}
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Title:</label>
@@ -64,7 +66,8 @@
                         <input name="other" type="text" class="form-control" name="pw_confirm" placeholder="Other">
                     </div>
                 </div> -->
-                <input class="btn btn-danger" action="action" onclick="window.history.go(-1); return false;" type="button" value="Cancel" />
+                <!-- <input class="btn btn-danger" action="action" onclick="window.history.go(-1); return false;" type="button" value="Cancel" /> -->
+                <a class="btn btn-danger" href="/dashboard">Cancel</a>
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
         </div>

@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import validate_email
 from datetime import datetime, date
+import bcrypt
 
 # Create your models here.
 class UserManager(models.Manager):
@@ -25,6 +26,16 @@ class UserManager(models.Manager):
             errors["email"] = "This email already registered!"
         return errors
 
+    def login_validation(self, post_data):
+        user = User.objects.filter(email = post_data['login_email'])
+        errors = {}
+        if not user:
+            errors['email'] = "Invalid email or password!"
+
+        if user and not bcrypt.checkpw(post_data['login_password'].encode('utf8'), user[0].password.encode('utf8')):
+            errors['password'] = "Invalid email or password!"
+        return errors
+
 class User(models.Model):
     first_name= models.CharField(max_length=255)
     last_name= models.CharField(max_length=255)
@@ -36,7 +47,7 @@ class User(models.Model):
     objects = UserManager()
 
 class JobManager(models.Manager):
-    def basic_validator(self,post_data):
+    def job_validator(self,post_data):
         errors = {}
 
         if len(post_data["title"]) < 1:
@@ -53,6 +64,24 @@ class JobManager(models.Manager):
             errors["location"] = "Please enter a location at least 3 characters!"
 
         return errors
+    
+    def update_validation(self, post_data):
+        errors ={}
+
+        if len(post_data['title']) < 1: 
+            errors['title'] = "Title cannot be blank!"
+        elif len(post_data['title']) < 3:
+            errors['title'] = "Title must contain 3 letters minimum!"
+        if len(post_data['description']) < 1: 
+                errors['description'] = "Description cannot be blank!"
+        elif len(post_data['description']) < 3:
+            errors['description'] = "Description must contain 3 letters minimum!"
+        if len(post_data['location']) < 1: 
+                errors['location'] = "Location cannot be blank!"
+        elif len(post_data['location']) < 3:
+            errors['location'] = "location must contain 3 letters minimum!"
+
+        return errors
 
 # Create your models here.
 class Job(models.Model):
@@ -61,7 +90,7 @@ class Job(models.Model):
     location = models.CharField(max_length=255)
     
     user_created= models.ForeignKey(User, related_name="user_created")
-    user_doing_job = models.ForeignKey(User, related_name="user_doing_job")
+    user_doing_job = models.ForeignKey(User, blank=True, null=True, related_name="user_doing_job")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 

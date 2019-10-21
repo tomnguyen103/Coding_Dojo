@@ -15,7 +15,7 @@
         {% for message in messages %}
         <p style="color:red">{{ message }}</p>
         {% endfor %}
-        <a style="float: right;" href="/logout">Logout!</a>
+        <a class="btn btn-danger" style="float: right;" href="/logout">Logout!</a>
         <form action="/jobs/new" method="post">
             {% csrf_token %}
             <button class="btn btn-primary" type="submit">New Job!</button>
@@ -42,11 +42,34 @@
                 <tr>
                     <td>{{ job.title }}</td>
                     <td>{{ job.location }}</td>
-                    <td>
-                        <a href="/jobs/{{job.id}}">View |</a>
-                        <a href="/jobs/delete/{{job.id}}">Remove |</a>
-                        <a href="/jobs/edit/{{job.id}}">Edit |</a>
-                        <a href="/jobs/add/{{job.id}}">Add</a>
+                    <td >
+                        <!-- <a href="/jobs/{{job.id}}">View |</a> -->
+                        <form style="vertical-align: top; display:inline-block" action="/jobs/{{job.id}}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="show_job_info" value="{{job.id}}">
+                            <button class="btn btn-primary">View</button>
+                        </form>
+                        <form style="vertical-align: top; display:inline-block" action="/add_job_to_user/{{job.id}}" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="add_job_to_user" value="{{job.id}}">
+                            <button class="btn btn-primary">Add</button>
+                        </form>
+
+                        {% if request.session.logged_in == job.user_created.id %}
+                            <form style="vertical-align: top; display:inline-block" action="/delete_job/{{job.id}}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="remove" value="{{job.id}}">
+                                <button class="btn btn-primary">Remove</button>
+                            </form>
+                            <form style="vertical-align: top; display:inline-block" action="/edit_job/{{job.id}}" method="post">
+                                {% csrf_token %}
+                                <input type="hidden" name="edit" value="{{job.id}}">
+                                <button class="btn btn-primary">Edit</button>
+                            </form>
+                        {% endif %}
+                        <!-- <a href="/delete_job/{{job.id}}">Remove |</a> -->
+                        <!-- <a href="/edit_job/{{job.id}}">Edit |</a> -->
+                        <!-- <a href="/jobs/add/{{job.id}}">Add</a> -->
                     </td>
                 </tr>
                 {% endfor %}
@@ -54,29 +77,61 @@
         </table>
     </div>
 
-    <div id="content" class="table-responsive-sm">
-            <table class="table table-bordered">
-                <thead class="thead-dark">
-                    <tr>
-                        <th scope="col">Job</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for user_job in user_job_html.jobs.all %}
-                    <tr>
-                        <td>{{ user_job.title }}</td>
-                        <td>
-                            <a href="/jobs/{{job.id}}">View |</a>
-                            <a href="/jobs/delete/{{job.id}}">Done |</a>
-                            <a href="/jobs/edit/{{job.id}}">Give Up |</a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-        </div>
+    <div id="header" style="width: 100%; display:inline-block;">
+        <h1>My jobs:</h1>
+    </div>
+    
+            <div id="content" class="table-responsive-sm">
+                    <table class="table table-bordered">
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Job</th>
+                                <th scope="col">Location</th>
+                                <th scope="col">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for job in job_html %}
+                                {% if request.session.logged_in == job.user_doing_job.id %}
+                                <tr>
+                                    <td>{{ job.title }}</td>
+                                    <td>{{ job.location }}</td>
+
+                                    <td>
+                                        <form style="vertical-align: top; display:inline-block" action="/jobs/{{job.id}}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="show_job_info" value="{{job.id}}">
+                                            <button class="btn btn-primary">View</button>
+                                        </form>
+                                        <!-- <form style="vertical-align: top; display:inline-block" action="/add_job_to_user/{{job.id}}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="add_job_to_user" value="{{job.id}}">
+                                            <button class="btn btn-primary">Add</button>
+                                        </form> -->
+                
+                                    
+                                        <form style="vertical-align: top; display:inline-block" action="/delete_job/{{job.id}}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="delete" value="{{job.id}}">
+                                            <button class="btn btn-success">Done</button>
+                                        </form>
+                                        <!-- <form style="vertical-align: top; display:inline-block" action="/edit_job/{{job.id}}" method="post">
+                                            {% csrf_token %}
+                                            <input type="hidden" name="give-up" value="{{job.id}}">
+                                            <button class="btn btn-primary">Give Up</button>
+                                        </form> -->
+                                        
+                                        <!-- <a href="/jobs/{{job.id}}">View |</a> -->
+                                        <!-- <a href="/jobs/delete/{{job.id}}">Done |</a> -->
+                                        <!-- <a href="/jobs/edit/{{job.id}}">Give Up |</a> -->
+                                    </td>
+                                </tr>
+                                {% endif %}
+                            {% endfor %}
+                        </tbody>
+                    </table>
+            </div>
+        
 </body>
 
 </html>
