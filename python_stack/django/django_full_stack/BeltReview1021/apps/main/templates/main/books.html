@@ -33,7 +33,7 @@
                     <h5>Title: <a href="/books/{{review.book.id}}">{{ review.book.title }}</a></h5>
                     <p>Posted on: {{ review.created_at }}</p>
                     <h5>Rating: {{ review.rating }}/5</h5>
-                    <p>{{ review.reviewer.name }} says: {{ review.review }}</p>
+                    <p> <a href="/users/{{review.reviewer.id}}">{{ review.reviewer.name }}</a>  says: {{ review.review }}</p>
                 {% endfor %}
             </div>
             <div class="col">

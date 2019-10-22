@@ -74,7 +74,11 @@ def books(request):
     })
 
 def new_book_review(request):
-    return render(request, "main/new-book.html", {"user" : User.objects.get(id=request.session["logged_in"])})
+    books= Book.objects.all()
+    return render(request, "main/new-book.html", {
+        "user" : User.objects.get(id=request.session["logged_in"]),
+        "books": books,
+        })
 
 
 def create_book_process(request):
@@ -141,4 +145,4 @@ def delete_review(request,review_id):
     review = Review.objects.get(id=review_id)
     if request.session['logged_in'] == review.reviewer.id:
         review.delete()
-    return redirect('/books/')
+    return redirect('/books')

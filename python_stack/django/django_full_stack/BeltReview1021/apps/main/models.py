@@ -58,23 +58,12 @@ class BookManager(models.Manager):
             errors["author"] = "Please provide the author!"
         elif len(post_data["author"]) < 3:
             errors["author"] = "Please enter a author at least 3 characters!"
-    
+        if post_data['author'] == "Please select":
+            errors["author"] = "Please select from drop list!"
+        elif post_data["author"] == "":
+            errors["author"] = "Please enter the author name!"
         return errors
     
-    def update_validation(self, post_data):
-        errors ={}
-
-        if len(post_data['title']) < 1: 
-            errors['title'] = "Title cannot be blank!"
-        elif len(post_data['title']) < 3:
-            errors['title'] = "Title must contain 3 letters minimum!"
-        if len(post_data['author']) < 1: 
-                errors['author'] = "Author Name cannot be blank!"
-        elif len(post_data['author']) < 3:
-            errors['author'] = "Author Name must contain 3 letters minimum!"
-
-        return errors
-
 # Create your models here.
 class Book(models.Model):
     title = models.CharField(max_length=255)
