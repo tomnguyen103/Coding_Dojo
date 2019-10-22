@@ -32,7 +32,7 @@
                     <!-- <input type="text" class="form-control" name="author"> -->
                     <div class="col-sm-10">
                         Choose From the list:
-                            <select name="author">
+                            <select name="author1">
                                 <option>Please select</option>
                                 {% for book in books %}
                                     <option value="{{book.author}}">{{ book.author }}</option> 
@@ -42,7 +42,7 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Or add new author:</label>
                             <div class="col-sm-10">
-                                <input type="text" name="author" class="form-control">
+                                <input type="text" name="author2" class="form-control">
                             </div>
                         </div>
                     </div>

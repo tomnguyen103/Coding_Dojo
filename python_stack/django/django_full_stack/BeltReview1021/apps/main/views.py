@@ -92,10 +92,13 @@ def create_book_process(request):
         
     else:
         user = User.objects.get(id=request.session['logged_in'])
-
+        if form["author2"] == "":
+            author_html = form['author1']
+        else:
+            author_html = form['author2']
         book = Book.objects.create(
             title= form["title"],
-            author= form["author"],
+            author= author_html,
         )
 
         Review.objects.create(

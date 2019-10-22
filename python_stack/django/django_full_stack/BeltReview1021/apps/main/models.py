@@ -54,14 +54,19 @@ class BookManager(models.Manager):
             errors["title"] = "Please enter a title!"
         elif len(post_data["title"]) < 3:
             errors["title"] = "Please enter a title of at least 3 characters!"
-        if len(post_data["author"]) < 1:
-            errors["author"] = "Please provide the author!"
-        elif len(post_data["author"]) < 3:
-            errors["author"] = "Please enter a author at least 3 characters!"
-        if post_data['author'] == "Please select":
-            errors["author"] = "Please select from drop list!"
-        elif post_data["author"] == "":
-            errors["author"] = "Please enter the author name!"
+        # if len(post_data["author"]) < 1:
+        #     errors["author"] = "Please provide the author!"
+        # elif len(post_data["author"]) < 3:
+        #     errors["author"] = "Please enter a author at least 3 characters!"
+        # if post_data['author'] == "Please select":
+        #     errors["author"] = "Please select from drop list!"
+        # elif post_data["author"] == "":
+        #     errors["author"] = "Please enter the author name!"
+        if post_data['author1'] == "Please select":
+            if post_data["author2"] == "":
+                errors["author"] = "Please select from drop list or enter in the dropdown!"
+                # post_data["author1"] = post_data["author"]
+            
         return errors
     
 # Create your models here.
