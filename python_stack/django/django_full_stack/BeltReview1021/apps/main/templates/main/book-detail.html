@@ -9,34 +9,53 @@
 
 </head>
 <body>
-    <h1 style="position: relative">{{ job_html.title }}!</h1>
-    <h1 style="position: relative">Here is the job detail!</h1>
+    <h1 style="position: relative">{{ books.title }}</h1>
+    <h1 style="position: relative">Author: {{ books.author }}</h1>
     {% for message in messages %}
         <p style="color:red">{{ message }}</p>
     {% endfor %}
 
     <div id="container" style="height: 50px;">
         <div id="header">
-            <h1>Job {{ job_html.title }}</h1>
             <a class="btn btn-danger" style="float: right;" href="/logout">Logout!</a>
-            <a class="btn btn-success" href="/dashboard" style="float: right; margin-right:50px;">Dashboard</a>
+            <a class="btn btn-success" href="/books" style="float: right; margin-right:50px;">All Books</a>
         </div>
         <div id="content">
-            <h3>Description: {{ job_html.description }}</h3>
-            <h3>Location: {{ job_html.location }}</h3>
-            <h3>Job Upload by: {{ job_html.user_created.first_name }} {{ job_html.user_created.last_name }}</h3>
-            <!-- <h3>Category: {{ job_html.category }}</h3> -->
-        </div>
-        <br>
-        <br>
-        <br>
-        <footer>
-            <p>Last update: {{ job_html.updated_at }}</p>
-            <!-- <a href="add_job_to_user/{{user.id}}">Add to my jobs</a> -->
-            <form style="vertical-align: top; display:inline-block" action="/add_job_to_user/{{job_html.id}}" method="post">
+            <h3>Reviews:</h3>
+            <div style="display: inline-block;">
+
+                {% for review in reviews %}
+                <h4>Rating: {{ review.rating }}</h4>
+                <h4>{{ review.reviewer.name }} says: {{ review.review }}</h4>
+                <h4>Posted by: {{ review.created_at }}</h4>
+                {% if request.session.logged_in == review.reviewer.id %}
+                <!-- <a href="/delete_review/{{review.id}}">Delete This Review</a> -->
+                    <form action="/delete_review/{{review.id}}" method="post">
+                        {% csrf_token %}
+                        <input type="hidden" name="remove" value="{{review.id}}">
+                        <button class="btn btn-primary">Remove this comment</button>
+                    </form>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <form style="vertical-align: top; display:inline-block; margin-left: 200px;" action="/add_review/{{books.id}}" method="post">
                 {% csrf_token %}
-                <input type="hidden" name="add_job_to_user" value="{{job_html.id}}">
-                <button class="btn btn-primary">Add</button>
+                <h4>Add a review:</h4>
+                <textarea name="review" cols="30" rows="10"></textarea>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Rating: </label>
+                    <div class="col-sm-10">
+                        <p>
+                        <select name='rating'>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select> stars.</p>
+                    </div>
+                </div>
+                <button class="btn btn-primary">Submit Review</button>
             </form>
         </footer>
     </div>

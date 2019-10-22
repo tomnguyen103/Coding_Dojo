@@ -66,12 +66,11 @@ def books(request):
     if "logged_in" not in request.session:
         messages.error(request, "You must log in first!")
         return redirect("/")
-
+    
     return render(request,"main/books.html",{
         "user" : User.objects.get(id=request.session["logged_in"]),
         "latest": Review.objects.order_by('created_at').reverse()[:3],
-        "rest": Review.objects.order_by('created_at').reverse(),
-
+        "rest": Review.objects.all(),
     })
 
 def new_book_review(request):
@@ -115,5 +114,31 @@ def userpage(request,user_id):
         "countedReview": count,
     })
 
-def showbook(request,book_id):
-    
+def showBook(request,book_id):
+    book = Book.objects.get(id=book_id)
+    user = User.objects.get(id=request.session['logged_in'])
+    review = book.book_reviews.all()
+
+    return render(request,'main/book-detail.html',{
+        'user': user,
+        'books': book,
+        'reviews': review,
+    })
+
+def add_review(request,book_id):
+    form = request.POST
+    this_book = Book.objects.get(id=book_id)
+    review = Review.objects.create(
+        review=form['review'],
+        rating= form['rating'],
+        reviewer=User.objects.get(id=request.session['logged_in']),
+        book=this_book,
+    )
+    return redirect(f'/books/{book_id}')
+
+
+def delete_review(request,review_id):
+    review = Review.objects.get(id=review_id)
+    if request.session['logged_in'] == review.reviewer.id:
+        review.delete()
+    return redirect('/books/')

@@ -24,16 +24,26 @@
     </div>
     
     <hr />
+
     <div class="container">
         <div class="row">
             <div class="col">
                 <h1>Recent Book Reviews:</h1>
-                
+                {% for review in latest %}
+                    <h5>Title: <a href="/books/{{review.book.id}}">{{ review.book.title }}</a></h5>
+                    <p>Posted on: {{ review.created_at }}</p>
+                    <h5>Rating: {{ review.rating }}/5</h5>
+                    <p>{{ review.reviewer.name }} says: {{ review.review }}</p>
+                {% endfor %}
             </div>
-        <div class="col">
-                <h1>Other Book Reviews:</h1>
+            <div class="col">
+                <h1>Other Book with Reviews:</h1>
+                {% for other_review in rest %}
+                    <h5>Title: <a href="/books/{{other_review.book.id}}">{{ other_review.book.title }}</a></h5>
+                {% endfor %}
             </div>
         </div>
+    </div>
 </body>
 
 </html>
