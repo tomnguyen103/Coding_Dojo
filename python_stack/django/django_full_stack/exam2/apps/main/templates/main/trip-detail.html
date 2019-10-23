@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>View Trip</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1 style="position: relative">Hello {{ user.first_name }}! Read about this trip!</h1>
+    {% for message in messages %}
+        <p style="color:red">{{ message }}</p>
+    {% endfor %}
+
+    <div id="container" style="height: 50px;">
+        <div id="header">
+            <h1>Destination: {{ trip.destination }}</h1>
+            <a class="btn btn-danger" style="float: right;" href="/logout">Logout!</a>
+            <a class="btn btn-primary" href="/dashboard" style="float: right; margin-right:50px;">Dashboard</a>
+        </div>
+        <div id="content">
+            <h3>Star Date: {{ trip.start_date }}</h3>
+            <h3>End Date: {{ trip.end_date }}</h3>
+            <h3>Created On: {{ trip.created_at }}</h3>
+            <h3>Last Updated: {{ trip.updated_at }}</h3>
+            <h3>Plan: {{ trip.plan }}</h3>
+            <h3>Created By: {{ trip.creator.first_name }}</h3>
+        </div>
+        <br>
+        <br>
+        <br>
+        <!-- <footer>
+            <p>Last update: {{ job_html.updated_at }}</p>
+            <a href="/jobs/add/{{user}}">Add to my jobs</a>
+        </footer> -->
+        <div class="footer">
+            <h4>People who've joined the trip:</h4>
+            {%for users in others %}
+                <h5> {{ users.first_name }}</h5>
+            {%endfor%}
+        </div>
+
+    </div>
+</body>
+</html>
