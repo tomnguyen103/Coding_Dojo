@@ -49,16 +49,21 @@ class UserManager(models.Manager):
             errors["login_email"] = "Please enter Your Email or Create new User!"
         elif not user:
             errors['email'] = "No user Found! Please Create New User"
-
-        # if len(post_data["login_id"])<1:
-        #     errors["login_id"] = "Please enter Your ID or Create new User!"
-        # elif not user_id:
-        #     errors['email'] = "No user Found! Please Create New User"
-
+        # if user:
+        #     errors['user'] = "Welcome Back!"
         if user and not bcrypt.checkpw(post_data['login_password'].encode('utf8'), user[0].password.encode('utf8')):
             errors['password'] = "Invalid email or password!"
+
         return errors
     
+    # def logout_validation(self,post_data):
+    #     user = User.objects.get(id=post_data["logged_in"])
+    #     errors = {}
+
+    #     if not user:
+    #         errors["logout"] =  "You didn't signin"
+    #     return errors
+
     def message_validator(self, post_data):
         errors = {}
         
@@ -98,7 +103,7 @@ class Book(models.Model):
     title = models.CharField(max_length=255)
     desc = models.TextField()
     release_date = models.DateField()
-    users = models.ForeignKey(User, related_name="books")
+    users = models.ManyToManyField(User,related_name="books", blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = BookManager()

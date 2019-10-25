@@ -93,10 +93,8 @@
     <section class="product-sec">
         <div class="container">
             <!-- <h1>7 Day Self publish How to Write a Book</h1> -->
-            {% if books %}
-                {% for book in books %}
-                    <h1>{{ book.title }}</h1>
-                {% endfor %}
+            {% if this_book %}
+                <h1>{{ this_book.title }}</h1>
             {% endif %}
             <div class="row">
                 <div class="col-md-6 slider-sec">
@@ -138,8 +136,8 @@
                 <div class="col-md-6 slider-content">
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and Scrambled it to make a type and typesetting industry. Lorem Ipsum has been the book. </p>
                     <p>t has survived not only fiveLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and</p>
-                    <form action="/borrow" method="post">
-                    
+                    <form action="/borrow/{{this_book.id}}" method="post">
+                    {% csrf_token %}
                     <!-- <div class="btn-sec"> -->
                         
                     <button type="submit" class="btn ">Choose</button>

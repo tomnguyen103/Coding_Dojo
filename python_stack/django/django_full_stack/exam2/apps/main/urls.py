@@ -7,6 +7,7 @@ urlpatterns = [
     url(r'^register$',views.register),
     url(r'^login$',views.login),
     url(r'^logout$', views.logout),
+    
     url(r'^dashboard$',views.dashboard),
     url(r'^create_trip_process$',views.create_trip_process),
     url(r'^trips/new$', views.new_trip),
