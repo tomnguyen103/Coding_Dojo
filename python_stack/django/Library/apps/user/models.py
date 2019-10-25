@@ -70,4 +70,26 @@ class User(models.Model):
 
     def __str__(self):
         return (self.first_name+" "+self.last_name)
+
     
+class BookManager(models.Manager):
+    def book_validator(self, post_data):
+        errors = {}
+        if len(post_data['title'])<0:
+            errors["title"]= "Please enter The Book Title"
+        if len(post_data["desc"])<0:
+            errors["desc"] = "Please enter the Book Description"
+        if len(post_data["release_date"]) < 1:
+            errors["release_date"] = "Please provide the Release Date!"
+        if str(date.today()) < str(post_data['release_date']):
+            errors["release_date"] = "Please input a valid Date. Note: Release date can not be in the future."
+
+class Book(models.Model):
+    title = models.CharField(max_length=255)
+    desc = models.TextField()
+    release_date = models.DateField()
+    users = models.ForeignKey(User, related_name="books")
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    objects = BookManager()
