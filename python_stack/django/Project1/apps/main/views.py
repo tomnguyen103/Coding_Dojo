@@ -8,11 +8,15 @@ import bcrypt
 
 def main(request):
     if 'logged_in' in request.session:
-        messages.success(request,"Welcome to Tom's Library!")
-
-    return render(request, 'main/index.html',{
-        "books": Book.objects.order_by('created_at').reverse()
+        # messages.success(request,"Welcome to Tom's Library!"),
+        return render(request, 'main/index.html',{
+        "books": Book.objects.order_by('created_at').reverse(),
+        "user": User.objects.get(id=request.session["logged_in"])
     })
+    else:
+        return render(request, 'main/index.html',{
+            "books": Book.objects.order_by('created_at').reverse(),
+        })
 
 def index(request):
     if "logged_in" in request.session:
@@ -50,14 +54,14 @@ def register(request):
 def login(request):
     form = request.POST
 
-    # try:
-    #     user=User.objects.get(email=form["login_email"])
-    # except:
-    #     messages.error(request,"Please enter a correct email!")
-    #     return redirect("/")
-    # if bcrypt.checkpw(form["login_password"].encode(), user.password.encode()) == False:
-    #     messages.error(request,"Please enter a correct password!")
-    #     return redirect("/")
+    try:
+        user=User.objects.get(email=form["login_email"])
+    except:
+        messages.error(request,"Please enter a correct email!")
+        return redirect("/login")
+    if bcrypt.checkpw(form["login_password"].encode(), user.password.encode()) == False:
+        messages.error(request,"Please enter a correct password!")
+        return redirect("/login")
 
     errors = User.objects.login_validation(form)
     if len(errors):
@@ -102,32 +106,50 @@ def add_question(request):
 
 def add_book(request,book_id):
     return render(request,'main/product-single.html',{
-        "books": Book.objects.all()
+        "books": Book.objects.all(),
+        "user": User.objects.get(id=request.session["logged_in"]),
     })
 
 
 def about(request):
-    return render(request, 'main/about.html')
-
-def books(request):
-    # this_book = Book.objects.get(id=request.session["logged_in"])
-    return render(request, 'main/books.html',{
-        "books": Book.objects.all(),
-        "recent_added_book": Book.objects.order_by('created_at').reverse()
-
+    return render(request, 'main/about.html',{
+        "user": User.objects.get(id=request.session["logged_in"]),
     })
 
+def books(request):
+    
+    if "logged_in" in request.session:
+    # this_book = Book.objects.get(id=request.session["logged_in"])
+        return render(request, 'main/books.html',{
+            "user": User.objects.get(id=request.session["logged_in"]),
+            "books": Book.objects.all(),
+            "recent_added_book": Book.objects.order_by('created_at').reverse()
+        })
+    
+    else:
+        return render(request, 'main/books.html',{
+                "books": Book.objects.all(),
+                "recent_added_book": Book.objects.order_by('created_at').reverse()
+            })
+
 def faq(request):
-    return render(request, 'main/faq.html')
+    return render(request, 'main/faq.html',{
+        "user": User.objects.get(id=request.session["logged_in"]),
+    })
 
 def privacy_policy(request):
-    return render(request, 'main/privacy-policy.html')
+    return render(request, 'main/privacy-policy.html',{
+        "user": User.objects.get(id=request.session["logged_in"]),
+    })
 
 def terms_conditions(request):
-    return render(request, 'main/terms-conditions.html')
+    return render(request, 'main/terms-conditions.html',{
+        "user": User.objects.get(id=request.session["logged_in"]),
+    })
 
 def products(request):
     return render(request, 'main/products.html',{
+        "user": User.objects.get(id=request.session["logged_in"]),
         "books": Book.objects.all(),
         "recent_added_book": Book.objects.order_by('created_at').reverse()
     })
@@ -135,28 +157,33 @@ def products(request):
 
 def book_detail(request,book_id):
     if 'logged_in' not in request.session:
-        messages.error(request, "You need to log in first!")
-        return redirect('/login')
-
-    this_user= User.objects.get(id=request.session['logged_in'])
-    this_book= Book.objects.get(id=book_id)
-    return render(request, 'main/product-single.html',{
-        "user": this_user,
-        "this_book": this_book,
-        "books": Book.objects.all(),
-    })
+        # messages.error(request, "You need to log in first!")
+        # return redirect('/login')
+        return render(request,'main/product-single.html',{
+            "this_book": Book.objects.get(id=book_id)
+        })
+    else:    
+        return render(request, 'main/product-single.html',{
+            "user": User.objects.get(id=request.session['logged_in']),
+            "this_book": Book.objects.get(id=book_id),
+            "books": Book.objects.all(),
+        })
 
 def borrow(request,book_id):
     if 'logged_in' not in request.session:
         messages.error(request, "You need to log in first!")
         return redirect('/login')
     
-    this_book = Book.objects.get(id=book_id)
+    this_book = Book.objects.get(id= book_id)
     this_user = User.objects.get(id= request.session["logged_in"])
-    
-    # this_book.users.this_user
-    this_user.books.add(this_book)
-    return redirect("/")
+
+    if this_user in this_book.users.all():
+        messages.error(request,"You already chose this book")
+        return redirect("/books")
+    else:
+        this_book.users.add(this_user)
+        messages.success(request,"Success!")
+        return redirect("/books")
 
 
     
@@ -168,3 +195,25 @@ def borrow(request,book_id):
 #     this_book = Book.objects.get(id=request.session["logged_in"])
 def question(request):
     pass
+
+
+
+def profile(request):
+
+    # book= Book.objects.all()
+    this_person = User.objects.get(id=request.session["logged_in"])
+
+    books_add = this_person.books.all()
+
+    return render(request,"main/profile.html",{
+        "user": User.objects.get(id=request.session["logged_in"]),
+        "books": books_add.order_by('created_at'),
+        "books_add": books_add,
+    })
+
+def delete_book(request,book_id):
+    this_book = Book.objects.get(id=book_id)
+    this_user = User.objects.get(id=request.session["logged_in"])
+
+    this_user.books.remove(this_book)
+    return redirect('/profile')

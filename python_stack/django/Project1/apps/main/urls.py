@@ -13,6 +13,8 @@ urlpatterns = [
     url(r'^terms_conditions$', views.terms_conditions),
     url(r'^products$', views.products),
     url(r'^about$', views.about),
+    url(r'^profile$', views.profile),
+    url(r'^books/delete/(?P<book_id>\d+)$', views.delete_book),
 
     url(r'^books$', views.books),
     url(r'^books/(?P<book_id>\d+)$', views.book_detail),
