@@ -166,3 +166,5 @@ def borrow(request,book_id):
 #     this_user = User.objects.get(id=request.session["logged_in"])
     
 #     this_book = Book.objects.get(id=request.session["logged_in"])
+def question(request):
+    pass

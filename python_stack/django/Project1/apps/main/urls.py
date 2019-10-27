@@ -17,4 +17,6 @@ urlpatterns = [
     url(r'^books$', views.books),
     url(r'^books/(?P<book_id>\d+)$', views.book_detail),
     url(r'^borrow/(?P<book_id>\d+)$', views. borrow),
+    url(r'^question$', views.question),
+    
 ]
