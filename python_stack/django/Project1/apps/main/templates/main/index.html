@@ -21,9 +21,7 @@
 
 
 <body>
-    {% for message in messages %}
-        <p style="color:red">{{ message }}</p>
-    {% endfor %}
+    
     
     <header>
         <div class="header-top">
@@ -38,6 +36,9 @@
                 </div>
             </div>
         </div>
+        {% for message in messages %}
+        <p style="color:red; float: right;">{{ message }}</p>
+        {% endfor %}
         <div class="main-menu">
             <div class="container">
                 <nav class="navbar navbar-expand-lg navbar-light">
@@ -279,6 +280,7 @@
                             We will try to response back as soon as posible!
                         </h6>
                         <form action="/question" method="POST">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6">
                                     <input name="question_name" placeholder="Name" required>
@@ -287,8 +289,7 @@
                                     <input name="question_email" type="email" placeholder="Email" required>
                                 </div>
                                 <div class="col-md-12">
-                                    <input type="hidden" name="question_message">
-                                    <textarea placeholder="Messege"></textarea>
+                                    <textarea name="question_message" placeholder="Messege"></textarea>
                                 </div>
                                 <div class="col-md-12">
                                     <button type="submit" class="btn black">Alright, Submit</button>

@@ -20,7 +20,7 @@ def main(request):
 
 def index(request):
     if "logged_in" in request.session:
-        # messages.success(request,"You already signed in!")
+        messages.success(request,"You already signed in!")
         return redirect("/")
 
     return render(request, 'main/login.html')
@@ -112,9 +112,12 @@ def add_book(request,book_id):
 
 
 def about(request):
-    return render(request, 'main/about.html',{
-        "user": User.objects.get(id=request.session["logged_in"]),
-    })
+    if "logged_in" not in request.session:
+        return render(request, 'main/about.html')
+    else:
+        return render(request, 'main/about.html',{
+            "user": User.objects.get(id=request.session["logged_in"]),
+        })
 
 def books(request):
     
@@ -133,26 +136,41 @@ def books(request):
             })
 
 def faq(request):
-    return render(request, 'main/faq.html',{
-        "user": User.objects.get(id=request.session["logged_in"]),
-    })
+    if "logged_in" not in request.session:
+        return render(request, 'main/faq.html')
+    else:
+        return render(request, 'main/faq.html',{
+            "user": User.objects.get(id=request.session["logged_in"]),
+        })
 
 def privacy_policy(request):
-    return render(request, 'main/privacy-policy.html',{
-        "user": User.objects.get(id=request.session["logged_in"]),
-    })
+    if "logged_in" not in request.session:
+        return render(request, 'main/privacy_policy.html')
+    else:
+        return render(request, 'main/privacy-policy.html',{
+            "user": User.objects.get(id=request.session["logged_in"]),
+        })
 
 def terms_conditions(request):
-    return render(request, 'main/terms-conditions.html',{
-        "user": User.objects.get(id=request.session["logged_in"]),
-    })
+    if "logged_in" not in request.session:
+        return render(request, 'main/terms-conditions.html')
+    else:
+        return render(request, 'main/terms-conditions.html',{
+            "user": User.objects.get(id=request.session["logged_in"]),
+        })
 
 def products(request):
-    return render(request, 'main/products.html',{
-        "user": User.objects.get(id=request.session["logged_in"]),
-        "books": Book.objects.all(),
-        "recent_added_book": Book.objects.order_by('created_at').reverse()
-    })
+    if "logged_in" not in request.session:
+        return render(request, 'main/products.html',{
+            "books": Book.objects.all(),
+            "recent_added_book": Book.objects.order_by('created_at').reverse(),
+        })
+    else:
+        return render(request, 'main/products.html',{
+            "user": User.objects.get(id=request.session["logged_in"]),
+            "books": Book.objects.all(),
+            "recent_added_book": Book.objects.order_by('created_at').reverse(),
+        })
 
 
 def book_detail(request,book_id):
@@ -162,11 +180,17 @@ def book_detail(request,book_id):
         return render(request,'main/product-single.html',{
             "this_book": Book.objects.get(id=book_id)
         })
-    else:    
+    else:
+        this_book = Book.objects.get(id= book_id)
+        this_user = User.objects.get(id= request.session["logged_in"])
+
+        user_book= this_user.books.all
+
         return render(request, 'main/product-single.html',{
             "user": User.objects.get(id=request.session['logged_in']),
             "this_book": Book.objects.get(id=book_id),
             "books": Book.objects.all(),
+            "user_book": user_book,
         })
 
 def borrow(request,book_id):
@@ -178,12 +202,12 @@ def borrow(request,book_id):
     this_user = User.objects.get(id= request.session["logged_in"])
 
     if this_user in this_book.users.all():
-        messages.error(request,"You already chose this book")
-        return redirect("/books")
+        messages.error(request,"You already chose this book!")
+        return redirect(f"/books/{book_id}")
     else:
         this_book.users.add(this_user)
         messages.success(request,"Success!")
-        return redirect("/books")
+        return redirect(f"/books/{book_id}")
 
 
     
@@ -194,7 +218,16 @@ def borrow(request,book_id):
     
 #     this_book = Book.objects.get(id=request.session["logged_in"])
 def question(request):
-    pass
+    form = request.POST
+
+    # # errors = Message.objects.message_validator(form)
+
+    # if len(errors):
+    #     for key, value in errors.items():
+    #         messages.error(request, value)
+    # else:
+    Message.objects.create(message= form['question_message'],message_email= form['question_email'],message_name=form['question_name'])
+    return redirect('/')
 
 
 
@@ -217,3 +250,22 @@ def delete_book(request,book_id):
 
     this_user.books.remove(this_book)
     return redirect('/profile')
+def delete_book1(request,book_id):
+    this_book = Book.objects.get(id=book_id)
+    this_user = User.objects.get(id=request.session["logged_in"])
+
+    if this_book not in this_user.books.all():
+        messages.error(request,"You didn't choose this book!")
+    else:
+        this_user.books.remove(this_book)
+        
+        messages.success(request,"Remove")
+    return redirect(f'/books/{book_id}')
+
+# def search(request):
+#     if request.method == "GET":
+#         query = request.GET.get('q')
+#         submitbutton = request.GET.get('submit')
+
+#         if query is not None:
+#             lookup = Book(title= query)

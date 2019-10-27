@@ -92,7 +92,7 @@
     <div class="breadcrumb">
         <div class="container">
             <a class="breadcrumb-item" href="/">Home</a>
-            <span class="breadcrumb-item active">Terms and Condition</span>
+            <span class="breadcrumb-item active">{{ this_book.title }}</span>
         </div>
     </div>
     <section class="product-sec">
@@ -141,18 +141,22 @@
                 <div class="col-md-6 slider-content">
                     <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and Scrambled it to make a type and typesetting industry. Lorem Ipsum has been the book. </p>
                     <p>t has survived not only fiveLorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's printer took a galley of type and</p>
-                    <form action="/borrow/{{this_book.id}}" method="post">
+                    <div class="btn-sec">
+                        <a href="/borrow/{{this_book.id}}"><button class="btn black">Choose</button></a>
+                        <a href="/books/delete1/{{this_book.id}}"><button class="btn black">Remove</button></a>
+                        <a href="/books"><button class="btn black">Back</button></a>
+                        {% for message in messages %}
+                            <p style="color:red">{{ message }}</p>
+                        {% endfor %}
+                    </div>
+                    <!-- <form action="/borrow/{{this_book.id}}" method="post">
                     {% csrf_token %}
-                    <!-- <div class="btn-sec"> -->
-                        
                         <button type="submit" class="btn">Choose</button>
                         {% for message in messages %}
                             <p style="color:red">{{ message }}</p>
                         {% endfor %}
-                        <!-- <button class="btn black">Buy Now</button> -->
-                    <!-- </div> -->
-
                     </form>
+                    <a href="/books/delete/{{book.id}}"><button class="btn black">Delete</button></a> -->
                 </div>
             </div>
         </div>
@@ -262,18 +266,19 @@
                             We will try to response back as soon as posible!
                         </h6>
                         <form action="/question" method="POST">
+                            {% csrf_token %}
                             <div class="row">
                                 <div class="col-md-6">
-                                    <input placeholder="Name" required>
+                                    <input name="question_name" placeholder="Name" required>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="email" placeholder="Email" required>
+                                    <input name="question_email" type="email" placeholder="Email" required>
                                 </div>
                                 <div class="col-md-12">
-                                    <textarea placeholder="Messege"></textarea>
+                                    <textarea name="question_message" placeholder="Messege"></textarea>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn black">Alright, Submit</button>
+                                    <button type="submit" class="btn black">Alright, Submit</button>
                                 </div>
                             </div>
                         </form>

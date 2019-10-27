@@ -15,10 +15,10 @@ urlpatterns = [
     url(r'^about$', views.about),
     url(r'^profile$', views.profile),
     url(r'^books/delete/(?P<book_id>\d+)$', views.delete_book),
+    url(r'^books/delete1/(?P<book_id>\d+)$', views.delete_book1),
 
     url(r'^books$', views.books),
     url(r'^books/(?P<book_id>\d+)$', views.book_detail),
     url(r'^borrow/(?P<book_id>\d+)$', views. borrow),
-    url(r'^question$', views.question),
-    
+    url(r'^question$', views.question), 
 ]

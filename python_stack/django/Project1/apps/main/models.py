@@ -97,6 +97,7 @@ class BookManager(models.Manager):
             errors["release_date"] = "Please provide the Release Date!"
         if str(date.today()) < str(post_data['release_date']):
             errors["release_date"] = "Please input a valid Date. Note: Release date can not be in the future."
+        return errors
 
 
 class Book(models.Model):
@@ -111,14 +112,23 @@ class Book(models.Model):
     def __str__(self):
         return self.title
 
+class  MessageManager(models.Manager):
+    def message_validator(self,post_data):
+        errors = {}
+
+        if len(post_data["question_message"])<3:
+            errors["question_message"] = "Please Specify!"
+        
+        return errors
 
 
 class Message(models.Model):
     message = models.TextField()
-    user = models.ForeignKey(User, related_name="messages")
+    message_email= models.EmailField(max_length=255, null=True)
+    message_name = models.CharField(max_length=255)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    objects = UserManager()
+    objects = MessageManager()
     
     def __str__(self):
-        return (self.user + "left a message: " +self.message)
+        return (self.message_name + " with email " + self.message_email + " left a message: " +self.message)
