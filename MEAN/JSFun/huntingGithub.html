@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hunting GitHub</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+</head>
+<body> 
+    <button id="btn" style="font-size: 2em; border: 1px solid black;">Click Me!</button>
+    <div id="contents"></div>
+    
+    <script>
+        function displayName(data){
+            var str = "<p>" + data.name + "</p>";
+            $('#contents').append(str);
+            console.log(data);
+        }
+        $(document).ready(function(){
+            $('#btn').click(function(){
+                $.get('https://api.github.com/users/tomnguyen103', displayName);
+            })
+        })
+    </script>
+</body>
+</html>
