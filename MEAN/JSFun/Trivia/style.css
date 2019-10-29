@@ -1,0 +1,46 @@
+* {
+    margin: 0;
+    padding: 0;
+    background-color: cornflowerblue;
+}
+#container {
+    width: auto;
+    height: 600px;
+    text-align: center;
+}
+#game-title {
+    text-align: center;
+    margin-bottom: 50px;
+    color: red;
+}
+.columns {
+    display: inline-block;
+    vertical-align: top;
+    width: 300px;
+    height: 300px;
+    text-align: center;
+}
+.boxes {
+    width: 200px;
+    height: 350px;
+    padding: 2px;
+    margin: 10px 10px 10px 50px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: aqua;
+}
+.right {
+    float: right;
+    margin-right: 100px;
+}
+.box {
+    margin: 10px;
+    color: red;
+}
+.title {
+    text-align: center;
+    /* margin-botom: 50px; */
+}
+center{
+    text-align: center;
+}
