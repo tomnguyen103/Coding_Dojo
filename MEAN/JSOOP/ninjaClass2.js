@@ -38,10 +38,12 @@ ninja1.drinkSake();
 
 var blueNinja = new Ninja("Goemon");
 var redNinja = new Ninja("Bill Gates");
+var thirdNinja = new Ninja("Tom")
 
-redNinja.punch(blueNinja);
+// redNinja.punch(blueNinja);
 // -> "Goemon was punched by Bill Gates and lost 5 Health!"
 
-blueNinja.kick(redNinja);
+// blueNinja.kick(redNinja);
 // -> "Bill Gates was kicked by Goemon and lost 15 Health!"
 // In this case, redNinja Bill Gates lost 15 health because blueNinja Goemon has 1 point of strength
+blueNinja.punch(thirdNinja);
