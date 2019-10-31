@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Black Cat</title>
+</head>
+<body>
+    
+    <h1>Detail Page for <%= black_cat.name %></h1>
+    <h2><img src="/images/cat2.jpg"></h2>
+    <div class="container">
+        <div id="food">
+            Favorite Food: <%= black_cat.fav_food %>
+        </div>
+        <div id="age">
+            Age: <%= black_cat.age %>
+        </div>
+        <div id="sleeping_spot">
+            Speeping Spot: <%= black_cat.sleeping_spot %>
+        </div>
+    </div>
+</body>
+</html>
