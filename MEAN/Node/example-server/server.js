@@ -10,15 +10,22 @@ const server = http.createServer((request, response) => {
             response.end();
         });
     }
-    else if (request.url === "/dojo") {
-        fs.readFile('dojo.html', 'utf8', (errors, contents) => {
+    else if(request.url=== '/ninjas'){
+        fs.readFile('ninjas.html', 'utf8', (errors, contents)=>{
+            response.writeHead(200, {'Content-type': 'text/html'});
+            response.write(contents);
+            response.end();
+        });
+    }
+    else if (request.url === "/dojos/new") {
+        fs.readFile('dojos.html', 'utf8', (errors, contents) => {
             response.writeHead(200, {'Content-type': 'text/html'});
             response.write(contents); 
             response.end();
         });
     }
     else {
-        response.end('File not found!!!');
+        response.end('the URL requested is not available');
     }
 });
 server.listen(6789);
