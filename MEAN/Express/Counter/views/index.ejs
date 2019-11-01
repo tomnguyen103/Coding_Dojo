@@ -10,9 +10,12 @@
 <body>
     <div id="container">
         <h1>Counter</h1>
-        <p><%= req.session %> times.</p>
-        <form action="/process-name" method="post">
-            <button type="reset">Reset</button>
+        <p><%= count %> times.</p>
+        <form action="/add2" method="post">
+            <input type="submit" value="Add 2" name="add2">
+        </form>
+        <form action="/reset" method="post">
+            <input type="submit" value="Reset" name="reset">
         </form>
     </div>
 </body>
