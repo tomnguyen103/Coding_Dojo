@@ -16,7 +16,8 @@ const server = app.listen(3000,()=> console.log('Listening on port 3000'));
 const io = require('socket.io')(server);
 
 app.get('/',(_req,res)=>{
-    res.render('index',{});
+    user = res.user;
+    res.render('index',{user});
 })
 
 var users = [];
@@ -26,14 +27,14 @@ var messages = [];
 var is_user = function(user){
     var user_count = users.length;
     for(var i=0;i<user_count;i++){
-        if(user==users[i]){
+        if(users[i]==user){
             return true;
         }
     }
     return false;
 }
 
-io.on('connect',socket =>{
+io.on('connection',socket =>{
     socket.on('new_user', data =>{
         if(is_user(data.user)==true){
             socket.emit('existing_user',{error: "This user already registered!"});
@@ -44,7 +45,9 @@ io.on('connect',socket =>{
         }
     });
     socket.on("new_message",data =>{
-        messages.push({name: data.user, message: data.message});
+        console.log(data);
+        messages.push({user: data.user, message: data.message});
+        console.log(data.message);
         io.emit("post_new_message", {new_message: data.message, user: data.user});
     });
 });

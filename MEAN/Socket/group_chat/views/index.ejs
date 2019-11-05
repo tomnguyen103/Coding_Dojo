@@ -15,8 +15,8 @@
             var current_user;
 
             var new_user = function(){
-                var name = prompt("Please enter your name: ");
-                socket.emit('new_user',{user: name});
+                var user_name = prompt("Please enter your name: ");
+                socket.emit('new_user',{user: user_name});
             }
 
             new_user();
@@ -28,28 +28,38 @@
 
             socket.on('load_messages',data=>{
                 $('#error').html("");
-                current_user = data.user;
+                current_user = data.current_user;
                 var messages = data.messages;
                 var message_post = "";
-                for(var i =0; i<messages.length;i++){
-                    message_post += "<p>" + message[i].name + ": " + messages[i].message + "</p>";
+                for(var i =0; i < messages.length;i++){
+                    message_post += "<p>" + messages[i].user + ": " + messages[i].message + "</p>";
                 }
                 $('#message_board').append(message_post);
             });
 
+            $('#new_message').submit(function(){
+                socket.emit('new_message',{message: $('#message').val(), user: current_user});
+                $("#message").val("");
+                return false;
+            });
+
+            socket.on('post_new_message',data =>{
+                console.log(data);
+                $('#message_board').append("<p>" + data.user + ": " + data.new_message + "</p>");
+            })
             
 
         })
     </script>
 </head>
 <body>
-    <h1>Hi There!</h1>
+    <h1>Hi <%= user%>!</h1>
     <div id="container">
         <div id="error"></div>
         <h2>Chat Room</h2>
         <div id="message_board"></div>
         <form id="new_message">
-            <input type="text" name="" id="message">
+            <input type="text" name="message" id="message">
             <input type="submit" value="Send Message">
         </form>
     </div>
