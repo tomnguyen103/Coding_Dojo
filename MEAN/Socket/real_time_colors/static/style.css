@@ -1,0 +1,27 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.container-box{
+    width: auto;
+    height: 500px;
+    border: 1px solid black;
+}
+
+button{
+    display: inline-block;
+    vertical-align: middle;
+    border: 1px solid black;
+    border-radius: 10%;
+    margin: 200px 50px 50px 220px;
+    padding: 20px;
+}
+/* #green{
+    background-color: green;
+}
+#blue{
+    background-color: blue;
+}
+#pink{
+    background-color: pink;
+} */
