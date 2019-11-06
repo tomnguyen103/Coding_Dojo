@@ -1,0 +1,70 @@
+> use my_first_db
+switched to db my_first_db
+> db.createCollection("students")
+{ "ok" : 1 }
+> db.students.insert({name: "Tom Nguyen", home_state:"LA", lucky_number: 7, birthday: {month: 5, day: 5, year: 1999}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Lance", home_state:"San Diego", lucky_number: 10, birthday: {month: 3, day: 3, year: 1990}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Bryan", home_state:"Pasadena", lucky_number: 9, birthday: {month: 2, day: 2, year: 1993}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Mike", home_state:"Burbank", lucky_number: 1, birthday: {month: 1, day: 2, year: 1990}})
+WriteResult({ "nInserted" : 1 })
+> db.students.insert({name: "Alex", home_state:"Rosemead", lucky_number: 3, birthday: {month: 10, day: 2, year: 1993}})
+WriteResult({ "nInserted" : 1 })
+> db.students.find().pretty()
+{
+	"_id" : ObjectId("5dc213b168337e0c05ad792a"),
+	"name" : "Tom Nguyen",
+	"home_state" : "LA",
+	"lucky_number" : 7,
+	"birthday" : {
+		"month" : 5,
+		"day" : 5,
+		"year" : 1999
+	}
+}
+{
+	"_id" : ObjectId("5dc213d368337e0c05ad792b"),
+	"name" : "Lance",
+	"home_state" : "San Diego",
+	"lucky_number" : 10,
+	"birthday" : {
+		"month" : 3,
+		"day" : 3,
+		"year" : 1990
+	}
+}
+{
+	"_id" : ObjectId("5dc213ef68337e0c05ad792c"),
+	"name" : "Bryan",
+	"home_state" : "Pasadena",
+	"lucky_number" : 9,
+	"birthday" : {
+		"month" : 2,
+		"day" : 2,
+		"year" : 1993
+	}
+}
+{
+	"_id" : ObjectId("5dc2140e68337e0c05ad792d"),
+	"name" : "Mike",
+	"home_state" : "Burbank",
+	"lucky_number" : 1,
+	"birthday" : {
+		"month" : 1,
+		"day" : 2,
+		"year" : 1990
+	}
+}
+{
+	"_id" : ObjectId("5dc2146a68337e0c05ad792e"),
+	"name" : "Alex",
+	"home_state" : "Rosemead",
+	"lucky_number" : 3,
+	"birthday" : {
+		"month" : 10,
+		"day" : 2,
+		"year" : 1993
+	}
+}
