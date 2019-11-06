@@ -41,12 +41,29 @@ app.use(express.urlencoded({extended: true}));
 app.listen(1223,()=> console.log('Listening on port 1223'));
 
 app.get('/',(req,res)=>{
+    // Quote.create(req.body)
+    // .then(console.log)
+    // .catch(console.log)
+    // .finally( ()=>{
+    //     res.render('index')
+    // })
+    res.render('index');
+});
+
+app.get('/quotes',(req,res)=>{
+    Quote.find()
+    .then(quotes => res.render('quotes',{
+        quotes
+    }))
+    .catch(console.log)
+})
+
+app.post('/quotes',(req,res)=>{
     Quote.create(req.body)
     .then(console.log)
     .catch(console.log)
-    .finally( ()=>{
-        res.render('index')
+    .finally(()=>{
+        res.render('quotes',{quotes: quotes})
     })
-    // res.render('index');
-});
+})
 

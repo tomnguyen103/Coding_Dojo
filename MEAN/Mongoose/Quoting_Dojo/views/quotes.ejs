@@ -7,6 +7,10 @@
     <title>Your Quotes!</title>
 </head>
 <body>
-    <h1>Your Quotes Here!</h1>
+    <h1>Here are your awsome quotes!</h1>
+    <% for(const quote of quotes){  %>
+    <p>"<%= quote.quote %>"</p>
+    <p><%= quote.name %> at <%= quote.createdAt %></p>
+    <% } %>
 </body>
 </html>
