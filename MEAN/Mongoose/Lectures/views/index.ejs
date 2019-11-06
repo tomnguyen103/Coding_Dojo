@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo Mongoose!</title>
+</head>
+<body>
+    <form action="/dojos" method="post">
+        <div>
+            <label>Location</label>
+            <input type="text" name="location">
+        </div>
+        <div>
+            <label>Capacity</label>
+            <input type="number" name="capacity">
+        </div>
+        <button>Submit</button>
+    </form>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Location</th>
+                <th>Capacity</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(const dojo of dojos){ %>
+            <tr>
+                <td><%= dojo.location %></td>
+                <td><%= dojo.capacity %></td>
+                <td>
+                    <a href="/dojos/<%= dojo._id %>/delete">Delete</a>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>
