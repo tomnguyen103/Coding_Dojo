@@ -32,6 +32,7 @@
                 <td><%= animal.name %></td>
                 <td><%= animal.description %></td>
                 <td>
+                    <a href="/animal/<%= animal._id %>"><button type="button" class="btn btn-primary">View</button></a>
                     <a href="/delete/<%= animal._id %>"><button type="button" class="btn btn-danger">Remove</button></a>
                     <a href="/edit/<%= animal._id %>"><button type="button" class="btn btn-success">Edit</button></a>
                 </td>

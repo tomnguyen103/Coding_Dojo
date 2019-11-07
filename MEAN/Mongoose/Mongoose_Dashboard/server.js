@@ -45,10 +45,7 @@ app.get('/', (req,res)=>{
     .catch(console.log)
 })
 
-// app.get('/animal/:id',(req,res)=>{
-//     Animal.find()
-//     .then(animals => res.render('animal'))
-// })
+
 
 app.get('/new',(req,res)=>{
     res.render('new')
@@ -72,12 +69,21 @@ app.get('/delete/:id',(req,res)=>{
 
 app.get('/edit/:id',(req,res)=>{
     Animal.findById(req.params.id)
-    .then(id =>{
-        res.render('edit',{id: id})
+    .then(animal =>{
+        res.render('edit',{id: animal._id})
     })
 })
 
+app.get('/animal/:id',(req,res)=>{
+    Animal.findById(req.params.id)
+    .then(animal => res.render('animal',{animal}))
+})
+
 app.post('/animal/:id',(req,res)=>{
-    Animal.findByIdAndUpdate(req.params.id)
-    .then(()=>{res.render('/')})
+    Animal.findByIdAndUpdate(req.params.id,{
+        name: req.body.name,
+        description: req.body.description,
+    },()=>{console.log})
+    .then( animal =>{res.render('animal',{animal})})
+    .catch(console.log)
 })
