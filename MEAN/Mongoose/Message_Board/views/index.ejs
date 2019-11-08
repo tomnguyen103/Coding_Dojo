@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Message Board</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Dojo Message Board</h1>
+    <hr>
+    <div id="container">
+        <h2>Post New Message:</h2>
+        <form action="/add-message" method="post">
+            <div>
+                <label>Name</label>
+                <input type="text" name="name">
+            </div>
+            <div>
+                <label>Message</label>
+                <input type="text" name="message">
+            </div>
+            <button>Post Message</button>
+        </form>
+        
+        <h2>Wall Messages:</h2>
+        <% for (const message of messages){ %>
+        <div id="message-board">
+            <div>
+                <h3>Name: <%= message.name %></h3>
+                <p>Message: <%= message.message %></p>
+                <a href="/delete-message/<%= message.id %>">Delete Message</a>
+            </div>
+        </div>
+        
+        <% for (const comment of message.comments){ %>
+        <div style="margin-left: 30px" id="comment-board">
+            <h4>Comments:</h4>
+            <div>
+                <p>Name: <%= comment.comment_name %></p>
+                <p>Comment: <%= comment.comment %></p>
+                <a href="/delete-comment/<%= comment.id %>">Delete Comment</a>
+            </div>
+        </div>
+
+        <% } %>
+            <div>
+                <form action="/add-comment/<%= message.id%>" method="post">
+                    <div>
+                        <label>Name</label>
+                        <input type="text" name="comment_name">
+                    </div>
+                    <div>
+                        <label>Comment</label>
+                        <input type="text" name="comment">
+                    </div>
+                    <button>Post Comment</button>
+                </form>
+            </div>
+        </div>
+        <% } %>
+        
+    </div>
+</body>
+</html>

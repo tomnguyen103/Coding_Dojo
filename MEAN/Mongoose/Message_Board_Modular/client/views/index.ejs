@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Message Board</title>
+    <link rel="stylesheet" href="/client/static/style.css">
+</head>
+<body>
+    <h1>Message Board</h1>
+    <form action="/messages" method="post">
+        <div>
+            <label>Name</label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label>Message</label>
+            <textarea name="content" id="" cols="30" rows="10"></textarea>
+        </div>
+        <button>Submit</button>
+    </form>
+
+    <% for(const message of messages){ %>
+    <div>
+        <p>Name: <%= message.name %></p>
+        <p>Message: <%= message.content%></p>
+    </div>
+
+    <div id="comment">
+        <% for(const comment of message.comments){ %>
+            <p>Name: <%= comment.name %></p>
+            <p>Message: <%= comment.content%></p>
+        <% } %>
+    </div>
+    <form action="/messages/<%= message._id%>/comments" method="post">
+        <div>
+            <label>Name</label>
+            <input type="text" name="name">
+        </div>
+        <div>
+            <label>Comment</label>
+            <textarea name="content" id="" cols="30" rows="10"></textarea>
+        </div>
+        <button>Submit</button>
+    </form>
+    <% } %>
+</body>
+</html>
