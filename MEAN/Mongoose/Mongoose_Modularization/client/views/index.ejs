@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <h1>Animal Dashboard</h1>
+    <a href="/new"><button type="button" class="btn btn-primary">Add</button></a>
+    
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">Animal Name</th>
+                <th scope="col">Description</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(const animal of animals){ %>
+            <!-- <tr>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>something here</td>
+            </tr> -->
+            
+            <tr>
+                <td><%= animal.name %></td>
+                <td><%= animal.description %></td>
+                <td>
+                    <a href="/animal/<%= animal._id %>"><button type="button" class="btn btn-primary">View</button></a>
+                    <a href="/delete/<%= animal._id %>"><button type="button" class="btn btn-danger">Remove</button></a>
+                    <a href="/edit/<%= animal._id %>"><button type="button" class="btn btn-success">Edit</button></a>
+                </td>
+            </tr>
+            <% } %>
+        </tbody>
+    </table>
+</body>
+</html>
