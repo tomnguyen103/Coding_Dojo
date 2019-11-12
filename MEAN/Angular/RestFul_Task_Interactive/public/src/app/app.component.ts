@@ -14,12 +14,13 @@ export class AppComponent implements OnInit {
   constructor(private _httpClient: HttpClient){
   }
 
+  
+  ngOnInit(){
+    this.getTasks();
+  }
   getTasks(){
     this._httpClient.get('/api/tasks')
     .subscribe((data: any) => this.tasks = data.tasks)
-  }
-  ngOnInit(){
-    this.getTasks();
   }
 
   selectTask(task){

@@ -1,0 +1,12 @@
+<h1>Restful Tasks API</h1>
+<h2>All the tasks:</h2>
+<ul *ngFor="let task of tasks">
+  <li>{{task.title}} - {{task.description}}</li>
+</ul>
+
+<h2>Last task:</h2>
+<ul *ngFor="let task of tasks | slice :2:3">
+  <li>{{task.title}} - {{task.description}}</li>
+</ul>
+
+<router-outlet></router-outlet>
