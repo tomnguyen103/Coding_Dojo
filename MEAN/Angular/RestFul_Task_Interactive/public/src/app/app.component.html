@@ -1,0 +1,32 @@
+<button (click)='getTasks()'>Get Tasks!</button>
+
+<table>
+  <thead>
+    <tr>
+      <tr>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Completed</th>
+        <th>Actions</th>
+      </tr>
+    </tr>
+    <tbody>
+      <tr *ngFor="let task of tasks">
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.completed}}</td>
+        <td>
+          <button (click)="selectTask(task)"></button>
+        </td>
+      </tr>
+    </tbody>
+  </thead>
+</table>
+
+<div *ngIf="selectedTask != null">
+  <h2>{{selectedTask.title}}</h2>
+  <p>{{selectedTask.description}}</p>
+  <p>{{selectedTask.completed}}</p>
+</div>
+
+<router-outlet></router-outlet>
