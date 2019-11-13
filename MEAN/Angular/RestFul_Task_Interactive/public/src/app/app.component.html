@@ -1,13 +1,6 @@
-<h1>New Task
-  <form (submit)= "onSubmit()">
-    <p>{{ newTask | json }}</p>
-    <input type="text" name="title" [(ngModel)]="newTask.title">
-    <input type="text" name="description" [(ngModel)]="newTask.description">
-    <input type="submit" value="Create Task">
-  </form>
-</h1>
 
-<button (click)='getTasks()'>Show all Tasks!</button>
+
+<!-- <button (click)='getTasks()'>Show all Tasks!</button> -->
 
 <table>
   <thead>
@@ -17,31 +10,61 @@
     <th>Action</th>
   </thead>
   <tbody>
-    <tr *ngFor="let task of tasks">
+    <tr *ngFor="let task of tasks; index as i;">
       <td>{{task.title}}</td>
       <td>{{task.description}}</td>
       <td>{{task.completed}}</td>
       <td>
         <button (click)='selectTask(task)'>View</button>
-        <button (click)='updateTask(task)'>Edit</button>
+        <button (click)='taskForm(task)'>Edit</button>
+        <button (click)='selectDeleteTask(task)'>Delete</button>
       </td>
     </tr>
   </tbody>
 </table>
 
-<!-- <div *ngIf="updateTask(task)">
-  <form (submit)= "selectedUpdateTask(id)">
-    <p>{{ updateTask | json }}</p>
-    <input type="text" name="title" [(ngModel)]="task.title">
-    <input type="text" name="description" [(ngModel)]="task.description">
-    <input type="submit" value="Edit Task">
-  </form>
-</div> -->
 
-<div *ngIf="selectedTask != null">
-  <h2>{{selectedTask.title}}</h2>
-  <p>{{selectedTask.description}}</p>
-  <p>{{selectedTask.completed}}</p>
+<div id="newTask">
+  <h1>New Task
+    <form (submit)= "onSubmit()">
+      <p>{{ newTask | json }}</p>
+      <div>
+        <label>Title</label>
+        <input type="text" name="title" [(ngModel)]="newTask.title">
+      </div>
+      <div>
+        <label>Description</label>
+        <input type="text" name="description" [(ngModel)]="newTask.description">
+      </div>
+      <div>
+        <label>Completed</label>
+        <input type="checkbox" name="completed" [(ngModel)]="newTask.completed">
+      </div>
+      <input type="submit" value="Create Task">
+    </form>
+  </h1>
+  </div>
+
+<div *ngIf="editTask!=null">
+  <form (submit)= "updateTask()">
+    <p>{{ updateTask | json }}</p>
+    <div>
+      <label>Title</label>
+      <input type="text" name="editTask.title" [(ngModel)]="editTask.title">
+    </div>
+    <div>
+      <label>Description</label>
+      <input type="text" name="editTask.description" [(ngModel)]="editTask.description">
+    </div>
+    <div>
+      <label>Completed</label>
+      <input type="checkbox" name="editTask.completed" [(ngModel)]="editTask.completed">
+    </div>
+    <input type="submit" value="Update Task">
+  </form>
 </div>
+
+
+<app-task *ngIf="selectedTask != null" [selectedTask]= 'selectedTask'></app-task>
 
 <router-outlet></router-outlet>

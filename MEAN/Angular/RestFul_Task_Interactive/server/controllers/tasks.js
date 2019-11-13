@@ -22,7 +22,7 @@ module.exports = {
         .then( ()=> res.json({status : 'success'}))
     },
     update(req,res){
-        Task.findByIdAndUpdate(req.prams.id,{
+        Task.findByIdAndUpdate(req.params.id,{
             title: req.body.title,
             description: req.body.description,
             completed: req.body.delete,

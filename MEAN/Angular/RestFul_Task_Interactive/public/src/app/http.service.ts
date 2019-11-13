@@ -6,22 +6,24 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HttpService {
 
-  constructor(private _http: HttpClient) { 
-    this.getTasks();
+  constructor(private _httpClient: HttpClient) { 
   }
   getTasks(){
-    return this._http.get('/api/tasks');
+    return this._httpClient.get('/api/tasks');
   }
-  getTask(task_id){
-    return this._http.get('/api/tasks/' + task_id)
-  }
+
   addTask(newTask){
-    return this._http.post('/api/tasks', newTask);
+    return this._httpClient.post('/api/tasks', newTask);
   }
-  // editTask(task){
-  //   return this._http.put('/api/tasks/' + task._id, task)
-  // }
-  deleteTask(task_id){
-    return this._http.delete('/api/tasks/' + task_id)
+
+  getTask(task_id){
+    return this._httpClient.get(`/api/tasks/${task_id}`)
+  }
+  updateTask(task){
+    return this._httpClient.put(`/api/tasks/${task._id}`, task)
+  }
+
+  deleteTask(task){
+    return this._httpClient.delete(`/api/tasks/${task._id}`)
   }
 }
