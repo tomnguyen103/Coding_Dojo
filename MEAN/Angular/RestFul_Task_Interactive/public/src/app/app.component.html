@@ -1,31 +1,31 @@
 
 
-<!-- <button (click)='getTasks()'>Show all Tasks!</button> -->
-
-<table>
-  <thead>
-    <th>Title</th>
-    <th>Description</th>
-    <th>Complete</th>
-    <th>Action</th>
-  </thead>
-  <tbody>
-    <tr *ngFor="let task of tasks; index as i;">
-      <td>{{task.title}}</td>
-      <td>{{task.description}}</td>
-      <td>{{task.completed}}</td>
-      <td>
-        <button (click)='selectTask(task)'>View</button>
-        <button (click)='taskForm(task)'>Edit</button>
-        <button (click)='selectDeleteTask(task)'>Delete</button>
-      </td>
-    </tr>
-  </tbody>
-</table>
-
+<button (click)='getTasks()'>Show all Tasks!</button>
+<div id="top">
+  <table>
+    <thead>
+      <th>Title</th>
+      <th>Description</th>
+      <th>Complete</th>
+      <th>Action</th>
+    </thead>
+    <tbody>
+      <tr *ngFor="let task of tasks; index as i;">
+        <td>{{task.title}}</td>
+        <td>{{task.description}}</td>
+        <td>{{task.completed}}</td>
+        <td>
+          <button (click)='selectTask(task)'>View</button>
+          <button (click)='taskForm(task)'>Edit</button>
+          <button (click)='selectDeleteTask(task)'>Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
 
 <div id="newTask">
-  <h1>New Task
+  <h3>New Task</h3>
     <form (submit)= "onSubmit()">
       <p>{{ newTask | json }}</p>
       <div>
@@ -42,10 +42,9 @@
       </div>
       <input type="submit" value="Create Task">
     </form>
-  </h1>
   </div>
 
-<div *ngIf="editTask!=null">
+<div *ngIf="editTask!=null" id="bottom">
   <form (submit)= "updateTask()">
     <p>{{ updateTask | json }}</p>
     <div>

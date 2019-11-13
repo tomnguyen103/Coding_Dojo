@@ -1,3 +1,11 @@
 #newTask{
     border: 1px solid blue;
 }
+#top{
+    border: 1px solid green;
+    margin-bottom: 10px;
+}
+#bottom{
+    border: 1px solid black;
+    margin-top: 10px;
+}
