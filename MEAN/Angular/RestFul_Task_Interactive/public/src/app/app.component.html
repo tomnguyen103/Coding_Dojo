@@ -1,27 +1,42 @@
-<button (click)='getTasks()'>Get Tasks!</button>
+<h1>New Task
+  <form (submit)= "onSubmit()">
+    <p>{{ newTask | json }}</p>
+    <input type="text" name="title" [(ngModel)]="newTask.title">
+    <input type="text" name="description" [(ngModel)]="newTask.description">
+    <input type="submit" value="Create Task">
+  </form>
+</h1>
+
+<button (click)='getTasks()'>Show all Tasks!</button>
 
 <table>
   <thead>
-    <tr>
-      <tr>
-        <th>Title</th>
-        <th>Description</th>
-        <th>Completed</th>
-        <th>Actions</th>
-      </tr>
-    </tr>
-    <tbody>
-      <tr *ngFor="let task of tasks">
-        <td>{{task.title}}</td>
-        <td>{{task.description}}</td>
-        <td>{{task.completed}}</td>
-        <td>
-          <button (click)="selectTask(task)"></button>
-        </td>
-      </tr>
-    </tbody>
+    <th>Title</th>
+    <th>Description</th>
+    <th>Complete</th>
+    <th>Action</th>
   </thead>
+  <tbody>
+    <tr *ngFor="let task of tasks">
+      <td>{{task.title}}</td>
+      <td>{{task.description}}</td>
+      <td>{{task.completed}}</td>
+      <td>
+        <button (click)='selectTask(task)'>View</button>
+        <button (click)='updateTask(task)'>Edit</button>
+      </td>
+    </tr>
+  </tbody>
 </table>
+
+<!-- <div *ngIf="updateTask(task)">
+  <form (submit)= "selectedUpdateTask(id)">
+    <p>{{ updateTask | json }}</p>
+    <input type="text" name="title" [(ngModel)]="task.title">
+    <input type="text" name="description" [(ngModel)]="task.description">
+    <input type="submit" value="Edit Task">
+  </form>
+</div> -->
 
 <div *ngIf="selectedTask != null">
   <h2>{{selectedTask.title}}</h2>
