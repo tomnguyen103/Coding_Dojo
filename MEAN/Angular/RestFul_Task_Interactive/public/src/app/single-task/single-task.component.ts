@@ -19,7 +19,7 @@ export class SingleTaskComponent implements OnInit {
     this._route.params
     .subscribe((params: Params) => {
       this._httpService.getTask(params.id)
-      .subscribe((data:any)=> this.task=data.task);
+      .subscribe((data:any)=> this.task = data.task);
     })
   };
 

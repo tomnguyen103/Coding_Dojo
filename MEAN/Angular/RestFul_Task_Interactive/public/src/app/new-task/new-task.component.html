@@ -1,1 +1,19 @@
-<p>new-task works!</p>
+<div id="newTask">
+<h3>New Task</h3>
+    <form (submit)= "onSubmit()">
+        <p>{{ newTask | json }}</p>
+        <div>
+            <label>Title</label>
+            <input type="text" name="title" [(ngModel)]="newTask.title">
+        </div>
+        <div>
+            <label>Description</label>
+            <input type="text" name="description" [(ngModel)]="newTask.description">
+        </div>
+        <div>
+            <label>Completed</label>
+            <input type="checkbox" name="completed" [(ngModel)]="newTask.completed">
+        </div>
+        <input type="submit" value="Create Task">
+    </form>
+</div>

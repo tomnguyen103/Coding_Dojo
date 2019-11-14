@@ -8,13 +8,6 @@ import { HttpService } from './http.service';
 })
 export class AppComponent implements OnInit {
   title = 'public';
-  tasks = [];
-
-  newTask= {
-    title: '',
-    description: '',
-    completed: false
-  };
 
   editTask = null;
   selectedTask = null;
@@ -28,26 +21,11 @@ export class AppComponent implements OnInit {
   ngOnInit(){
     // this.getTasks();
   }
-
-  onSubmit(){
-    this._httpService.addTask(this.newTask)
-    .subscribe((data:any) => this.tasks.push(data.task))
-
-    this.newTask = { title: '', description: '', completed: false}
-  }
-
-  getTasks(){
-    this._httpService.getTasks()
-    .subscribe((data: any) => this.tasks = data.tasks)
-  }
-  selectTask(task){
-    this.selectedTask = task;
-  }
   
-  getTask(task_id){
-    this._httpService.getTask(task_id)
-    .subscribe((data:any) => this.tasks = data['title']);
-  }
+  // getTask(task_id){
+  //   this._httpService.getTask(task_id)
+  //   .subscribe((data:any) => this.tasks = data['title']);
+  // }
   taskForm(task){
     this.editTask = task;
   }
@@ -57,9 +35,9 @@ export class AppComponent implements OnInit {
     .subscribe((data:any)=> {this.editTask = null})
   }
 
-  selectDeleteTask(task){
-    // this.deleteTask = task;
-    this._httpService.deleteTask(task)
-    .subscribe((() => this.getTasks()))
-  }
+  // selectDeleteTask(task){
+  //   // this.deleteTask = task;
+  //   this._httpService.deleteTask(task)
+  //   .subscribe((() => this.getTasks()))
+  // }
 }

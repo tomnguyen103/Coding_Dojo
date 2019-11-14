@@ -1,1 +1,22 @@
-<p>all-tasks works!</p>
+<div id="top">
+    <table>
+        <thead>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Complete</th>
+        <th>Action</th>
+        </thead>
+        <tbody>
+        <tr *ngFor="let task of tasks">
+            <td>{{task.title}}</td>
+            <td>{{task.description}}</td>
+            <td>{{task.completed}}</td>
+            <td>
+            <button (click)='selectTask(task)'>View</button>
+            <button (click)='taskForm(task)'>Edit</button>
+            <button (click)='selectDeleteTask(task)'>Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>

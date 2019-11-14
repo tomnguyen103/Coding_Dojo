@@ -22,6 +22,8 @@ export class NewTaskComponent implements OnInit {
     ) { }
 
   ngOnInit() {
+    // this._httpService.getTasks()
+    // .subscribe((data:any) => this.tasks = data.tasks)
   }
 
   onSubmit(){

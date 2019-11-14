@@ -17,10 +17,11 @@ export class AllTasksComponent implements OnInit {
 
   ngOnInit() {
     this._httpService.getTasks()
-    .subscribe((data:any) => this.tasks = data.tasks)
+    .subscribe((data:any) => this.tasks = data.tasks);
   }
+
   selectTask(task){
-    this._router
+    this._router.navigate(['/tasks/' + task._id]);
   }
 
 }

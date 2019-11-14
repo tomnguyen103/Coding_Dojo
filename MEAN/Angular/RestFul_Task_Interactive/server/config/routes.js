@@ -7,5 +7,5 @@ module.exports = app=>{
     app.put('/api/tasks/:id',tasksController.update);
     app.delete('/api/tasks/:id',tasksController.delete);
 
-    app.all('*',(_req,res)=> res.sendFile(__dirname+'/../../public/dist/public/index.html'));
+    // app.all('*',(_req,res)=> res.sendFile(__dirname+'/../../public/dist/public/index.html'));
 }

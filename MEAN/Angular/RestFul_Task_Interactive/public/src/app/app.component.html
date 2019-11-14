@@ -1,55 +1,13 @@
 
 <div>
   <h1>Restful Tasks API</h1>
-  <button (click)='getTasks()'>Show all Tasks!</button>
+  <!-- <button (click)='getTasks()'>Show all Tasks!</button> -->
+  <a [routerLink]="['/tasks']">View Tasks</a>
 </div>
 
 <div>
-  <a [routerLink]="['/tasks/new']">New Task</a>
+  <a [routerLink]="['/tasks/new']">Create Task</a>
 </div>
-
-<div id="top">
-  <table>
-    <thead>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Complete</th>
-      <th>Action</th>
-    </thead>
-    <tbody>
-      <tr *ngFor="let task of tasks; index as i;">
-        <td>{{task.title}}</td>
-        <td>{{task.description}}</td>
-        <td>{{task.completed}}</td>
-        <td>
-          <button (click)='selectTask(task)'>View</button>
-          <button (click)='taskForm(task)'>Edit</button>
-          <button (click)='selectDeleteTask(task)'>Delete</button>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
-
-<div id="newTask">
-  <h3>New Task</h3>
-    <form (submit)= "onSubmit()">
-      <p>{{ newTask | json }}</p>
-      <div>
-        <label>Title</label>
-        <input type="text" name="title" [(ngModel)]="newTask.title">
-      </div>
-      <div>
-        <label>Description</label>
-        <input type="text" name="description" [(ngModel)]="newTask.description">
-      </div>
-      <div>
-        <label>Completed</label>
-        <input type="checkbox" name="completed" [(ngModel)]="newTask.completed">
-      </div>
-      <input type="submit" value="Create Task">
-    </form>
-  </div>
 
 <div *ngIf="editTask!=null" id="bottom">
   <form (submit)= "updateTask()">

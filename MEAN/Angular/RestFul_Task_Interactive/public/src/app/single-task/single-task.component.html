@@ -1,1 +1,5 @@
-<p>single-task works!</p>
+<div *ngIf="task != null">
+    <h1>{{task.title}}</h1>
+    <p>{{task.description}}</p>
+    <p>{{task.completed}}</p>
+</div>
