@@ -1,6 +1,13 @@
 
+<div>
+  <h1>Restful Tasks API</h1>
+  <button (click)='getTasks()'>Show all Tasks!</button>
+</div>
 
-<button (click)='getTasks()'>Show all Tasks!</button>
+<div>
+  <a [routerLink]="['/tasks/new']">New Task</a>
+</div>
+
 <div id="top">
   <table>
     <thead>
