@@ -1,0 +1,23 @@
+<div>
+        <h1>Edit the Product</h1>
+    </div>
+    
+    
+    <div>
+        <form (submit)="handleSubmit()">
+            <div>
+                <label>Title</label>
+                <input type="text" name="title" [(ngModel)]="newProduct.name">
+            </div>
+            <div>
+                <label>Price</label>
+                <input type="text" name="price" [(ngModel)]="newProduct.price">
+            </div>
+            <div>
+                <label>Image url</label>
+                <input type="text" name="img_url" [(ngModel)]="newProduct.img_url">
+            </div>
+            <button>Edit</button>
+    
+        </form>
+    </div>

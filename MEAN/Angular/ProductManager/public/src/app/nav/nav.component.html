@@ -1,0 +1,15 @@
+<nav>
+    <div>
+        <h1>PPM - Project Product Management</h1>
+    </div>
+
+    <div class="w3-padding-32 w3-large w3-text-grey" style="font-weight:bold; margin-left: 20px;">
+        <a [routerLink]="['/']">Home</a>
+        <a [routerLink]="['/products']" style="margin-left: 20px;">Product List</a>
+        <a [routerLink]="['/products/new']" style="margin-left: 20px;">Product Creation</a>
+    </div>
+</nav>
+
+<div>
+    <router-outlet></router-outlet>
+</div>
