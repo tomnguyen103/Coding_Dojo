@@ -20,7 +20,7 @@ module.exports={
         Author.findById(req.params.id)
         .then(author => res.json({author}))
         .catch(e => res.json({
-            errors : e
+            errors : e.errors
         }))
     },
 
