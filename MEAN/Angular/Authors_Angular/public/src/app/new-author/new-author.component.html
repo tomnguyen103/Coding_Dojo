@@ -1,0 +1,20 @@
+<a [routerLink]="['/']">Home</a>
+<p>Add an author</p>
+
+{{ newAuthor | json }}
+
+<ul>
+    <li class="red" *ngFor="let error of errors">{{error}}</li>
+</ul>
+
+<form (submit)="handleSubmit()">
+    <div>
+        <label>Name</label>
+        <input type="text" name="name" [(ngModel)]="newAuthor.name">
+    </div>
+    <div>
+        <label>Age</label>
+        <input type="text" name="age" [(ngModel)]="newAuthor.age">
+    </div>
+    <button>Submit</button>
+</form>
