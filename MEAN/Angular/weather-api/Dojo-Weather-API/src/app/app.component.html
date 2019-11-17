@@ -1,5 +1,28 @@
-<div>
-  <h1>Welcome to {{title}}</h1>
-  
+<div class="container">
+  <div class="row">
+    <div class="col text-center">
+      <h1>Weather Forecast</h1>
+      <ul class="list-inline">
+        <li class="list-inline-item">
+          <a [routerLink]="['burbank']">Burbank</a>
+        </li>
+        <li class="list-inline-item">
+          <a [routerLink]="['chicago']">Chicago</a>
+        </li>
+        <li class="list-inline-item">
+          <a [routerLink]="['dallas']">Dallas</a>
+        </li>
+        <li class="list-inline-item">
+          <a [routerLink]="['dc']">DC</a>
+        </li>
+        <li class="list-inline-item">
+          <a [routerLink]="['sanjose']">San Jose</a>
+        </li>
+        <li class="list-inline-item">
+          <a [routerLink]="['seattle']">Seattle</a>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 <router-outlet></router-outlet>
