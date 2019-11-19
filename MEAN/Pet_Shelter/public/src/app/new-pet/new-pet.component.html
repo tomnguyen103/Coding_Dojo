@@ -1,0 +1,37 @@
+<p>Know of a pet needing a home?</p>
+
+<ul>
+    <li class="red" *ngFor="let error of errors">{{error}}</li>
+</ul>
+
+<div>
+    <form (submit)="handleSubmit()">
+        <div>
+            <label>Pet Name:</label>
+            <input type="text" name="name" [(ngModel)]="newPet.name">
+        </div>
+        <div>
+            <label>Pet Type:</label>
+            <input type="text" name="type" [(ngModel)]="newPet.type">
+        </div>
+        <div>
+            <label>Description:</label>
+            <input type="text" name="description" [(ngModel)]="newPet.description">
+        </div>
+        <div>
+            <label>Skills:</label><br>
+            <div>
+                Skill 1: <input type="text" name="skill1" [(ngModel)]="newPet.skill1">
+            </div>
+            <div>
+                Skill 2: <input type="text" name="skill2" [(ngModel)]="newPet.skill2">
+            </div>
+            <div>
+                Skill 3: <input type="text" name="skill3" [(ngModel)]="newPet.skill3">
+            </div>
+        </div>
+        <button>Submit</button>
+    </form>
+    <button><a [routerLink]="['/']">Cancel</a></button>
+</div>
+

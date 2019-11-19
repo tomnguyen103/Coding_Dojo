@@ -3,30 +3,35 @@ import { HttpService } from '../http.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-new-author',
-  templateUrl: './new-author.component.html',
-  styleUrls: ['./new-author.component.css']
+  selector: 'app-new-pet',
+  templateUrl: './new-pet.component.html',
+  styleUrls: ['./new-pet.component.css']
 })
-export class NewAuthorComponent implements OnInit {
+export class NewPetComponent implements OnInit {
+
   errors = [];
 
-  newAuthor = {
+  newPet = {
     name: '',
-    age: ''
+    type: '',
+    description: '',
+    skill1: '',
+    skill2: '',
+    skill3: '',
   }
 
   constructor(
     private _httpService: HttpService,
-    private _router: Router,
-  ) { }
+    private _router: Router
+    ) { }
 
   ngOnInit() {
   }
 
   handleSubmit(){
-    this._httpService.createAuthor(this.newAuthor)
+    this._httpService.createPet(this.newPet)
     .subscribe((data:any)=> {
-      this.errors = [];
+      this.errors= [];
       if(data.hasOwnProperty('errors')){
         for(let key in data.errors){
           this.errors.push(data.errors[key].message);
@@ -35,6 +40,14 @@ export class NewAuthorComponent implements OnInit {
         this._router.navigate(['/'])
       }
     })
+    this.newPet = {
+      name: '',
+      type: '',
+      description: '',
+      skill1: '',
+      skill2: '',
+      skill3: '',
+    }
   }
 
 }

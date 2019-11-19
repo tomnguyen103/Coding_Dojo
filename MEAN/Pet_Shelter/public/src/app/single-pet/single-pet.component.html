@@ -1,0 +1,14 @@
+<a [routerLink]="['/']">Home</a>
+<h2>Details about {{pet.name}}</h2>
+<h2>Pet Type: {{pet.type}}</h2>
+<h2>Description: {{pet.description}}</h2>
+<h2>Skills: </h2> 
+<ul *ngIf="pet.skill1 || pet.skill2 || pet.skill3">
+    <li>{{pet.skill1}}</li>
+    <li>{{pet.skill2}}</li>
+    <li>{{pet.skill3}}</li>
+</ul>
+
+<form (submit)="adoptPet()">
+    <button>Adopt Pet</button>
+</form>
