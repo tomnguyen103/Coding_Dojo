@@ -16,6 +16,15 @@ export class AllAuthorsComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this._httpService.getCurrentUser()
+    .subscribe((data: any)=> {
+      if(data.user){
+        //cool there's a user
+      } else{
+        this._router.navigate(['/login'])
+      }
+    })
+
     this._httpService.getAuthors()
     .subscribe((data:any)=> this.authors = data.authors)
   }
@@ -31,4 +40,8 @@ export class AllAuthorsComponent implements OnInit {
     })
   }
 
+  handleLogout(){
+    this._httpService.logoutUser()
+    .subscribe(()=> this._router.navigate(['/login']))
+  }
 }

@@ -1,9 +1,18 @@
 const express = require('express');
 
+const session = require('express-session');
+
 
 const port = 3444;
 
 const app = express();
+
+app.use(session({
+    secret: 'some secret sentences',
+    resave: false,
+    saveUninitialized: true,
+    // cookie: { secure: true }
+}));
 
 app.use(express.json());
 
