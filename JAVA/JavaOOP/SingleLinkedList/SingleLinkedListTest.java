@@ -7,6 +7,8 @@ public class SingleLinkedListTest {
         sll.add(5);
         sll.add(15);
         sll.add(2);
+        sll.printValues();
+        System.out.println("-----------");
         sll.remove();
         sll.remove();
         sll.printValues();
