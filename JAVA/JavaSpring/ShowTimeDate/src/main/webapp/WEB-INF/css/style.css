@@ -1,0 +1,14 @@
+*{
+	margin: 0;
+}
+.container{
+	margin-top: 100px;
+	text-align: center;
+}
+#date{
+	color: blue;
+}
+
+#time{
+	color: green;
+}
