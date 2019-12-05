@@ -10,7 +10,7 @@ import javax.persistence.Id;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
@@ -25,8 +25,7 @@ public class Language {
     private String name;
     @Size(min = 2, max = 20)
     private String creator;
-    @NotEmpty
-    @Size(min = 3, max = 20)
+    @Size(min=1, max=20)
     private String currentVersion;
     
     
@@ -38,6 +37,13 @@ public class Language {
     
 	public Language() {
 	}
+	
+	public Language(String name, String creator, String currentVersion) {
+		this.name = name;
+		this.creator = creator;
+		this.currentVersion = currentVersion;
+	}
+	
 
 	public Long getId() {
 		return id;
