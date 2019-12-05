@@ -16,7 +16,7 @@
 	<h1>Creator: <c:out value="${lang.creator}"/></h1>
 	<h1>Current Version: <c:out value="${lang.currentVersion}"/></h1>
 	
-	<a href="/languages/edit/{id}">Edit</a><br>
+	<a href="/languages/edit/<c:out value="${lang.id}"/>">Edit</a><br>
 	<a href="/languages/delete/<c:out value="${lang.id}"/>">Delete</a><br>
 	<a href="/languages">DashBoard</a><br>
 </body>

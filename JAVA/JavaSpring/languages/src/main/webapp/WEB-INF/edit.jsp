@@ -11,12 +11,16 @@
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 </head>
 <body>
+<div>
+	<a href="/languages/delete/<c:out value="${language.id}"/>">Delete</a>
+	<a href="/">DashBoard</a>
+</div>
 <div class="container">
 	<div class="row">
 			<h2>Edit Language:</h2>
 		</div>
 		<div class="row">
-			<form:form action="/" method="post" modelAttribute="language">
+			<form:form action="/update/${language.id}" method="post" modelAttribute="language">
 			<input type="hidden" name="_method" value="put">
 			   <div class="form-group row">
 			       <form:label class="col-md-2 col-form-label" path="name">Name</form:label>
