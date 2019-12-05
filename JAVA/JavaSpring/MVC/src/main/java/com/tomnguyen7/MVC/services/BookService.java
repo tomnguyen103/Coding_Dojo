@@ -41,16 +41,7 @@ public class BookService {
     	}
     }
     
-    public Book updateBook(Long id, String title, String desc, String lang, Integer numOfPages) {
-    	Book oneBook = findBook(id);
-    	if(oneBook.getId()==id) {
-    		oneBook.setTitle(title);
-    		oneBook.setDescription(desc);
-    		oneBook.setLanguage(lang);
-    		oneBook.setNumberOfPages(numOfPages);
-    		return createBook(oneBook);
-    	}else {
-    		return null;
-    	}
+    public Book updateBook(Book b) {
+    	return this.bookRepository.save(b);
     }
 }

@@ -62,7 +62,7 @@ public class BookController {
         return "edit.jsp";
     }
     
-    @PutMapping("/books/{id}")
+    @PostMapping("/books/{id}")
     public String update(@Valid @ModelAttribute("book") Book book, BindingResult result) {
         if (result.hasErrors()) {
             return "edit.jsp";
