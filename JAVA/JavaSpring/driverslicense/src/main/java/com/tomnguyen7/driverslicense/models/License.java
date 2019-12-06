@@ -13,6 +13,9 @@ import javax.persistence.OneToOne;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.validation.constraints.Future;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name="licenses")
@@ -25,6 +28,8 @@ public class License {
 	
     private String number;
     
+    @Future
+    @DateTimeFormat(pattern="yyyy-MM-dd")
     private Date expirationDate;
     
     private String state;

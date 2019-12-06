@@ -3,9 +3,11 @@ package com.tomnguyen7.driverslicense.controllers;
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tomnguyen7.driverslicense.models.Person;
@@ -32,13 +34,20 @@ public class PersonsController {
 		return "newPerson.jsp";
 	}
 	
-	@PostMapping("/persons/new")
+	@PostMapping("/add-person")
 	public String createPerson(@Valid @ModelAttribute("person") Person person, BindingResult result) {
 		if(result.hasErrors()) {
 			return "newPerson.jsp";
 		}else {
 			personService.createPerson(person);
-			return "redirect:/profile";
+			return "redirect:licenses/new";
 		}
 	}
+	
+	@GetMapping("/persons/{id}")
+	public String viewPage(@PathVariable("id") Long id, Model model) {
+		model.addAttribute("license", licenseService.getLicense(id));
+		return "profile.jsp";
+	}
+	
 }

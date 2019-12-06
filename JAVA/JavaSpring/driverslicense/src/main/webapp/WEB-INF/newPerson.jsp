@@ -2,6 +2,8 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page isErrorPage="true" %>    
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,15 +12,18 @@
 </head>
 <body>
 	<h1>New Person</h1>
-	<form:form action="/createPerson" method="POST">
+	<form:form action="/add-person" method="POST" modelAttribute="person">
 	<div>
-		<label>First Name:</label>
-		<input type="text" name="firstName">
+		<form:label path="firstName">First Name: </form:label>
+        <form:errors path="firstName"/>
+        <form:input path="firstName"/>
+		
 	</div>
 	<br>
 	<div>
-		<label>Last Name:</label>
-		<input type="text" name="lastName">
+		<form:label path="lastName">Last Name:</form:label>
+        <form:errors path="lastName"/>
+        <form:input path="lastName"/>
 	</div>
 	<br>
 	<button>Create</button>

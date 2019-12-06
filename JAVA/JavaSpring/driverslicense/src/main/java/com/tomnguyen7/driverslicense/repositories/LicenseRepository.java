@@ -9,5 +9,5 @@ import com.tomnguyen7.driverslicense.models.License;
 
 @Repository
 public interface LicenseRepository extends CrudRepository<License, Long> {
-	List<License> findAll();
+	List<License> findTopByOrderByNumberDesc();
 }
