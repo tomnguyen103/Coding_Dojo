@@ -10,19 +10,27 @@
 </head>
 <body>
 	<h1>Create a new Ninja!</h1>
-	<form:form modelAttribute="ninja">
+	<form:form action="/ninjas" method="POST" modelAttribute="ninja">
 		<p>
-			<form:label path="firstName">First Name</form:label>
+			<form:label path="dojo">Dojo:</form:label>
+			<form:select path="dojo">
+				<c:forEach items="${allDojos}" var="dojo">
+					<form:option value="${dojo.id}"><c:out value="${dojo.name}"/></form:option>
+				</c:forEach>
+			</form:select>
+		</p>
+		<p>
+			<form:label path="firstName">First Name:</form:label>
 		    <form:errors path="firstName"/>
 			<form:input path="firstName"/>	
 		</p>
 		<p>
-			<form:label path="lastName">Last Name</form:label>
+			<form:label path="lastName">Last Name:</form:label>
 		    <form:errors path="lastName"/>
 			<form:input path="lastName"/>	
 		</p>
 		<p>
-			<form:label path="age">Age</form:label>
+			<form:label path="age">Age:</form:label>
 		    <form:errors path="age"/>
 			<form:input path="age"/>	
 		</p>

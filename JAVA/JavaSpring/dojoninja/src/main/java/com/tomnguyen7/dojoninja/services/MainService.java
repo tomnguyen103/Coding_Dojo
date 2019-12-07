@@ -1,8 +1,12 @@
 package com.tomnguyen7.dojoninja.services;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.stereotype.Service;
 
 import com.tomnguyen7.dojoninja.models.Dojo;
+import com.tomnguyen7.dojoninja.models.Ninja;
 import com.tomnguyen7.dojoninja.repositories.DojoRepository;
 import com.tomnguyen7.dojoninja.repositories.NinjaRepository;
 
@@ -19,5 +23,21 @@ public class MainService {
 		return this.dojoRepository.save(dojo);
 	}
 	
+	public List<Dojo> getAllDojos(){
+		return this.dojoRepository.findAll();
+	}
 	
+	public Ninja saveNinja(Ninja ninja) {
+		return this.ninjaRepository.save(ninja);
+	}
+	
+	public Dojo getDojoById(Long id) {
+		Optional<Dojo> optionalDojo = this.dojoRepository.findById(id);
+		if(optionalDojo.isPresent()) {
+			return optionalDojo.get();
+		}
+		else {
+			return null;
+		}
+	}
 }
