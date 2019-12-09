@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tomnguyen7.ProductsAndCategories.models.Category;
@@ -33,6 +34,13 @@ public class MainController {
 			Product newProduct = this.service.saveProduct(product);
 			return "redirect:/products/new";
 		}
+	}
+	
+	@GetMapping("/products/{id}")
+	public String showProduct(@PathVariable("id") Long id, Model model) {
+		Product product = this.service.getProductById(id);
+		model.addAttribute("product", product);
+		return "singleProduct.jsp";
 	}
 	
 	@GetMapping("/categories/new")
