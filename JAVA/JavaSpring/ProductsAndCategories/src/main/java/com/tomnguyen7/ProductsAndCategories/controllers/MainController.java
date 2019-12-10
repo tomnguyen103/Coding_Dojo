@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.tomnguyen7.ProductsAndCategories.models.Category;
+import com.tomnguyen7.ProductsAndCategories.models.CategoryProduct;
 import com.tomnguyen7.ProductsAndCategories.models.Product;
 import com.tomnguyen7.ProductsAndCategories.services.MainService;
 
@@ -36,10 +37,11 @@ public class MainController {
 		}
 	}
 	
-	@GetMapping("/products/{id}")
-	public String showProduct(@PathVariable("id") Long id, Model model) {
-		Product product = this.service.getProductById(id);
+	@GetMapping("/products/{prodId}")
+	public String showProduct(@PathVariable("prodId") Long prodId, @ModelAttribute("categoryProd") CategoryProduct categoryProduct, Model model) {
+		Product product = this.service.getProductById(prodId);
 		model.addAttribute("product", product);
+		model.addAttribute("categories", this.service.availableCategoriesForProduct(product));
 		return "singleProduct.jsp";
 	}
 	
@@ -54,6 +56,33 @@ public class MainController {
 		}else {
 			Category newCategory = this.service.saveCategory(category);
 			return "redirect:/categories/new";
+		}
+	}
+	@GetMapping("/categories/{catId}")
+	public String showCategory(@PathVariable("catId") Long catId, Model model) {
+		Category category = this.service.getCategoryById(catId);
+		model.addAttribute("category", category);
+		
+		return "singleCategory.jsp";
+	}
+	
+	@PostMapping("/addproducttocategory")
+	public String addProdToCat(@Valid @ModelAttribute("productCategory") CategoryProduct catProd, BindingResult result) {
+		if(result.hasErrors()) {
+			return "singleProduct.jsp";
+		}else {
+			CategoryProduct categoryProduct = this.service.addCatToProd(catProd);
+			
+			return "singleProduct.jsp";
+		}
+	}
+	@PostMapping("/addcategorytoproduct")
+	public String addCatToProd(@Valid @ModelAttribute("productCategory") CategoryProduct catProd, BindingResult result){
+		if(result.hasErrors()) {
+			return "singleCategory.jsp";
+		}else {
+			CategoryProduct categoryProduct = this.service.addCatToProd(catProd);
+			return "singleCategory.jsp";
 		}
 	}
 }
