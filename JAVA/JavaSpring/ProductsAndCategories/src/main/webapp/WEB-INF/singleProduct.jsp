@@ -18,22 +18,22 @@
 		<h2>Categories:</h2>
 		<ul>
 			<c:forEach var="category" items="${product.categories}">
-				<li>${category}</li>
+				<li>${category.name}</li>
 			</c:forEach>
 		</ul>
 	</div>
 	<div>
-		<form:form action="/addcategorytoproduct" method="POST" modelAttribute="productCategory">
+		<form:form action="/addcategorytoproduct" method="POST" modelAttribute="cateProdObj">
 			<h3>
 				<form:label path="category">Add Category:</form:label>
-				<form:select path=category>
+				<form:select path="category">
 					<c:forEach items="${categories}" var="cat">
 						<form:option value="${cat.id}"><c:out value="${cat.name}"/></form:option>
 					</c:forEach>
 				</form:select>
 			</h3>
 			<form:hidden path="product" value="${product.id}"/>
-			<input type="submit" value="Create" />
+			<input type="submit" value="Add" />
 		</form:form>
 	</div>
 </body>

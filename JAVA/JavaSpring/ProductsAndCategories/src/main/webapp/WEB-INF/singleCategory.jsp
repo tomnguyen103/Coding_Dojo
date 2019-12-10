@@ -13,5 +13,28 @@
 </head>
 <body>
 	<h1>Single Category</h1>
+	<div>
+		<h1>Category: ${category.name} </h1>
+		<h2>Product:</h2>
+		<ul>
+			<c:forEach var="product" items="${category.products}">
+				<li>${product.name}</li>
+			</c:forEach>
+		</ul>
+	</div>
+	<div>
+		<form:form action="/addproducttocategory" method="POST" modelAttribute="cateProdObj">
+			<h3>
+				<form:label path="product">Add Product:</form:label>
+				<form:select path="product">
+					<c:forEach items="${products}" var="prod">
+						<form:option value="${prod.id}"><c:out value="${prod.name}"/></form:option>
+					</c:forEach>
+				</form:select>
+			</h3>
+			<form:hidden path="category" value="${category.id}"/>
+			<input type="submit" value="Add" />
+		</form:form>
+	</div>
 </body>
 </html>
