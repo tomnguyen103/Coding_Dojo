@@ -38,7 +38,7 @@ public class MainController {
 			return "newProduct.jsp";
 		}
 		else {
-			Product newProduct = this.service.saveProduct(product);
+			this.service.saveProduct(product);
 			return "redirect:/products/new";
 		}
 	}
@@ -48,7 +48,7 @@ public class MainController {
 		if(result.hasErrors()) {
 			return "newCategories.jsp";
 		}else {
-			Category newCategory = this.service.saveCategory(category);
+			this.service.saveCategory(category);
 			return "redirect:/categories/new";
 		}
 	}
