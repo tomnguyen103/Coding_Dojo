@@ -23,6 +23,8 @@ public class AnswerService {
 	public List<Answer> getAllAnswer(){
 		return this.answerRepo.findAll();
 	}
+	
+	
 	public Answer findA(Long id) {
 		Optional<Answer> optionalA = answerRepo.findById(id);
 		if(optionalA.isPresent()) {
