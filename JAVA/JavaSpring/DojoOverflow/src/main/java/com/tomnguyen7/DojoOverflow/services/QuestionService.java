@@ -24,12 +24,24 @@ public class QuestionService {
 		return this.questionRepository.findAll();
 	}
 	
-	public Question findQ(Long id) {
+	public Question findById(Long id) {
 		Optional<Question> optionalQ = questionRepository.findById(id);
 		if(optionalQ.isPresent()) {
 			return optionalQ.get();
 		}else {
 			return null;
 		}
+	}
+	
+	public Question findOne(String string) {
+		Optional<Question> optionalQ = questionRepository.findByQuestion(string);
+		if(optionalQ.isPresent()) {
+			return optionalQ.get();
+		}else {
+			return null;
+		}
+	}
+	public void updateQuestion(Question question) {
+		questionRepository.save(question);
 	}
 }

@@ -12,4 +12,5 @@ import com.tomnguyen7.DojoOverflow.models.Question;
 public interface QuestionRepository extends CrudRepository<Question, Long>{
 	List<Question> findAll();
 	Optional<Question> findById(Long id);
+	Optional<Question> findByQuestion(String string);
 }

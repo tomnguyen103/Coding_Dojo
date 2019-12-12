@@ -21,11 +21,12 @@
 	</div>
 	<br>
 	<div>
-		<form:label path="tags">Tag: </form:label>
-        <form:errors path="tags"/>
-        <form:textarea path="tags"></form:textarea>
+		<p>
+		<label>Tags:</label> 
+		<input type="text" name="myTag"/>
+		</p>
 	</div>
-	<button>Submit</button>
+	<input type="submit"/>
 	</form:form>
 </body>
 </html>

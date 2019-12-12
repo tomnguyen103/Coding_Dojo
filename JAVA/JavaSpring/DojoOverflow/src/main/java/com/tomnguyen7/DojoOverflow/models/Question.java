@@ -18,6 +18,7 @@ import javax.persistence.PreUpdate;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+
 @Entity
 @Table(name="questions")
 public class Question {
@@ -25,7 +26,7 @@ public class Question {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Size(min=3,max=200, message="Please enter at least 3 character!")
+	@Size(min=5, max=20)
 	private String question;
 	
 	@Column(updatable=false)
@@ -45,20 +46,9 @@ public class Question {
     private List<Tag> tags;
     
     public Question() {
-    	
     }
-    
-    @PrePersist
-    protected void onCreate(){
-        this.createdAt = new Date();
-    }
-    @PreUpdate
-    protected void onUpdate(){
-        this.updatedAt = new Date();
-    }
-    
-    
-    
+   
+
 	public Long getId() {
 		return id;
 	}
@@ -95,4 +85,13 @@ public class Question {
 	public void setAnswers(List<Answer> answers) {
 		this.answers = answers;
 	}
+	
+    @PrePersist
+    protected void onCreate(){
+        this.createdAt = new Date();
+    }
+    @PreUpdate
+    protected void onUpdate(){
+        this.updatedAt = new Date();
+    }
 }

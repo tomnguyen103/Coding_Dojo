@@ -1,6 +1,6 @@
 package com.tomnguyen7.DojoOverflow.services;
 
-import java.util.ArrayList;
+import java.util.Optional;
 
 import org.springframework.stereotype.Service;
 
@@ -15,12 +15,31 @@ public class TagService {
 		this.tagRepository = tagRepository;
 	}
 	
-	public ArrayList<Tag> findAllTags(){
-		return (ArrayList<Tag>) this.tagRepository.findAll();
+	
+	public Tag createTag(Tag tag) {
+		return this.tagRepository.save(tag);
 	}
 	
-	public Tag createTag(String tag) {
-		return this.tagRepository.save(new Tag(tag));
+	public void updateTag(Tag tag) {
+		tagRepository.save(tag);
+	}
+	
+	public Tag findTagById(Long id) {
+		Optional<Tag> optionalT = tagRepository.findById(id);
+		if(optionalT.isPresent()) {
+			return optionalT.get();
+		}else {
+			return null;
+		}
+	}
+	
+	public Tag findOne(String string) {
+		Optional<Tag> optionalT = tagRepository.findByTagString(string);
+		if(optionalT.isPresent()) {
+			return optionalT.get();
+		}else {
+			return null;
+		}
 	}
 	
 }
