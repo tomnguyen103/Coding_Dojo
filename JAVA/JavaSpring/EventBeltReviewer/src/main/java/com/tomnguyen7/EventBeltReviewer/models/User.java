@@ -48,10 +48,14 @@ public class User {
     
     private String state;
     
+    @NotBlank(message="Password cannot be blank!")
 	@Size(min=5, message="Password must be greater than 5 characters")
     private String password;
+	
     @Transient
+    @NotBlank(message="Confirmation password cannot be blank!")
     private String passwordConfirmation;
+    
     @Column(updatable=false)
     private Date createdAt;
     private Date updatedAt;
@@ -59,13 +63,14 @@ public class User {
     public User() {
     }
     
-    public User(String firstName, String lastName, String email, String location, String state) {
-    	this.firstName = firstName;
-    	this.lastName = lastName;
-    	this.email = email;
-    	this.location = location;
-    	this.state = state;
-    }
+    public User(String firstName, String lastName, String email, String location, String state, String password) {
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.email = email;
+		this.location = location;
+		this.state = state;
+		this.password = password;
+	}
     
     //Relationships
     @ManyToMany(fetch = FetchType.LAZY)
@@ -121,6 +126,30 @@ public class User {
 
 	public void setState(String state) {
 		this.state = state;
+	}
+
+	public List<Event> getJoinedevents() {
+		return joinedevents;
+	}
+
+	public void setJoinedevents(List<Event> joinedevents) {
+		this.joinedevents = joinedevents;
+	}
+
+	public List<Event> getEvents() {
+		return events;
+	}
+
+	public void setEvents(List<Event> events) {
+		this.events = events;
+	}
+
+	public List<Message> getMessages() {
+		return messages;
+	}
+
+	public void setMessages(List<Message> messages) {
+		this.messages = messages;
 	}
 
 	public String getEmail() {
