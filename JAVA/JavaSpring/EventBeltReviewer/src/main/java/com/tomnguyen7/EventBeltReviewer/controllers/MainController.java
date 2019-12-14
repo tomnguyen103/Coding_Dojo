@@ -137,5 +137,14 @@ public class MainController {
     	
     }
     
+    @PostMapping("/addEvent")
+    public String addEvent(@Valid @ModelAttribute("event") Event event, BindingResult result, HttpSession session) {
+    	if(result.hasErrors()) {
+    		return "viewEvent.jsp";
+    	}else {
+    		mainService.addEvent(event);
+    		return "redirect:/events";
+    	}
+    }
     
 }
