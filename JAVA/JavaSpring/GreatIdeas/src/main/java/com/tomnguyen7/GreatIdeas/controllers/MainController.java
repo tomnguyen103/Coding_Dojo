@@ -168,18 +168,21 @@ public class MainController {
 		}
     }
 
-    @PutMapping("/ideas/{id}/edit")
-    public String update(@Valid @PathVariable("id") Long id, @ModelAttribute("idea") Idea idea, BindingResult result, Model model, HttpSession session) {
-    	User user = mainService.findUserById((Long)session.getAttribute("userID"));
+    @PostMapping("/ideas/{id}/edit")
+    public String update(@PathVariable("id") Long id, @Valid @ModelAttribute("idea") Idea idea, BindingResult result, Model model, HttpSession session) {
+    	User user = mainService.findUserById((Long)session.getAttribute("userId"));
     	if(mainService.findIdeaById(id).getUser().getId() == user.getId()) {
+    		
     		if(result.hasErrors()) {
+    			
     			model.addAttribute("idea", mainService.findIdeaById(id));
     			return "edit.jsp";    			
     		}else {
-    			Idea idea2 = mainService.findIdeaById(id);
-        		model.addAttribute("idea", idea2);
-        		model.addAttribute("user", user);
-        		idea.setUser(user);
+//    			Idea idea2 = mainService.findIdeaById(idea.getId());
+//        		model.addAttribute("idea", idea2);
+//        		model.addAttribute("user", user);
+//        		idea.setUser(user);
+    			
         		
         		mainService.updateIdea(idea);
         		return "redirect:/ideas";

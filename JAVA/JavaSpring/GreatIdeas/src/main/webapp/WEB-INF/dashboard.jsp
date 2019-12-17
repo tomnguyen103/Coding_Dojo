@@ -38,7 +38,8 @@
 			</tbody>
 		</table>
 	</div>
-	
+	<br>
+	<br>
 	<div><a href="/ideas/new">Create new Idea</a></div>
 </body>
 </html>

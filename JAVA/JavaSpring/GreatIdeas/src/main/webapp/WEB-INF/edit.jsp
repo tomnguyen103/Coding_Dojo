@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>Edit <c:out value="${idea.content}"/></h1>
-	<form:form action="/ideas/${id}/edit" method="POST" modelAttribute="idea">
+	<form:form action="/ideas/${idea.id}/edit" method="POST" modelAttribute="idea">
 		<p>
 	        <form:label path="content">Content</form:label>
 	        <form:errors path="content"/>
@@ -20,5 +20,6 @@
 	    <form:hidden path="user" value="${user.id}"/>
 	    <input type="submit" value="Submit"/>
 	</form:form>
+	<h2><a href="/ideas/${idea.id}/delete">Delete This Idea</a></h2>
 </body>
 </html>

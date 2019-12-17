@@ -15,6 +15,6 @@
 	<h2>Created by: <c:out value="${idea.user.name}"/></h2>
 	
 	<h2><a href="/ideas/${idea.id}/edit">Edit This Idea</a></h2>
-	<h2><a href="/ideas/${idea.id}/delete">Delete This Idea</a></h2>
+	<h2><a href="/ideas">Back</a></h2>
 </body>
 </html>
