@@ -15,6 +15,35 @@
 	
 	<h2>Course List:</h2>
 	
+	<div>
+		<table>
+			<thead>
+				<tr>
+					<th>Course</th>
+					<th>Instructor</th>
+					<th>Capacity</th>
+					<th>Action</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="course" items="${courses}">
+				<tr>					
+					<td>
+						<a href="/courses/${course.id}"><c:out value="${course.course_name}"/></a>				
+					</td>
+					<td>
+						<c:out value="${course.instructor}"/>
+					</td>
+					<td>
+						<c:out value="${course.capacity}"/>
+					</td>
+					<td><a href="/courses/add/${course.id}">Add</a></td>
+				</tr>
+				</c:forEach>				
+			</tbody>
+		</table>
+	</div>
+	
 	<div><a href="/courses/new">Create new Course</a></div>
 </body>
 </html>

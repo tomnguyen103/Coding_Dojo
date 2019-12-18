@@ -92,8 +92,11 @@ public class MainService {
     public void updateCourse(Course c) {
     	courseRepo.save(c);
     }
-    public void deleteCourese(Long id) {
+    public void deleteCourseById(Long id) {
     	courseRepo.deleteById(id);
+    }
+    public void deleteCourse(Course c) {
+    	courseRepo.delete(c);
     }
     public Course findCourseById(Long id) {
     	Optional<Course> optionalC = courseRepo.findById(id);

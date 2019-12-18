@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -29,7 +30,7 @@ public class MainController {
 	}
 	
 	@GetMapping("")
-	public String registerForm(@ModelAttribute("userObj") User user, HttpSession session, Model model) {
+	public String registerForm(@ModelAttribute("userObj") User user, HttpSession session) {
 		Long userId = (Long) session.getAttribute("userId");
 		if(userId == null) {
 			return "login.jsp";
@@ -49,7 +50,7 @@ public class MainController {
 	}
 	
 	@PostMapping("/registration")
-    public String registerUser(@Valid @ModelAttribute("userObj") User user, BindingResult result, Model model, HttpSession session) {
+    public String registerUser(@Valid @ModelAttribute("userObj") User user, BindingResult result, HttpSession session) {
     	userValidator.validate(user, result);
     	if(result.hasErrors()) {
     		return "login.jsp";
@@ -68,6 +69,7 @@ public class MainController {
     		session.setAttribute("userId", u.getId());
     		return "redirect:/courses";
     	}else {
+    		model.addAttribute("userObj", new User());
     		model.addAttribute("error", "Invalid Credential. Please Try again!");
     		return "login.jsp";
     	}
@@ -115,5 +117,59 @@ public class MainController {
     		model.addAttribute("course", c);
     		return "redirect:/courses";
     	}
+    }
+    
+    @GetMapping("/courses/{id}/delete")
+    public String delete(@PathVariable("id") Long id, Model model, HttpSession session) {
+    	if (session.getAttribute("userId") == null) {
+    		return "redirect:/";
+    	}
+    	Course myCourse = mainService.findCourseById(id);
+    	if(myCourse != null) {
+    		mainService.deleteCourse(myCourse);
+    		return "redirect:/courses";
+    	}else {
+    		return "redirect:/courses";
+    	}
+    }
+    
+    @GetMapping("/courses/{id}")
+    public String detail(@PathVariable("id")Long id, Model model, HttpSession session) {
+    	Course c = mainService.findCourseById(id);
+    	model.addAttribute("course", c);
+    	
+    	List<User> users = c.getUsers();
+    	Long userId = (Long) session.getAttribute("userId");
+    	User u = mainService.findUserById(userId);
+    	model.addAttribute("currentUser", u);
+    	return "singleCourse.jsp";
+    }
+    
+    @GetMapping("/courses/{id}/edit")
+    public String edit(@PathVariable("id")Long id, @ModelAttribute("course") Course course, Model model, HttpSession session) {
+    	Course myCourse = mainService.findCourseById(id);
+    	model.addAttribute("course", myCourse);
+    	return "editCourse.jsp";
+    }
+    @PostMapping("/updateCourse")
+    public String update(@Valid @ModelAttribute("course") Course course, BindingResult result) {
+    	if(result.hasErrors()) {
+    		return "editCourse.jsp";
+    	}else {
+//    		List<User> students = course.getUsers();
+    		mainService.updateCourse(course);
+    		return "redirect:/courses";
+    	}
+    }
+    
+    @GetMapping("/courses/add/{id}")
+    public String addUserToCourse(@PathVariable("id") Long id, Model model, HttpSession session) {
+    	Long userId = (Long) session.getAttribute("userId");
+    	User u = mainService.findUserById(userId);
+    	Course c = mainService.findCourseById(id);
+    	
+    	u.getCourses().add(c);
+    	mainService.updateUser(u);
+    	return "redirect:/courses";
     }
 }

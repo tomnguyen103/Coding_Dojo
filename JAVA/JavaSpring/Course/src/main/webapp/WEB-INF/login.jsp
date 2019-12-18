@@ -2,9 +2,8 @@
     pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page isErrorPage="true" %>  
+<%@ page isErrorPage="true" %>    
     
 <!DOCTYPE html>
 <html>
@@ -17,8 +16,7 @@
 	<div>
 	    <h1>Register!</h1>
 	    
-	    <p><form:errors path="user.*"/></p>
-	    
+	    <p><form:errors path="userObj.*"/></p>
 	    <form:form method="POST" action="/registration" modelAttribute="userObj">
 	    	<p>
 	            <form:label path="name">Name:</form:label>
@@ -39,11 +37,12 @@
 	        </p>
 	        <input type="submit" value="Register!"/>
 	    </form:form>  
+	    
     </div>
     
 	<div>
 	    <h1>Login</h1>
-	    <p><c:out value="${error}" /></p>
+	    
 	    <form method="post" action="/login">
 	        <p>
 	            <label for="email">Email</label>
@@ -55,6 +54,7 @@
 	        </p>
 	        <input type="submit" value="Login!"/>
 	    </form>  
+	    <p><c:out value="${error}"/></p>
    	</div>
    	
    	
