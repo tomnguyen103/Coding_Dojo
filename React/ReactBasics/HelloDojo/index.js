@@ -7,4 +7,3 @@ const helloReact = React.createElement("div", null,
     React.createElement("li", null, "Feed the dogs")
 );
 ReactDOM.render(helloReact, document.getElementById("app"));
-
