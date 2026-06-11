@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+package-lock.json
+
+# Node / npm logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build output
+dist/
+build/
+.angular/
+
+# Environment files
+.env
+.env.local
+*.env
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+venv/
+env/
+.venv/
+db.sqlite3
+
+# Java / build tools
+target/
+*.class
+
+# OS / editor junk
+.DS_Store
+Thumbs.db
+*.swp
+
+# Large archive artifacts (use Git LFS if these must be tracked)
+*.zip
